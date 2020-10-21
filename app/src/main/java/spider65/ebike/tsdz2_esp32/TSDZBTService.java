@@ -37,8 +37,8 @@ public class TSDZBTService extends Service {
 
     private static final String TAG = "TSDZBTService";
 
-    public static String TSDZ_SERVICE = "000000ff-0000-1000-8000-00805f9b34fb";
-    public static String TSDZ_CHARACTERISTICS_STATUS = "0000ff01-0000-1000-8000-00805f9b34fb";
+    public static String TSDZ_SERVICE = "dac21400-cfdd-462f-bfaf-7f6e4ccbb45f";
+    public static String TSDZ_CHARACTERISTICS_STATUS = "dac21401-cfdd-462f-bfaf-7f6e4ccbb45f";
     public static String TSDZ_CHARACTERISTICS_DEBUG = "0000ff02-0000-1000-8000-00805f9b34fb";
     public static String TSDZ_CHARACTERISTICS_CONFIG = "0000ff03-0000-1000-8000-00805f9b34fb";
     public static String TSDZ_CHARACTERISTICS_COMMAND = "0000ff04-0000-1000-8000-00805f9b34fb";

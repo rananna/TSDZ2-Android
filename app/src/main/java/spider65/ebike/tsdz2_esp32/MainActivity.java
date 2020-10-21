@@ -27,12 +27,9 @@ import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 import spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity;
 import spider65.ebike.tsdz2_esp32.activities.ChartActivity;
-import spider65.ebike.tsdz2_esp32.activities.ESP32ConfigActivity;
 import spider65.ebike.tsdz2_esp32.activities.TSDZCfgActivity;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Debug;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Status;
-import spider65.ebike.tsdz2_esp32.ota.Esp32_Ota;
-import spider65.ebike.tsdz2_esp32.ota.Stm8_Ota;
 import spider65.ebike.tsdz2_esp32.utils.OnSwipeListener;
 
 import android.util.Log;
@@ -262,17 +259,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     public boolean onPrepareOptionsMenu (Menu menu) {
         TSDZBTService service = TSDZBTService.getBluetoothService();
         if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED) {
-            menu.findItem(R.id.bikeOTA).setEnabled(true);
-            menu.findItem(R.id.espOTA).setEnabled(true);
             menu.findItem(R.id.showVersion).setEnabled(true);
             menu.findItem(R.id.config).setEnabled(true);
-            menu.findItem(R.id.esp32Config).setEnabled(true);
         } else {
-            menu.findItem(R.id.bikeOTA).setEnabled(false);
-            menu.findItem(R.id.espOTA).setEnabled(false);
             menu.findItem(R.id.showVersion).setEnabled(false);
             menu.findItem(R.id.config).setEnabled(false);
-            menu.findItem(R.id.esp32Config).setEnabled(false);
         }
         return true;
     }
@@ -282,14 +273,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Intent intent;
         int id = item.getItemId();
         switch (id) {
-            case R.id.espOTA:
-                intent = new Intent(this, Esp32_Ota.class);
-                startActivity(intent);
-                return true;
-            case R.id.bikeOTA:
-                intent = new Intent(this, Stm8_Ota.class);
-                startActivity(intent);
-                return true;
             case R.id.config:
                 intent = new Intent(this, TSDZCfgActivity.class);
                 startActivity(intent);
@@ -300,10 +283,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                 return true;
             case R.id.showVersion:
                 TSDZBTService.getBluetoothService().writeCommand(new byte[] {TSDZConst.CMD_GET_APP_VERSION});
-                return true;
-            case R.id.esp32Config:
-                intent = new Intent(this, ESP32ConfigActivity.class);
-                startActivity(intent);
                 return true;
             case R.id.screenONCB:
                 boolean isChecked = !item.isChecked();

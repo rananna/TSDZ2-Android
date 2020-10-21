@@ -31,10 +31,6 @@
         android:theme="@style/AppTheme">
         <activity android:name=".activities.HalSensorCalibrationActivity"></activity>
         <activity
-            android:name=".activities.ESP32ConfigActivity"
-            android:label="@string/title_activity_esp32_config"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".activities.SystemSetupActivity"
             android:label="@string/title_activity_system_setup"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -53,18 +49,6 @@
         <activity
             android:name=".activities.TSDZCfgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ota.Esp32_Ota"
-            android:label="@string/title_activity_esp32_ota"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
-        <activity
-            android:name=".ota.Stm8_Ota"
-            android:label="@string/title_activity_stm8_ota"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar"
-            tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activities.ChartActivity"
             android:label="@string/title_activity_chart"
