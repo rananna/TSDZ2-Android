@@ -41,8 +41,8 @@ public class BluetoothSetupActivity extends AppCompatActivity {
     public static final String KEY_DEVICE_NAME = "DEVICE_NAME";
     public static final String KEY_DEVICE_MAC = "DEVICE_MAC";
 
-    private ArrayList<String> deviceList = new ArrayList<>();
-    private ArrayList<BluetoothDevice> btDeviceList = new ArrayList<>();
+    private final ArrayList<String> deviceList = new ArrayList<>();
+    private final ArrayList<BluetoothDevice> btDeviceList = new ArrayList<>();
     private ArrayAdapter<String> adapter;
 
     private String selectedDeviceString;
@@ -52,12 +52,12 @@ public class BluetoothSetupActivity extends AppCompatActivity {
     private TextView deviceTV;
 
     private static final long SCAN_PERIOD = 10000; // millisecond
-    private Handler mHandler = new Handler();
+    private final Handler mHandler = new Handler();
 
     private BluetoothAdapter btAdapter;
     private BluetoothLeScanner btScanner;
 
-    private IntentFilter filter = new IntentFilter();
+    private final IntentFilter filter = new IntentFilter();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -162,7 +162,7 @@ public class BluetoothSetupActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             //Log.d(TAG, "onReceive " + intent.getAction());
@@ -223,7 +223,7 @@ public class BluetoothSetupActivity extends AppCompatActivity {
         });
     }
 
-    private ScanCallback leScanCallback = new ScanCallback() {
+    private final ScanCallback leScanCallback = new ScanCallback() {
         @Override
         public void onScanResult(int callbackType, ScanResult result) {
             Log.d(TAG, "onScanResult " + result.getDevice().getName());

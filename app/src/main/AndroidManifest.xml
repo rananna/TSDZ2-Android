@@ -29,25 +29,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activities.HalSensorCalibrationActivity"></activity>
         <activity
-            android:name=".activities.SystemSetupActivity"
+            android:name=".activities.ConfigurationsActivity"
             android:label="@string/title_activity_system_setup"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.BatterySetupActivity"
-            android:label="@string/title_activity_battery_setup"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.LevelsSetupActivity"
-            android:label="@string/title_activity_levels_setup"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.TemperatureSetupActivity"
-            android:label="@string/title_activity_temperature_setup"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".activities.TSDZCfgActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.ChartActivity"

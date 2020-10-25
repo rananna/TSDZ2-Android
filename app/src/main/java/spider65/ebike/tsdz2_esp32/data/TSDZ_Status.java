@@ -8,7 +8,6 @@ public class TSDZ_Status {
 
     private static final String TAG = "TSDZ_Status";
 
-    public RidingMode ridingMode;
     public int assistLevel;
     public float speed;
     public int cadence;
@@ -20,31 +19,6 @@ public class TSDZ_Status {
     public boolean brake;
     public int wattHour;
     public boolean streetMode;
-
-    public enum RidingMode {
-        OFF_MODE(0),
-        POWER_ASSIST_MODE(1),
-        TORQUE_ASSIST_MODE(2),
-        CADENCE_ASSIST_MODE(3),
-        eMTB_ASSIST_MODE(4),
-        WALK_ASSIST_MODE(5),
-        CRUISE_MODE(6);
-
-        RidingMode(int value) {
-            this.value = value;
-        }
-
-        public static RidingMode valueOf(int val) {
-            for (RidingMode e : values()) {
-                if (e.value ==val) {
-                    return e;
-                }
-            }
-            return null;
-        }
-
-        public final int value;
-    }
 
     /*
     #pragma pack(1)
@@ -70,7 +44,6 @@ public class TSDZ_Status {
             Log.e(TAG, "Wrong Status BT message size!");
             return false;
         }
-        this.ridingMode = RidingMode.valueOf(data[0] & 255);
         this.assistLevel = (data[1] & 255);
         this.speed = (float)(((data[3] & 255) << 8) + (data[2] & 255)) / 10;
         this.cadence = (data[4] & 255);

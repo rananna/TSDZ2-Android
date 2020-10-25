@@ -673,8 +673,8 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
 
     private static class DataItemAdapter extends BaseAdapter {
         private final DataItem[] mData;
-        private Context mContext;
-        private ChekedItemInterface listener;
+        private final Context mContext;
+        private final ChekedItemInterface listener;
         private int numChecked = 0;
         private int powerCheched = 0;
         private int temperatureChecked = 0;
@@ -751,16 +751,12 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
                 cb.setEnabled(true);
             } else if (numChecked > 2) {
                 cb.setEnabled(false);
-            } else if ((powerCheched>0 && (
-                            mData[position].type==DataType.mPower ||
-                            mData[position].type==DataType.pPower)) ||
-                       (temperatureChecked>0 && (
-                            mData[position].type==DataType.mTemp ||
-                            mData[position].type==DataType.cTemp))) {
-                cb.setEnabled(true);
-            } else {
-                cb.setEnabled(false);
-            }
+            } else cb.setEnabled((powerCheched > 0 && (
+                    mData[position].type == DataType.mPower ||
+                            mData[position].type == DataType.pPower)) ||
+                    (temperatureChecked > 0 && (
+                            mData[position].type == DataType.mTemp ||
+                                    mData[position].type == DataType.cTemp)));
             return convertView;
         }
     }
@@ -790,10 +786,7 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
 
             DataItemAdapter mAdapter = new DataItemAdapter(dialogItemList, this, (position, checked, numChecked) -> {
                     dialogItemList[position].checked = (checked);
-                    if (numChecked > 0)
-                        dataDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(true);
-                    else
-                        dataDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(false);
+                dataDialog.getButton(AlertDialog.BUTTON_POSITIVE).setEnabled(numChecked > 0);
 
             });
             builder.setAdapter(mAdapter, null);

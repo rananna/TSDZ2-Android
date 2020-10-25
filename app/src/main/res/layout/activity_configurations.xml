@@ -2,10 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.SystemSetupActivity">
+    tools:context=".activities.ConfigurationsActivity">
     <data>
         <variable name="cfg"     type="spider65.ebike.tsdz2_esp32.data.TSDZ_Config"/>
-        <variable name="handler" type="spider65.ebike.tsdz2_esp32.activities.TemperatureSetupActivity"/>
+        <variable name="handler" type="spider65.ebike.tsdz2_esp32.activities.ConfigurationsActivity"/>
     </data>
 
 <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -52,83 +52,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="5dp"
-                    android:text="@string/temp_control_title" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/control_type" />
-
-                    <Spinner
-                        android:id="@+id/controlTypeSP"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="5dp"
-                        android:gravity="center_vertical"
-                        android:entries="@array/temperature_types" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/warning_temp" />
-
-                    <EditText
-                        android:id="@+id/warningTempET"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="2"
-                        android:inputType="number"
-                        android:text="@{String.valueOf(cfg.ui8_motor_temperature_min_value_to_limit)}"
-                        android:layout_marginStart="5dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_margin="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/stop_temp" />
-
-                    <EditText
-                        android:id="@+id/stopTempET"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:ems="2"
-                        android:inputType="number"
-                        android:text="@{String.valueOf(cfg.ui8_motor_temperature_max_value_to_limit)}"
-                        android:layout_marginStart="5dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginBottom="10dp"
-                    android:background="?android:attr/listDivider" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="5dp"
-                    android:text="@string/throttle_control" />
+                    android:text="@string/wheel_speed" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -136,17 +60,46 @@
                     android:orientation="horizontal"
                     android:layout_margin="5dp">
 
-                    <CheckBox
-                        android:id="@+id/throttleCB"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
-                        android:text="@string/throttle_enabled" />
+                        android:text="@string/max_wheel_speed" />
+
+                    <EditText
+                        android:id="@+id/wheelmaxspeedET"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                        android:inputType="number" />
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
 
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/wheel_perimeter" />
+
+                    <EditText
+                        android:id="@+id/wheel_perimeterET"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
+                        android:inputType="number" />
+                </LinearLayout>
             </LinearLayout>
-
         </ScrollView>
 
         <LinearLayout

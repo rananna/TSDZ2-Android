@@ -5,33 +5,35 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
-import android.widget.EditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+
 import androidx.databinding.DataBindingUtil;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import spider65.ebike.tsdz2_esp32.R;
 import spider65.ebike.tsdz2_esp32.TSDZBTService;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Config;
-import spider65.ebike.tsdz2_esp32.databinding.ActivityBatterySetupBinding;
+import spider65.ebike.tsdz2_esp32.databinding.ActivityConfigurationsBinding;
 
-public class BatterySetupActivity extends AppCompatActivity {
+public class ConfigurationsActivity extends AppCompatActivity {
 
-    private static final String TAG = "BatterySetupActivity";
-    private TSDZ_Config cfg = new TSDZ_Config();
-    private IntentFilter mIntentFilter = new IntentFilter();
-    private ActivityBatterySetupBinding binding;
+    private static final String TAG = "ConfigurationsActivity";
+    private final TSDZ_Config cfg = new TSDZ_Config();
+    private final IntentFilter mIntentFilter = new IntentFilter();
+    private ActivityConfigurationsBinding binding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_battery_setup);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_configurations);
         binding.setHandler(this);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -69,56 +71,45 @@ public class BatterySetupActivity extends AppCompatActivity {
         }
     }
 
+//    public void onClickInductance(View view) {
+//        switch (view.getId()) {
+//            case R.id.inductance36BT:
+//                binding.inductanceET.setText("80");
+//                break;
+//            case R.id.inductance48BT:
+//                binding.inductanceET.setText("142");
+//                break;
+//        }
+//    }
+//    //  invalidate all to hide/show the checkbox dependant fields
+//    public void onCheckedChanged(View view, boolean checked) {
+//        switch (view.getId()) {
+//            case R.id.assistCB:
+//                binding.assistWPRET.setEnabled(checked);
+//                break;
+//            case R.id.streetPowerCB:
+//                binding.streetPowerET.setEnabled(checked);
+//                break;
+//            case R.id.torqueFixCB:
+//                binding.torqueADCOffsetET.setEnabled(checked);
+//                break;
+//        }
+//    }
+
     private void saveCfg() {
         Integer val;
-
-        if ((val = checkRange(binding.cellsNrET, 10, 14)) == null) {
-            showDialog(getString(R.string.cells_nr), getString(R.string.range_error, 10, 14));
+        boolean checked;
+        if ((val = checkRange(binding.wheelmaxspeedET, 1, 99)) == null) {
+            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 0, 99));
             return;
         }
-        cfg.ui8_battery_cells_number = val;
+        cfg.ui8_wheel_max_speed = val;
 
-        if ((val = checkRange(binding.whResetET, 38*cfg.ui8_battery_cells_number, 43*cfg.ui8_battery_cells_number)) == null) {
-            showDialog(getString(R.string.wh_reset_volt), getString(R.string.range_error, 38*cfg.ui8_battery_cells_number, 43*cfg.ui8_battery_cells_number));
+        if ((val = checkRange(binding.wheelPerimeterET, 750, 300)) == null) {
+            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 750, 300));
             return;
         }
-        cfg.ui16_battery_voltage_reset_wh_counter_x10 = val;
-
-        if ((val = checkRange(binding.batteryCutOffET, 25*cfg.ui8_battery_cells_number, 33*cfg.ui8_battery_cells_number)) == null) {
-            showDialog(getString(R.string.volt_cut_off), getString(R.string.range_error, 25*cfg.ui8_battery_cells_number, 33*cfg.ui8_battery_cells_number));
-            return;
-        }
-        cfg.ui16_battery_low_voltage_cut_off_x10 = val;
-
-        if ((val = checkRange(binding.batteryResET, 10, 1000)) == null) {
-            showDialog(getString(R.string.battery_resist), getString(R.string.range_error, 10, 1000));
-            return;
-        }
-        cfg.ui16_battery_pack_resistance_x1000 = val;
-
-        if ((val = checkRange(binding.cellOvervoltET, 300, 440)) == null) {
-            showDialog(getString(R.string.cell_overvolt), getString(R.string.range_error, 300, 440));
-            return;
-        }
-        cfg.ui8_li_io_cell_overvolt_x100 = val;
-
-        if ((val = checkRange(binding.cellEmptyET, 250, 330)) == null) {
-            showDialog(getString(R.string.cell_empty), getString(R.string.range_error, 250, 330));
-            return;
-        }
-        cfg.ui8_li_io_cell_empty_x100 = val;
-
-        if ((val = checkRange(binding.cellOneBarET, 250, 340)) == null) {
-            showDialog(getString(R.string.cell_one_bar), getString(R.string.range_error, 250, 340));
-            return;
-        }
-        cfg.ui8_li_io_cell_one_bar_x100 = val;
-
-        if ((val = checkRange(binding.cellAllBarsET, 370, 430)) == null) {
-            showDialog(getString(R.string.cell_all_bars), getString(R.string.range_error, 370, 430));
-            return;
-        }
-        cfg.ui8_li_io_cell_full_bars_x100 = val;
+        cfg.ui16_wheel_perimeter = val;
 
         TSDZBTService service = TSDZBTService.getBluetoothService();
         if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED)
@@ -146,14 +137,18 @@ public class BatterySetupActivity extends AppCompatActivity {
         builder.show();
     }
 
-    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+    private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
         Log.d(TAG, "onReceive " + intent.getAction());
+        if (intent.getAction() == null)
+            return;
         switch (intent.getAction()) {
             case TSDZBTService.TSDZ_CFG_READ_BROADCAST:
-                if (cfg.setData(intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA)))
+                if (cfg.setData(intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA))) {
                     binding.setCfg(cfg);
+//                    binding.lightConfigSP.setSelection(cfg.ui8_lights_configuration);
+                }
                 break;
             case TSDZBTService.TSDZ_CFG_WRITE_BROADCAST:
                 if (intent.getBooleanExtra(TSDZBTService.VALUE_EXTRA,false))

@@ -102,8 +102,6 @@ public class LogManager {
         final IntentFilter mIntentFilter = new IntentFilter();
         mIntentFilter.addAction(TSDZBTService.CONNECTION_LOST_BROADCAST);
         mIntentFilter.addAction(TSDZBTService.SERVICE_STOPPED_BROADCAST);
-        mIntentFilter.addAction(TSDZBTService.TSDZ_STATUS_BROADCAST);
-        mIntentFilter.addAction(TSDZBTService.TSDZ_DEBUG_BROADCAST);
 
         // to avoid performance issues (e.g. log file switch can take some time), data logging
         // is asyncronous and handled by a dedicated thread
@@ -162,50 +160,6 @@ public class LogManager {
                             statusBuffer = null;
                         }
                         if (debugBuffer != null) {
-                            Message msg = mHandler.obtainMessage(MSG_DEBUG_LOG, debugBuffer);
-                            mHandler.sendMessage(msg);
-                            debugBuffer = null;
-                        }
-                        break;
-                    case TSDZBTService.TSDZ_STATUS_BROADCAST:
-                        now = System.currentTimeMillis();
-                        // log 1 msg/sec
-                        if ((now - lastStatusTimestamp) <= 900)
-                            return;
-                        lastStatusTimestamp = now;
-                        data = intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA);
-                        if (data.length != STATUS_ADV_SIZE) {
-                            Log.w(TAG, "TSDZ_STATUS_BROADCAST: Wrong data size!");
-                            return;
-                        }
-                        // statusBuffer could be overwritten if a new notification arrives before statusBuffer
-                        // is written to the log. To avoid this potential problem, a recycling buffer pool is used.
-                        if (statusBuffer == null)
-                            statusBuffer = StatusBuffer.obtain();
-                        if (statusBuffer.addRecord(data, now)) {
-                            // statusBuffer is full, write it to disk
-                            Message msg = mHandler.obtainMessage(MSG_STATUS_LOG, statusBuffer);
-                            mHandler.sendMessage(msg);
-                            statusBuffer = null;
-                        }
-                        break;
-                    case TSDZBTService.TSDZ_DEBUG_BROADCAST:
-                        now = System.currentTimeMillis();
-                        // log 1 msg/sec
-                        if ((now - lastDebugTimestamp) <= 900)
-                            return;
-                        lastDebugTimestamp = now;
-                        data = intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA);
-                        if (data.length != DEBUG_ADV_SIZE) {
-                            Log.w(TAG, "TSDZ_DEBUG_BROADCAST: Wrong data size!");
-                            return;
-                        }
-                        // debugBuffer could be overwritten if a new notification arrives before debugBuffer
-                        // is written to the log. To avoid this potential problem, a recycling buffer pool is used.
-                        if (debugBuffer == null)
-                            debugBuffer = DebugBuffer.obtain();
-                        if (debugBuffer.addRecord(data, now)) {
-                            // debugBuffer is full, write it to disk
                             Message msg = mHandler.obtainMessage(MSG_DEBUG_LOG, debugBuffer);
                             mHandler.sendMessage(msg);
                             debugBuffer = null;

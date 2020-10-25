@@ -32,7 +32,7 @@ public class FragmentDebug extends Fragment implements MyFragmentListener {
 
     //private IntentFilter mIntentFilter = new IntentFilter();
 
-    private TSDZ_Debug debug;
+    private final TSDZ_Debug debug;
 
     private FragmentDebugBinding binding;
 

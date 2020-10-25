@@ -25,7 +25,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
     //private IntentFilter mIntentFilter = new IntentFilter();
 
-    private TSDZ_Status status;
+    private final TSDZ_Status status;
 
     private FragmentStatusBinding binding;
 
