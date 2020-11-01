@@ -37,10 +37,16 @@ public class TSDZBTService extends Service {
 
     private static final String TAG = "TSDZBTService";
 
-    public static String TSDZ_SERVICE = "dac21400-cfdd-462f-bfaf-7f6e4ccbb45f";
-    public static String TSDZ_CHARACTERISTICS_PERIODIC = "dac21401-cfdd-462f-bfaf-7f6e4ccbb45f";
+//    public static String TSDZ_SERVICE = "dac21400-cfdd-462f-bfaf-7f6e4ccbb45f";
+//    public static String TSDZ_CHARACTERISTICS_PERIODIC = "dac21401-cfdd-462f-bfaf-7f6e4ccbb45f";
     public static String TSDZ_CHARACTERISTICS_CONFIG = "dac21402-cfdd-462f-bfaf-7f6e4ccbb45f";
     public static String CLIENT_CHARACTERISTIC_CONFIG = "dac21402-cfdd-462f-bfaf-7f6e4ccbb45f";
+
+
+
+    public static String TSDZ_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
+    public static String TSDZ_CHARACTERISTICS_PERIODIC = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
+
     public final static UUID UUID_TSDZ_SERVICE = UUID.fromString(TSDZ_SERVICE);
     public final static UUID UUID_PERIODIC_CHARACTERISTIC = UUID.fromString(TSDZ_CHARACTERISTICS_PERIODIC);
     public final static UUID UUID_CONFIG_CHARACTERISTIC = UUID.fromString(TSDZ_CHARACTERISTICS_CONFIG);
@@ -233,20 +239,25 @@ public class TSDZBTService extends Service {
                 List<BluetoothGattService> services = gatt.getServices();
                 Log.i(TAG, "Services: " + services.toString());
                 for (BluetoothGattService s:services) {
-                    if (s.getUuid().equals(UUID_TSDZ_SERVICE)) {
+                    UUID serviceUUID = s.getUuid();
+
+                    if (serviceUUID.equals(UUID_TSDZ_SERVICE)) {
                         List<BluetoothGattCharacteristic> lc = s.getCharacteristics();
                         for (BluetoothGattCharacteristic c:lc) {
-                            if (c.getUuid().equals(UUID_PERIODIC_CHARACTERISTIC)) {
+                            UUID charUUID = c.getUuid();
+
+                            if (charUUID.equals(UUID_PERIODIC_CHARACTERISTIC)) {
                                 tsdz_periodic_char = c;
                                 Log.d(TAG, "UUID_PERIODIC_CHARACTERISTIC enable notifications");
-                            } else if(c.getUuid().equals(UUID_CONFIG_CHARACTERISTIC)) {
+                            } else if(charUUID.equals(UUID_CONFIG_CHARACTERISTIC)) {
                                 tsdz_config_char = c;
                                 Log.d(TAG, "UUID_CONFIG_CHARACTERISTIC enable notifications");
                             }
                         }
                     }
                 }
-                if (tsdz_periodic_char == null || tsdz_config_char == null) {
+//                if (tsdz_periodic_char == null || tsdz_config_char == null) {
+                if (tsdz_periodic_char == null) {
                     Intent bi = new Intent(CONNECTION_FAILURE_BROADCAST);
                     // TODO bi.putExtra("MESSAGE", "Error Detail");
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
@@ -254,6 +265,7 @@ public class TSDZBTService extends Service {
                     disconnect();
                     return;
                 }
+
                 // setCharacteristicNotification is asynchronous. Before to make a new call we
                 // must wait the end of the previous in the callback onDescriptorWrite
                 setCharacteristicNotification(tsdz_periodic_char,true);
@@ -280,11 +292,11 @@ public class TSDZBTService extends Service {
                         mBluetoothGatt.disconnect();
                     }
 
-                    //Log.d(TAG, "onDescriptorWrite: value = " + descriptor.getValue()[0]);
-                    if (descriptor.getCharacteristic().getUuid().equals(UUID_PERIODIC_CHARACTERISTIC))
-                        setCharacteristicNotification(tsdz_periodic_char,enable);
-                    else if (descriptor.getCharacteristic().getUuid().equals(UUID_CONFIG_CHARACTERISTIC))
-                        setCharacteristicNotification(tsdz_config_char,enable);
+//                    //Log.d(TAG, "onDescriptorWrite: value = " + descriptor.getValue()[0]);
+//                    if (descriptor.getCharacteristic().getUuid().equals(UUID_PERIODIC_CHARACTERISTIC))
+//                        setCharacteristicNotification(tsdz_periodic_char,enable);
+//                    else if (descriptor.getCharacteristic().getUuid().equals(UUID_CONFIG_CHARACTERISTIC))
+//                        setCharacteristicNotification(tsdz_config_char,enable);
                 }
             }
         }
@@ -418,11 +430,13 @@ public class TSDZBTService extends Service {
         mBluetoothGatt.setCharacteristicNotification(characteristic, enabled);
 
         BluetoothGattDescriptor descriptor = characteristic.getDescriptor(
-                UUID.fromString(CLIENT_CHARACTERISTIC_CONFIG));
+                UUID.fromString(TSDZ_CHARACTERISTICS_PERIODIC));
+
         if (enabled)
             descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
         else
             descriptor.setValue(BluetoothGattDescriptor.DISABLE_NOTIFICATION_VALUE);
+
         mBluetoothGatt.writeDescriptor(descriptor);
     }
 }

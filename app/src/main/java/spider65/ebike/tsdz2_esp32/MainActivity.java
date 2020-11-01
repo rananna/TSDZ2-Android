@@ -245,7 +245,11 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public boolean onPrepareOptionsMenu (Menu menu) {
         TSDZBTService service = TSDZBTService.getBluetoothService();
-        menu.findItem(R.id.config).setEnabled(service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED);
+        if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED) {
+            menu.findItem(R.id.config).setEnabled(true);
+        } else {
+            menu.findItem(R.id.config).setEnabled(false);
+        }
         return true;
     }
 	
@@ -371,29 +375,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION},
                     APP_PERMISSION_REQUEST);
         }
-    }
-
-    // Version packet format is "%s|%s|%d".
-    // First string is the ESP32 Main FW version, second is ESP32 OTA FW version and last integer
-    // is the Bike Controller FW version.
-    // The two strings are up to 8 char and the last integer is between 0 and 127.
-    private void showVersions(byte[] data) {
-        String s = new String(copyOfRange(data, 1, data.length), StandardCharsets.UTF_8);
-        Log.d(TAG, "Version string is: " + s);
-        String[] versions = s.split("\\|");
-        if (versions.length != 2) {
-            Log.e(TAG, "showVersions: wrong string");
-            return;
-        }
-        if ("255".equals(versions[0]))
-            versions[0] = "n/a";
-        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle(getString(R.string.fw_versions));
-        String message = getString(R.string.esp32_fw_version, versions[1]) + "\n" +
-                    getString(R.string.tsdz_fw_version, versions[0]);
-        builder.setMessage(message);
-        builder.setPositiveButton(android.R.string.ok, null);
-        builder.show();
     }
 
     private final BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
