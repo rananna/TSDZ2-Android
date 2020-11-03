@@ -37,13 +37,10 @@ public class TSDZBTService extends Service {
 
     private static final String TAG = "TSDZBTService";
 
-//    public static String TSDZ_SERVICE = "dac21400-cfdd-462f-bfaf-7f6e4ccbb45f";
-//    public static String TSDZ_CHARACTERISTICS_PERIODIC = "dac21401-cfdd-462f-bfaf-7f6e4ccbb45f";
+    public static String TSDZ_SERVICE = "dac21400-cfdd-462f-bfaf-7f6e4ccbb45f";
+    public static String TSDZ_CHARACTERISTICS_PERIODIC = "dac21401-cfdd-462f-bfaf-7f6e4ccbb45f";
     public static String TSDZ_CHARACTERISTICS_CONFIG = "dac21402-cfdd-462f-bfaf-7f6e4ccbb45f";
     public static String CLIENT_CHARACTERISTIC_CONFIG = "dac21402-cfdd-462f-bfaf-7f6e4ccbb45f";
-
-    public static String TSDZ_SERVICE = "6e400001-b5a3-f393-e0a9-e50e24dcca9e";
-    public static String TSDZ_CHARACTERISTICS_PERIODIC = "6e400003-b5a3-f393-e0a9-e50e24dcca9e";
 
     public static final UUID CCCD = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
     public final static UUID UUID_TSDZ_SERVICE = UUID.fromString(TSDZ_SERVICE);
@@ -251,8 +248,10 @@ public class TSDZBTService extends Service {
 
                                 mBluetoothGatt.setCharacteristicNotification(tsdz_periodic_char,true);
                                 BluetoothGattDescriptor descriptor = tsdz_periodic_char.getDescriptor(CCCD);
-                                descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-                                mBluetoothGatt.writeDescriptor(descriptor);
+                                if (descriptor != null) {
+                                    descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+                                    mBluetoothGatt.writeDescriptor(descriptor);
+                                }
 
                             } else if(charUUID.equals(UUID_CONFIG_CHARACTERISTIC)) {
                                 tsdz_config_char = c;
