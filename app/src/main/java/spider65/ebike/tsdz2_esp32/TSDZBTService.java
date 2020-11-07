@@ -28,9 +28,7 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Config;
 
-import static android.bluetooth.BluetoothDevice.TRANSPORT_LE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.STATUS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
 
 public class TSDZBTService extends Service {
@@ -260,8 +258,8 @@ public class TSDZBTService extends Service {
                         }
                     }
                 }
-//                if (tsdz_periodic_char == null || tsdz_config_char == null) {
-                if (tsdz_periodic_char == null) {
+
+                if (tsdz_periodic_char == null || tsdz_config_char == null) {
                     Intent bi = new Intent(CONNECTION_FAILURE_BROADCAST);
                     // TODO bi.putExtra("MESSAGE", "Error Detail");
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
@@ -323,10 +321,17 @@ public class TSDZBTService extends Service {
                                             BluetoothGattCharacteristic characteristic) {
             byte [] data = characteristic.getValue();
             if (UUID_PERIODIC_CHARACTERISTIC.equals(characteristic.getUuid())) {
-                if (data.length == STATUS_ADV_SIZE) {
+                if (data.length == PERIODIC_ADV_SIZE) {
                     Intent bi = new Intent(TSDZ_PERIODIC_BROADCAST);
                     bi.putExtra(VALUE_EXTRA, data);
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
+
+                    // if we are in connecting state, now we are connected
+                    if (mConnectionState == ConnectionState.CONNECTING) {
+                        mConnectionState = ConnectionState.CONNECTED;
+                        Intent intent = new Intent(CONNECTION_SUCCESS_BROADCAST);
+                        LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
+                    }
 
                     Log.d(TAG, "TSDZ2 periodic data: " + data[0]);
                 } else {

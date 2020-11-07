@@ -30,7 +30,7 @@ import spider65.ebike.tsdz2_esp32.MyApp;
 import spider65.ebike.tsdz2_esp32.TSDZBTService;
 
 import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.STATUS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
 public class LogManager {
 
@@ -347,7 +347,7 @@ public class LogManager {
             fileStatus = files[0];
             try {
                 rafStatus = new RandomAccessFile(fileStatus, "rwd");
-                statusLogInterval = checkLogFile(rafStatus,8+STATUS_ADV_SIZE);
+                statusLogInterval = checkLogFile(rafStatus,8+ PERIODIC_ADV_SIZE);
                 Log.d(TAG,"initLogFiles: status.log found. startTime=" +
                         sdf.format(new Date(statusLogInterval.startTime)) + " endTime=" +
                         sdf.format(new Date(statusLogInterval.endTime)));
@@ -460,7 +460,7 @@ public class LogManager {
 
     private ArrayList<LogStatusEntry> getStatusData (int fromMinute, int toMinute) {
         ArrayList<LogStatusEntry> ret = new ArrayList<>();
-        byte[] data = new byte[STATUS_ADV_SIZE];
+        byte[] data = new byte[PERIODIC_ADV_SIZE];
         long fromTime = (long)fromMinute * 60L * 1000L;
         long toTime = (long)toMinute * 60L * 1000L;
         Log.d(TAG, "getStatusData - fromTime=" + sdf.format(new Date(fromTime)) + " toTime=" + sdf.format(new Date(toTime)));
@@ -478,7 +478,7 @@ public class LogManager {
                             return ret;
                         } else if (t >= fromTime) {
                             int n = dis.read(data);
-                            if (n == STATUS_ADV_SIZE) {
+                            if (n == PERIODIC_ADV_SIZE) {
                                 LogStatusEntry entry = new LogStatusEntry();
                                 entry.time = t;
                                 entry.status.setData(data);
@@ -486,7 +486,7 @@ public class LogManager {
                             } else if (n > 0)
                                 Log.e(TAG, "getStatusData read error");
                         } else
-                            dis.skipBytes(STATUS_ADV_SIZE);
+                            dis.skipBytes(PERIODIC_ADV_SIZE);
                     }
                 }
             } catch (Exception e) {
@@ -514,7 +514,7 @@ public class LogManager {
                                     return ret;
                                 } else if (t >= fromTime) {
                                     int n = dis.read(data);
-                                    if (n == STATUS_ADV_SIZE) {
+                                    if (n == PERIODIC_ADV_SIZE) {
                                         LogStatusEntry entry = new LogStatusEntry();
                                         entry.time = t;
                                         entry.status.setData(data);
@@ -522,7 +522,7 @@ public class LogManager {
                                     } else if (n > 0)
                                         Log.e(TAG, "getStatusData read error");
                                 } else
-                                    dis.skipBytes(STATUS_ADV_SIZE);
+                                    dis.skipBytes(PERIODIC_ADV_SIZE);
                             }
                         }
                     } catch (Exception e) {

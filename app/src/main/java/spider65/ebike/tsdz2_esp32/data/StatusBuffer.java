@@ -2,7 +2,7 @@ package spider65.ebike.tsdz2_esp32.data;
 
 import androidx.annotation.NonNull;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.STATUS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
 public class StatusBuffer {
 
@@ -35,7 +35,7 @@ public class StatusBuffer {
     private StatusBuffer next;
     long startTime,endTime;
     public int position = 0;
-    public byte[] data = new byte[(8+STATUS_ADV_SIZE)*NUM_RECORDS];
+    public byte[] data = new byte[(8+ PERIODIC_ADV_SIZE)*NUM_RECORDS];
 
     boolean addRecord(byte[] rec, long time) {
         if (position >= data.length)
@@ -49,8 +49,8 @@ public class StatusBuffer {
         data[position++] = (byte) ((time >>> 16) & 0xFF);
         data[position++] = (byte) ((time >>> 8) & 0xFF);
         data[position++] = (byte) (time & 0xFF);
-        System.arraycopy(rec, 0, data, position, STATUS_ADV_SIZE);
-        position += STATUS_ADV_SIZE;
+        System.arraycopy(rec, 0, data, position, PERIODIC_ADV_SIZE);
+        position += PERIODIC_ADV_SIZE;
         if (startTime == 0)
             startTime = time;
         endTime = time;

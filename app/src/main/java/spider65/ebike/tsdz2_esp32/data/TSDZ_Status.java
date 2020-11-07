@@ -2,7 +2,7 @@ package spider65.ebike.tsdz2_esp32.data;
 
 import android.util.Log;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.STATUS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
 public class TSDZ_Status {
 
@@ -40,7 +40,7 @@ public class TSDZ_Status {
 
 
     public boolean setData(byte[] data) {
-        if (data.length != STATUS_ADV_SIZE) {
+        if (data.length != PERIODIC_ADV_SIZE) {
             Log.e(TAG, "Wrong Status BT message size!");
             return false;
         }

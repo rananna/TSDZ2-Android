@@ -36,20 +36,16 @@ import android.util.Log;
 import android.view.ContextMenu;
 import android.view.GestureDetector;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.nio.charset.StandardCharsets;
-
 import static java.util.Arrays.copyOfRange;
 import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.STATUS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 import static spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity.KEY_DEVICE_MAC;
 
 
@@ -70,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     IntentFilter mIntentFilter = new IntentFilter();
 
     private ViewPager viewPager;
-    private final byte[] lastStatusData = new byte[STATUS_ADV_SIZE];
+    private final byte[] lastStatusData = new byte[PERIODIC_ADV_SIZE];
     private final byte[] lastDebugData = new byte[DEBUG_ADV_SIZE];
 
     private final TSDZ_Status status = new TSDZ_Status();
