@@ -3,15 +3,16 @@ package spider65.ebike.tsdz2_esp32.data;
 
 import android.util.Log;
 
+import static spider65.ebike.tsdz2_esp32.TSDZConst.CONFIGURATIONS_ADV_SIZE;
+
 public class TSDZ_Config {
 
     private static final String TAG = "TSDZ_Config";
-    private static final int CFG_SIZE = 3;
     public int ui8_wheel_max_speed;
     public int ui16_wheel_perimeter;
 
     public boolean setData(byte[] data) {
-        if (data.length != CFG_SIZE) {
+        if (data.length != CONFIGURATIONS_ADV_SIZE) {
             Log.e(TAG, "setData: wrong data size");
             return false;
         }
@@ -23,7 +24,7 @@ public class TSDZ_Config {
     }
 
     public byte[] toByteArray() {
-        byte[] data = new byte[CFG_SIZE];
+        byte[] data = new byte[CONFIGURATIONS_ADV_SIZE];
         data[0] = (byte)(ui8_wheel_max_speed & 0xff);
         data[1] = (byte)ui16_wheel_perimeter;
         data[2] = (byte)(ui16_wheel_perimeter >>> 8);
