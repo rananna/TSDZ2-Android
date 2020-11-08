@@ -52,6 +52,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="5dp"
+                    android:textStyle="bold"
                     android:text="@string/wheel_speed" />
 
                 <LinearLayout
@@ -68,10 +69,13 @@
 
                     <EditText
                         android:id="@+id/wheelmaxspeedET"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="5dp"
+                        tools:text="99"
                         android:ems="2"
                         android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
                         android:inputType="number" />
@@ -91,13 +95,16 @@
 
                     <EditText
                         android:id="@+id/wheel_perimeterET"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
                         android:layout_gravity="center_vertical"
                         android:layout_marginStart="5dp"
                         android:ems="2"
+                        android:inputType="number"
                         android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
-                        android:inputType="number" />
+                        tools:text="1234" />
                 </LinearLayout>
             </LinearLayout>
         </ScrollView>

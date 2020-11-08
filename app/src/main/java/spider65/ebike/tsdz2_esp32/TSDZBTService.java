@@ -333,7 +333,7 @@ public class TSDZBTService extends Service {
                         LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
                     }
 
-                    Log.d(TAG, "TSDZ2 periodic data: " + data[0]);
+//                    Log.d(TAG, "TSDZ2 periodic data: " + data[0]);
                 } else {
                     Log.e(TAG, "Wrong Status Advertising Size: " + data.length);
                 }

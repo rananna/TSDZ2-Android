@@ -2,12 +2,15 @@ package spider65.ebike.tsdz2_esp32.utils;
 
 import android.widget.EditText;
 
+import java.math.BigDecimal;
+
 import spider65.ebike.tsdz2_esp32.MyApp;
 import spider65.ebike.tsdz2_esp32.R;
 
 public class Utils {
 
     private static final char[] HEX_ARRAY = "0123456789ABCDEF".toCharArray();
+
     public static String bytesToHex(byte[] bytes) {
         char[] hexChars = new char[bytes.length * 3];
         for (int j = 0; j < bytes.length; j++) {
@@ -26,5 +29,12 @@ public class Utils {
             return null;
         }
         return val;
+    }
+
+    public static float intX10toFloat (int input){
+        double number = new Double(input);
+        number = number/10;
+        Double d_number = new BigDecimal(number).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return d_number.floatValue();
     }
 }

@@ -31,7 +31,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".activities.ConfigurationsActivity"
-            android:label="@string/title_activity_system_setup"
+            android:label="@string/title_activity_configurations"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activities.ChartActivity"

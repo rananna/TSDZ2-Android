@@ -5,7 +5,7 @@
     tools:context="example.javatpoint.com.optionmenu.MainActivity">
 
     <item  android:id="@+id/config"
-        android:title="@string/config"/>
+        android:title="@string/tsdz_configurations"/>
     <item  android:id="@+id/btSetup"
         android:title="@string/btSetup"/>
     <item

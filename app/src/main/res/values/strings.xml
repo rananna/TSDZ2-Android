@@ -69,8 +69,7 @@
     <string name="controller_temp">Controller Temp.</string>
     <string name="fw_angle">FW Angle</string>
 
-    <string name="tsdz_cfg">Bike Configuration</string>
-    <string name="title_activity_esp32_ota">Esp32 Firmware Update</string>
+    <string name="tsdz_configurations">EBike Configurations</string>
     <string name="title_activity_stm8_ota">Bike Firmware Update</string>
     <string name="current_version">Current Version: %1$s</string>
     <string name="new_version">New Version: %1$s</string>
@@ -105,7 +104,6 @@
     <string name="assist_levels">Assist Levels</string>
     <string name="temp_control">Temperature and Throttle</string>
     <string name="cadence_calib">Cadence sensor calibration</string>
-    <string name="title_activity_system_setup">System Setup</string>
     <string name="motor">Motor</string>
     <string name="wheel_speed">Wheel speed</string>
     <string name="max_wheel_speed">Max wheel speed (kms)</string>
@@ -205,6 +203,7 @@
 
     <string name="pin_input_error">PIN is empty</string>
 
+    <string name="title_activity_configurations">Configurations</string>
     <string name="title_activity_chart">Charts</string>
     <string name="assistLevel">Assist Level</string>
 
