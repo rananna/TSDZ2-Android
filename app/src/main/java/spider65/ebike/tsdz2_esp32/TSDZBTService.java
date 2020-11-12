@@ -26,7 +26,7 @@ import java.util.UUID;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Config;
+import spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations;
 
 import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
@@ -418,7 +418,7 @@ public class TSDZBTService extends Service {
         mBluetoothGatt.readCharacteristic(tsdz_config_char);
     }
 
-    public void writeCfg(TSDZ_Config cfg) {
+    public void writeCfg(TSDZ_Configurations cfg) {
         if (mBluetoothAdapter == null || mBluetoothGatt == null || tsdz_config_char == null) {
             Log.w(TAG, "BluetoothAdapter not initialized");
             return;

@@ -19,13 +19,13 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import spider65.ebike.tsdz2_esp32.R;
 import spider65.ebike.tsdz2_esp32.TSDZBTService;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Config;
+import spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations;
 import spider65.ebike.tsdz2_esp32.databinding.ActivityConfigurationsBinding;
 
 public class ConfigurationsActivity extends AppCompatActivity {
 
     private static final String TAG = "ConfigurationsActivity";
-    private final TSDZ_Config cfg = new TSDZ_Config();
+    private final TSDZ_Configurations cfg = new TSDZ_Configurations();
     private final IntentFilter mIntentFilter = new IntentFilter();
     private ActivityConfigurationsBinding binding;
 
@@ -105,8 +105,8 @@ public class ConfigurationsActivity extends AppCompatActivity {
         }
         cfg.ui8_wheel_max_speed = val;
 
-        if ((val = checkRange(binding.wheelPerimeterET, 750, 300)) == null) {
-            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 750, 300));
+        if ((val = checkRange(binding.wheelPerimeterET, 750, 3000)) == null) {
+            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 750, 3000));
             return;
         }
         cfg.ui16_wheel_perimeter = val;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.ConfigurationsActivity">
     <data>
-        <variable name="cfg"     type="spider65.ebike.tsdz2_esp32.data.TSDZ_Config"/>
+        <variable name="cfg"     type="spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations"/>
         <variable name="handler" type="spider65.ebike.tsdz2_esp32.activities.ConfigurationsActivity"/>
     </data>
 
