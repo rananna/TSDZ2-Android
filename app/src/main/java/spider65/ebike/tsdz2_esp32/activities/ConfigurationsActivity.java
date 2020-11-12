@@ -147,7 +147,6 @@ public class ConfigurationsActivity extends AppCompatActivity {
             case TSDZBTService.TSDZ_CFG_READ_BROADCAST:
                 if (cfg.setData(intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA))) {
                     binding.setCfg(cfg);
-//                    binding.lightConfigSP.setSelection(cfg.ui8_lights_configuration);
                 }
                 break;
             case TSDZBTService.TSDZ_CFG_WRITE_BROADCAST:

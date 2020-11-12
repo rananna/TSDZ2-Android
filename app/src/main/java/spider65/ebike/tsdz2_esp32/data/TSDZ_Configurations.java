@@ -28,28 +28,29 @@ public class TSDZ_Configurations {
             return false;
         }
 
-//        ui8_configurations_version = data[0];
-        ui8_assist_level = data[1];
-        ui16_wheel_perimeter = ((data[3] & 255) << 8) + (data[2] & 255);
-        ui8_wheel_max_speed = data[4];
-        ui8_units_type = data[5];
-        ui32_wh_x10_offset = (data[6] & 255) +
-                ((data[7] & 255) << 8) +
-                ((data[8] & 255) << 16) +
-                ((data[9] & 255) << 32);
-        ui32_wh_x10_100_percent = (data[10] & 255) +
-                ((data[11] & 255) << 8) +
-                ((data[12] & 255) << 16) +
-                ((data[13] & 255) << 32);
+        if ((data[0] & 0xFF) == 0xA2) {
+            ui8_assist_level = data[1];
+            ui16_wheel_perimeter = ((data[3] & 255) << 8) + (data[2] & 255);
+            ui8_wheel_max_speed = data[4];
+            ui8_units_type = data[5];
+            ui32_wh_x10_offset = (data[6] & 255) +
+                    ((data[7] & 255) << 8) +
+                    ((data[8] & 255) << 16) +
+                    ((data[9] & 255) << 32);
+            ui32_wh_x10_100_percent = (data[10] & 255) +
+                    ((data[11] & 255) << 8) +
+                    ((data[12] & 255) << 16) +
+                    ((data[13] & 255) << 32);
+            return true;
+        }
 
-        return true;
+        Log.e(TAG, "setData: wrong configurations version");
+        return false;
     }
 
     public byte[] toByteArray() {
         byte[] data = new byte[CONFIGURATIONS_ADV_SIZE];
-
-        data[0] = (byte) 0xA1; // configurations version
-
+        data[0] = (byte) 0xA2; // configurations version
         data[1] = (byte) ui8_assist_level;
         data[2] = (byte) (ui16_wheel_perimeter & 0xff);
         data[3] = (byte) (ui16_wheel_perimeter >>> 8);

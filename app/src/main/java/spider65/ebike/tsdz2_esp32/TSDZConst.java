@@ -19,5 +19,5 @@ public interface TSDZConst {
     int DEBUG_ADV_SIZE = 16;
 //    int STATUS_ADV_SIZE = 17;
     int PERIODIC_ADV_SIZE = 10;
-    int CONFIGURATIONS_ADV_SIZE = 159;
+    int CONFIGURATIONS_ADV_SIZE = 161;
 }
