@@ -107,6 +107,10 @@
     <string name="motor">Motor</string>
     <string name="wheel_speed">Wheel speed</string>
     <string name="max_wheel_speed">Max wheel speed (kms)</string>
+    <string name="battery_soc">Battery SOC</string>
+    <string name="battery_soc_reset_voltage">Reset voltage (volts)</string>
+    <string name="battery_soc_battery_total_wh">Battery total Wh</string>
+    <string name="battery_soc_used_wh">Battery used Wh</string>
     <string name="motor_type">Motor Type</string>
     <string name="motor_inductance">Motor Inductance</string>
     <string name="acceleration">Acceleration</string>

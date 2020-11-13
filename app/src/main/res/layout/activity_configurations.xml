@@ -55,57 +55,143 @@
                     android:textStyle="bold"
                     android:text="@string/wheel_speed" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/max_wheel_speed" />
-
-                    <EditText
-                        android:id="@+id/wheelmaxspeedET"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:layout_marginEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        tools:text="99"
-                        android:ems="2"
-                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
-                        android:inputType="number" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/max_wheel_speed" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:text="@string/wheel_perimeter" />
+                        <EditText
+                            android:id="@+id/wheelmaxspeedET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            tools:text="99"
+                            android:ems="2"
+                            android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                            android:inputType="number" />
+                    </LinearLayout>
 
-                    <EditText
-                        android:id="@+id/wheel_perimeterET"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:layout_marginEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:ems="2"
-                        android:inputType="number"
-                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
-                        tools:text="1234" />
-                </LinearLayout>
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/wheel_perimeter" />
+
+                        <EditText
+                            android:id="@+id/wheelPerimeterET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:inputType="number"
+                            android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
+                            tools:text="1234" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="25dp"
+                        android:textStyle="bold"
+                        android:text="@string/battery_soc" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/battery_soc_battery_total_wh" />
+
+                        <EditText
+                            android:id="@+id/batterySocBatteryTotalWhET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:inputType="number"
+                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            tools:text="100" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/battery_soc_reset_voltage" />
+
+                        <EditText
+                            android:id="@+id/batterySocResetVoltageET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            tools:text="54.0"
+                            android:ems="2"
+                            android:text="@{String.valueOf(cfg.f_battery_voltage_reset_wh_counter)}"
+                            android:inputType="number" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/battery_soc_used_wh" />
+
+                        <EditText
+                            android:id="@+id/batterySocUsedWhET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:inputType="number"
+                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            tools:text="90.5" />
+                    </LinearLayout>
             </LinearLayout>
         </ScrollView>
 

@@ -98,6 +98,7 @@ public class ConfigurationsActivity extends AppCompatActivity {
 
     private void saveCfg() {
         Integer val;
+        Float valFloat;
         boolean checked;
         if ((val = checkRange(binding.wheelmaxspeedET, 1, 99)) == null) {
             showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 0, 99));
@@ -111,6 +112,25 @@ public class ConfigurationsActivity extends AppCompatActivity {
         }
         cfg.ui16_wheel_perimeter = val;
 
+        if ((valFloat = checkRange(binding.batterySocBatteryTotalWhET, 0.0f, 999.0f)) == null) {
+            showDialog(getString(R.string.battery_soc_battery_total_wh), getString(R.string.range_error, 0.0f, 999.0f));
+            return;
+        }
+        cfg.ui32_wh_x10_100_percent = (long) (valFloat * 10);
+
+        if ((valFloat = checkRange(binding.batterySocResetVoltageET, 16.0f, 63.0f)) == null) {
+            showDialog(getString(R.string.battery_soc_reset_voltage), getString(R.string.range_error, 16.0f, 63.0f));
+            return;
+        }
+        cfg.ui16_battery_voltage_reset_wh_counter_x10 = (int) (valFloat * 10);
+
+        if ((valFloat = checkRange(binding.batterySocUsedWhET, 0.0f, 9990.0f)) == null) {
+            showDialog(getString(R.string.battery_soc_used_wh), getString(R.string.range_error, 0.0f, 9990.0f));
+            return;
+        }
+        cfg.ui32_wh_x10_100_percent = (long) (valFloat * 10);
+
+
         TSDZBTService service = TSDZBTService.getBluetoothService();
         if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED)
             service.writeCfg(cfg);
@@ -121,6 +141,15 @@ public class ConfigurationsActivity extends AppCompatActivity {
 
     Integer checkRange(EditText et, int min, int max) {
         int val = Integer.parseInt(et.getText().toString());
+        if (val < min || val > max) {
+            et.setError(getString(R.string.range_error, min, max));
+            return null;
+        }
+        return val;
+    }
+
+    Float checkRange(EditText et, float min, float max) {
+        float val = Float.parseFloat(et.getText().toString());
         if (val < min || val > max) {
             et.setError(getString(R.string.range_error, min, max));
             return null;
