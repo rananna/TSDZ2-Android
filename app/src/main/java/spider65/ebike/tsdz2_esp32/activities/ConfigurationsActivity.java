@@ -113,22 +113,22 @@ public class ConfigurationsActivity extends AppCompatActivity {
         cfg.ui16_wheel_perimeter = val;
 
         if ((valFloat = checkRange(binding.batterySocBatteryTotalWhET, 0.0f, 999.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_battery_total_wh), getString(R.string.range_error, 0.0f, 999.0f));
+            showDialog(getString(R.string.battery_soc_battery_total_wh), getString(R.string.range_error_float, 0.0f, 999.0f));
             return;
         }
         cfg.ui32_wh_x10_100_percent = (long) (valFloat * 10);
 
         if ((valFloat = checkRange(binding.batterySocResetVoltageET, 16.0f, 63.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_reset_voltage), getString(R.string.range_error, 16.0f, 63.0f));
+            showDialog(getString(R.string.battery_soc_reset_voltage), getString(R.string.range_error_float, 16.0f, 63.0f));
             return;
         }
         cfg.ui16_battery_voltage_reset_wh_counter_x10 = (int) (valFloat * 10);
 
         if ((valFloat = checkRange(binding.batterySocUsedWhET, 0.0f, 9990.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_used_wh), getString(R.string.range_error, 0.0f, 9990.0f));
+            showDialog(getString(R.string.battery_soc_used_wh), getString(R.string.range_error_float, 0.0f, 9990.0f));
             return;
         }
-        cfg.ui32_wh_x10_100_percent = (long) (valFloat * 10);
+        cfg.ui32_wh_x10 = (long) (valFloat * 10);
 
 
         TSDZBTService service = TSDZBTService.getBluetoothService();
@@ -151,7 +151,7 @@ public class ConfigurationsActivity extends AppCompatActivity {
     Float checkRange(EditText et, float min, float max) {
         float val = Float.parseFloat(et.getText().toString());
         if (val < min || val > max) {
-            et.setError(getString(R.string.range_error, min, max));
+            et.setError(getString(R.string.range_error_float, min, max));
             return null;
         }
         return val;

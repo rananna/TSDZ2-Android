@@ -131,6 +131,7 @@
     <string name="street_mode_throttle">Throttle enabled</string>
     <string name="wheel_perimeter">Wheel perimeter (mm)</string>
     <string name="range_error">Value must be between %1$d and %2$d</string>
+    <string name="range_error_float">Value must be between %1$f and %2$f</string>
     <string name="write_cfg_error">Configuration cannot be updated</string>
     <string name="read_cfg_error">Configuration cannot be readed</string>
     <string name="esp32_cfg_error">ESP32 data wrong\nAndorid app and ESP32 FW misaligned?</string>

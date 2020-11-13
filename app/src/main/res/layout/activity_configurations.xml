@@ -136,7 +136,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="5dp"
                             android:ems="2"
-                            android:inputType="number"
+                            android:inputType="numberDecimal"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
                     </LinearLayout>
@@ -164,7 +164,7 @@
                             tools:text="54.0"
                             android:ems="2"
                             android:text="@{String.valueOf(cfg.f_battery_voltage_reset_wh_counter)}"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -188,8 +188,8 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="5dp"
                             android:ems="2"
-                            android:inputType="number"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:inputType="numberDecimal"
+                            android:text="@{String.valueOf(cfg.f_wh)}"
                             tools:text="90.5" />
                     </LinearLayout>
             </LinearLayout>
