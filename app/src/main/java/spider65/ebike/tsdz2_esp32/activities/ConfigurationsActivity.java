@@ -100,35 +100,36 @@ public class ConfigurationsActivity extends AppCompatActivity {
         Integer val;
         Float valFloat;
         boolean checked;
-        if ((val = checkRange(binding.wheelmaxspeedET, 1, 99)) == null) {
-            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 0, 99));
+        if ((val = checkRange(binding.maxSpeedET, 1, 99)) == null) {
+            showDialog(getString(R.string.wheel_speed), getString(R.string.range_error, 0, 99));
             return;
         }
         cfg.ui8_wheel_max_speed = val;
 
         if ((val = checkRange(binding.wheelPerimeterET, 750, 3000)) == null) {
-            showDialog(getString(R.string.max_wheel_speed), getString(R.string.range_error, 750, 3000));
+            showDialog(getString(R.string.wheel_perimeter), getString(R.string.range_error, 750, 3000));
             return;
         }
         cfg.ui16_wheel_perimeter = val;
 
-        if ((valFloat = checkRange(binding.batterySocBatteryTotalWhET, 0.0f, 999.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_battery_total_wh), getString(R.string.range_error_float, 0.0f, 999.0f));
+        if ((valFloat = checkRange(binding.totalWhET, 0.0f, 999.0f)) == null) {
+            showDialog(getString(R.string.total_wh), getString(R.string.range_error_float, 0.0f, 999.0f));
             return;
         }
         cfg.ui32_wh_x10_100_percent = (long) (valFloat * 10);
 
-        if ((valFloat = checkRange(binding.batterySocResetVoltageET, 16.0f, 63.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_reset_voltage), getString(R.string.range_error_float, 16.0f, 63.0f));
+        if ((valFloat = checkRange(binding.resetVoltageET, 16.0f, 63.0f)) == null) {
+            showDialog(getString(R.string.reset_voltage), getString(R.string.range_error_float, 16.0f, 63.0f));
             return;
         }
         cfg.ui16_battery_voltage_reset_wh_counter_x10 = (int) (valFloat * 10);
 
         if ((valFloat = checkRange(binding.batterySocUsedWhET, 0.0f, 9990.0f)) == null) {
-            showDialog(getString(R.string.battery_soc_used_wh), getString(R.string.range_error_float, 0.0f, 9990.0f));
+            showDialog(getString(R.string.used_wh), getString(R.string.range_error_float, 0.0f, 9990.0f));
             return;
         }
         cfg.ui32_wh_x10 = (long) (valFloat * 10);
+
 
 
         TSDZBTService service = TSDZBTService.getBluetoothService();

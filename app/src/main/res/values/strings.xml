@@ -105,16 +105,22 @@
     <string name="temp_control">Temperature and Throttle</string>
     <string name="cadence_calib">Cadence sensor calibration</string>
     <string name="motor">Motor</string>
-    <string name="wheel_speed">Wheel speed</string>
-    <string name="max_wheel_speed">Max wheel speed (kms)</string>
-    <string name="battery_soc">Battery SOC</string>
-    <string name="battery_soc_reset_voltage">Reset voltage (volts)</string>
-    <string name="battery_soc_battery_total_wh">Battery total Wh</string>
-    <string name="battery_soc_used_wh">Battery used Wh</string>
-    <string name="motor_type">Motor Type</string>
-    <string name="motor_inductance">Motor Inductance</string>
-    <string name="acceleration">Acceleration</string>
+    <string name="motor_max_current">Max current</string>
+    <string name="current_ramp">Current ramp (amps)</string>
+    <string name="motor_min_current_adc_steps">Min current ADC steps</string>
+    <string name="wheel">Wheel</string>
+    <string name="wheel_speed">Max speed (kms)</string>
     <string name="max_current">Max current (A)</string>
+    <string name="lvc_voltage">Low cut-off voltage</string>
+    <string name="resistance">Resistance (milliohm)</string>
+    <string name="battery_soc">Battery SOC</string>
+    <string name="reset_voltage">Reset voltage (volts)</string>
+    <string name="total_wh">Total Wh</string>
+    <string name="used_wh">Used Wh</string>
+    <string name="motor_voltage">Voltage type</string>
+    <string name="motor_current_control">Current control mode</string>
+    <string name="motor_field_weakening">Field weakening</string>
+    <string name="acceleration">Acceleration</string>
     <string name="max_power">Max Power (W)</string>
     <string name="sensors">Sensors</string>
     <string name="wheel_cruise">Wheel / Cruise</string>
@@ -215,7 +221,6 @@
     <string name="on">Force On</string>
     <string name="off">Force Off</string>
     <string name="lcd_master">LCD Master</string>
-    <string name="max_speed">Max Speed</string>
 
     <string name="assist_mode">Assist Mode</string>
 
@@ -283,6 +288,20 @@
         <item> Verbose</item>
     </string-array>
 
+    <string-array name="motor_voltage">
+        <item>48 volts</item>
+        <item>36 volts</item>
+    </string-array>
+
+    <string-array name="motor_current_control">
+        <item>torque</item>
+        <item>power</item>
+    </string-array>
+
+    <string-array name="enable_disable">
+        <item>enable</item>
+        <item>disable</item>
+    </string-array>
 
     <!--  Chart Values -->
     <string name="bike_sessions">Bike sessions</string>
