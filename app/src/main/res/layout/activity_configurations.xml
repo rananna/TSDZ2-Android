@@ -687,115 +687,169 @@
                             tools:text="100" />
                     </LinearLayout>
 
-                <LinearLayout
+                <TableLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                    android:layout_height="match_parent"
+                    android:stretchColumns="3,5">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weights" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:text="@string/torque_sensor_weights" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
                             android:textSize="16sp"
-                            android:gravity="center_horizontal"
+                            android:textStyle="bold"
                             android:text="@string/torque_sensor_left_pedal_adc" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <TextView
                             android:layout_width="0dp"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="5dp"
+                            android:gravity="center"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
                             android:textSize="16sp"
-                            android:gravity="center_horizontal"
+                            android:textStyle="bold"
                             android:text="@string/torque_sensor_right_pedal_adc" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
+
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
+
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="80dp"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_vertical"
                             android:textSize="16sp"
                             android:text="@string/torque_sensor_weight_1" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <EditText
+                            android:id="@+id/torqueSensorWeight1LeftET"
+                            android:layout_width="0dp"
                             android:layout_weight="1"
-                            android:layout_margin="5dp">
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            tools:text="100" />
 
-                            <EditText
-                                android:id="@+id/torqueSensorWeight1LeftET"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:layout_marginEnd="5dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="5dp"
-                                android:ems="2"
-                                android:inputType="number"
-                                android:textSize="16sp"
-                                android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
-                                tools:text="100" />
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
-                            <EditText
-                                android:id="@+id/torqueSensorWeight1RightET"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="wrap_content"
-                                android:gravity="end"
-                                android:layout_marginEnd="5dp"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginStart="5dp"
-                                android:ems="2"
-                                android:inputType="number"
-                                android:textSize="16sp"
-                                android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
-                                tools:text="100" />
-                        </LinearLayout>
-                    </LinearLayout>
+                        <EditText
+                            android:id="@+id/torqueSensorWeight1RightET"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            tools:text="100" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_2" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_2" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight2LeftET"
@@ -812,6 +866,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight2RightET"
                             android:layout_width="0dp"
@@ -826,28 +886,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_3" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_3" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight3LeftET"
@@ -864,6 +935,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight3RightET"
                             android:layout_width="0dp"
@@ -878,28 +955,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_4" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_4" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight4LeftET"
@@ -916,6 +1004,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight4RightET"
                             android:layout_width="0dp"
@@ -930,28 +1024,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_5" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_5" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight5LeftET"
@@ -968,6 +1073,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight5RightET"
                             android:layout_width="0dp"
@@ -982,28 +1093,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_6" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_6" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight6LeftET"
@@ -1020,6 +1142,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight6RightET"
                             android:layout_width="0dp"
@@ -1034,28 +1162,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_7" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_7" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight7LeftET"
@@ -1072,6 +1211,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight7RightET"
                             android:layout_width="0dp"
@@ -1086,28 +1231,39 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/torque_sensor_weight_8" />
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:layout_weight="1"
-                        android:layout_margin="5dp">
+                    <TableRow>
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/torque_sensor_weight_8" />
+
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
 
                         <EditText
                             android:id="@+id/torqueSensorWeight8LeftET"
@@ -1124,6 +1280,12 @@
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+
                         <EditText
                             android:id="@+id/torqueSensorWeight8RightET"
                             android:layout_width="0dp"
@@ -1138,9 +1300,20 @@
                             android:textSize="16sp"
                             android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
                             tools:text="100" />
-                    </LinearLayout>
-                </LinearLayout>
 
+                        <View android:layout_width="2dp"
+                            android:background="@android:color/black"
+                            android:layout_marginLeft="4dp"
+                            android:layout_marginRight="4dp"
+                            android:layout_height="match_parent"/>
+                    </TableRow>
+
+                    <View android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginRight="4dp"
+                        android:background="@android:color/black" />
+                </TableLayout>
 
             </LinearLayout>
         </ScrollView>
