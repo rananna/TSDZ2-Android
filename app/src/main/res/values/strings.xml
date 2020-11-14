@@ -114,6 +114,25 @@
     <string name="lvc_voltage">Low cut-off voltage</string>
     <string name="resistance">Resistance (milliohm)</string>
     <string name="battery_soc">Battery SOC</string>
+    <string name="torque_sensor">Torque sensor</string>
+    <string name="torque_sensor_adc_threshold">ADC threshold</string>
+    <string name="torque_sensor_assist_without_pedal_rotation">Assist without pedal rotation</string>
+    <string name="torque_sensor_coast_brake">Coast brake</string>
+    <string name="torque_sensor_coast_brake_adc">Coast brake ADC</string>
+    <string name="torque_sensor_calibration">Calibration</string>
+    <string name="torque_sensor_filter">Filter</string>
+    <string name="torque_sensor_start_pedal_ground">Start pedal ground</string>
+    <string name="torque_sensor_weights">Weights </string>
+    <string name="torque_sensor_left_pedal_adc">Left pedal ADC</string>
+    <string name="torque_sensor_right_pedal_adc">Right pedal ADC</string>
+    <string name="torque_sensor_weight_1">Weight 1</string>
+    <string name="torque_sensor_weight_2">Weight 2</string>
+    <string name="torque_sensor_weight_3">Weight 3</string>
+    <string name="torque_sensor_weight_4">Weight 4</string>
+    <string name="torque_sensor_weight_5">Weight 5</string>
+    <string name="torque_sensor_weight_6">Weight 6</string>
+    <string name="torque_sensor_weight_7">Weight 7</string>
+    <string name="torque_sensor_weight_8">Weight 8</string>
     <string name="reset_voltage">Reset voltage (volts)</string>
     <string name="total_wh">Total Wh</string>
     <string name="used_wh">Used Wh</string>
@@ -301,6 +320,11 @@
     <string-array name="enable_disable">
         <item>enable</item>
         <item>disable</item>
+    </string-array>
+
+    <string-array name="left_right">
+        <item>left</item>
+        <item>right</item>
     </string-array>
 
     <!--  Chart Values -->
