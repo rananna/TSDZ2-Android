@@ -101,9 +101,31 @@
     <string name="select_file">Select File</string>
     <string name="system">System</string>
     <string name="battery">Battery</string>
-    <string name="assist_levels">Assist Levels</string>
-    <string name="temp_control">Temperature and Throttle</string>
-    <string name="cadence_calib">Cadence sensor calibration</string>
+    <string name="assist_levels">Assist levels</string>
+    <string name="level_1">Level 1 factor</string>
+    <string name="level_2">Level 2 factor</string>
+    <string name="level_3">Level 3 factor</string>
+    <string name="level_4">Level 4 factor</string>
+    <string name="level_5">Level 5 factor</string>
+    <string name="level_6">Level 6 factor</string>
+    <string name="level_7">Level 7 factor</string>
+    <string name="startup_boost">Startup boost</string>
+    <string name="startup_boost_feature">Feature</string>
+    <string name="startup_boost_active_on">Active on</string>
+    <string name="startup_boost_limit_to_max_power">Limit to max power</string>
+    <string name="startup_boost_duration">Duration</string>
+    <string name="startup_boost_fade">Fade</string>
+    <string name="startup_boost_1">Level 1 factor</string>
+    <string name="startup_boost_2">Level 2 factor</string>
+    <string name="startup_boost_3">Level 3 factor</string>
+    <string name="startup_boost_4">Level 4 factor</string>
+    <string name="startup_boost_5">Level 5 factor</string>
+    <string name="startup_boost_6">Level 6 factor</string>
+    <string name="startup_boost_7">Level 7 factor</string>
+    <string name="motor_temperature">Motor temperature</string>
+    <string name="motor_temperature_feature">Feature and throttle</string>
+    <string name="motor_temperature_min_limit">Temp. min limit</string>
+    <string name="motor_temperature_max_limit">Temp. max limit</string>
     <string name="motor">Motor</string>
     <string name="motor_max_current">Max current</string>
     <string name="current_ramp">Current ramp (amps)</string>
@@ -152,8 +174,12 @@
     <string name="torque_adc_offset">Torque ADC offset</string>
     <string name="threshold">Threshold</string>
     <string name="street_mode">Street Mode</string>
+    <string name="street_mode_feature">Feature</string>
+    <string name="street_mode_enable_at_startup">Enable at startup</string>
+    <string name="street_mode_speed_limit">Speed limit</string>
+    <string name="street_mode_motor_power_limit">Motor power limit</string>
+    <string name="street_mode_throttle_enable">Throttle enable</string>
     <string name="cruise_mode_enabled">Cruise mode enabled</string>
-    <string name="street_mode_throttle">Throttle enabled</string>
     <string name="wheel_perimeter">Wheel perimeter (mm)</string>
     <string name="range_error">Value must be between %1$d and %2$d</string>
     <string name="range_error_float">Value must be between %1$f and %2$f</string>
@@ -174,33 +200,20 @@
     <string name="cell_empty">Battery cell Empty (mVx10)</string>
     <string name="cell_one_bar">Battery cell One bar (mVx10)</string>
     <string name="cell_all_bars">Battery cell All bars (mVx10)</string>
-    <string name="title_activity_levels_setup">Assist levels Setup</string>
     <string name="level_error">Assist levels not incremental</string>
     <string name="eMTB_mode">eMTB Mode</string>
-    <string name="emtb_assit_level_1">eMTB assist level 1</string>
-    <string name="emtb_assit_level_2">eMTB assist level 2</string>
-    <string name="emtb_assit_level_3">eMTB assist level 3</string>
-    <string name="emtb_assit_level_4">eMTB assist level 4</string>
     <string name="power_mode">Power Mode</string>
-    <string name="power_assist_level_1">Power assist level 1</string>
-    <string name="power_assist_level_2">Power assist level 2</string>
-    <string name="power_assist_level_3">Power assist level 3</string>
-    <string name="power_assist_level_4">Power assist level 4</string>
     <string name="torque_mode">Torque Mode</string>
-    <string name="torque_assist_level_1">Torque assist level 1</string>
-    <string name="torque_assist_level_2">Torque assist level 2</string>
-    <string name="torque_assist_level_3">Torque assist level 3</string>
-    <string name="torque_assist_level_4">Torque assist level 4</string>
     <string name="cadence_mode">Cadence Mode</string>
-    <string name="cadence_assist_level_1">Cadence assist level 1</string>
-    <string name="cadence_assist_level_2">Cadence assist level 2</string>
-    <string name="cadence_assist_level_3">Cadence assist level 3</string>
-    <string name="cadence_assist_level_4">Cadence assist level 4</string>
-    <string name="walk_mode">Walk Mode</string>
-    <string name="walk_assist_level_1">Walk assist level 1</string>
-    <string name="walk_assist_level_2">Walk assist level 2</string>
-    <string name="walk_assist_level_3">Walk assist level 3</string>
-    <string name="walk_assist_level_4">Walk assist level 4</string>
+    <string name="walk_assist">Walk assist</string>
+    <string name="walk_assist_feature">Feature</string>
+    <string name="walk_assist_level_1">Level 1 PWM</string>
+    <string name="walk_assist_level_2">Level 2 PWM</string>
+    <string name="walk_assist_level_3">Level 3 PWM</string>
+    <string name="walk_assist_level_4">Level 4 PWM</string>
+    <string name="walk_assist_level_5">Level 5 PWM</string>
+    <string name="walk_assist_level_6">Level 6 PWM</string>
+    <string name="walk_assist_level_7">Level 7 PWM</string>
     <string name="title_activity_temperature_setup">Temperature control Setup</string>
     <string name="temp_control_title">Temperature Control</string>
     <string name="control_type">Control Type</string>
@@ -209,9 +222,7 @@
     <string name="throttle_control">Throttle Control</string>
     <string name="throttle_enabled">Throttle Enabled</string>
     <string name="title_activity_cadence_sensor_calibration">Cadence sensor calibration</string>
-
     <string name="title_activity_esp32_config">ESP32 Configuration</string>
-
 
     <string name="cadenceStartError">Cannot start cadence calibration</string>
     <string name="cadenceStopError">Cannot stop cadence calibration</string>
@@ -235,7 +246,6 @@
 
     <string name="title_activity_configurations">Configurations</string>
     <string name="title_activity_chart">Charts</string>
-    <string name="assistLevel">Assist Level</string>
 
     <string name="on">Force On</string>
     <string name="off">Force Off</string>
@@ -322,9 +332,25 @@
         <item>disable</item>
     </string-array>
 
+    <string-array name="motor_temperature_feature">
+        <item>disable</item>
+        <item>temperature</item>
+        <item>throttle</item>
+    </string-array>
+
     <string-array name="left_right">
         <item>left</item>
         <item>right</item>
+    </string-array>
+
+    <string-array name="active_on">
+        <item>startup</item>
+        <item>always</item>
+    </string-array>
+
+    <string-array name="no_yes">
+        <item>no</item>
+        <item>yes</item>
     </string-array>
 
     <!--  Chart Values -->

@@ -47,6 +47,15 @@
                 android:orientation="vertical"
                 android:layout_margin="5dp">
 
+
+
+
+
+
+
+
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,7 +154,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
                             tools:text="16" />
                     </LinearLayout>
 
@@ -173,7 +182,7 @@
                             tools:text="42.0"
                             android:ems="2"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_battery_voltage_reset_wh_counter)}"
+                            android:text="@{String.valueOf(cfg.f_battery_low_voltage_cut_off)}"
                             android:inputType="numberDecimal" />
                     </LinearLayout>
 
@@ -201,7 +210,7 @@
                             android:ems="2"
                             android:textSize="16sp"
                             android:inputType="numberDecimal"
-                            android:text="@{String.valueOf(cfg.f_wh)}"
+                            android:text="@{String.valueOf(cfg.ui16_battery_pack_resistance_x1000)}"
                             tools:text="290" />
                     </LinearLayout>
 
@@ -360,7 +369,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_motor_max_current)}"
                             tools:text="16" />
                     </LinearLayout>
 
@@ -386,10 +395,10 @@
                             android:layout_gravity="center_vertical"
                             android:layout_marginStart="5dp"
                             android:ems="2"
-                            android:inputType="number"
+                            android:inputType="numberDecimal"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
-                            tools:text="10" />
+                            android:text="@{String.valueOf(cfg.f_ramp_up_amps_per_second)}"
+                            tools:text="8.5" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -445,7 +454,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_motor_current_min_adc)}"
                             tools:text="4" />
                     </LinearLayout>
 
@@ -511,7 +520,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_torque_sensor_adc_threshold)}"
                             tools:text="100" />
                     </LinearLayout>
 
@@ -597,7 +606,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_coast_brake_adc)}"
                             tools:text="100" />
                     </LinearLayout>
 
@@ -683,7 +692,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui8_torque_sensor_filter)}"
                             tools:text="100" />
                     </LinearLayout>
 
@@ -794,7 +803,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[0][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -815,7 +824,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[0][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -863,7 +872,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[1][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -884,7 +893,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[1][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -932,7 +941,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[2][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -953,7 +962,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[2][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1001,7 +1010,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[3][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1022,7 +1031,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[3][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1070,7 +1079,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[4][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1091,7 +1100,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[4][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1139,7 +1148,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[5][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1160,7 +1169,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[5][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1208,7 +1217,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[6][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1229,7 +1238,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[6][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1277,7 +1286,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[7][0])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1298,7 +1307,7 @@
                             android:ems="2"
                             android:inputType="number"
                             android:textSize="16sp"
-                            android:text="@{String.valueOf(cfg.f_wh_100_percent)}"
+                            android:text="@{String.valueOf(cfg.ui16_torque_sensor_calibration_table_left[7][1])}"
                             tools:text="100" />
 
                         <View android:layout_width="2dp"
@@ -1314,6 +1323,1044 @@
                         android:layout_marginRight="4dp"
                         android:background="@android:color/black" />
                 </TableLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/assist_levels" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_1" />
+
+                    <EditText
+                        android:id="@+id/assistLevel1ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_2" />
+
+                    <EditText
+                        android:id="@+id/assistLevel2ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_3" />
+
+                    <EditText
+                        android:id="@+id/assistLevel3ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_4" />
+
+                    <EditText
+                        android:id="@+id/assistLevel4ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_5" />
+
+                    <EditText
+                        android:id="@+id/assistLevel5ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_6" />
+
+                    <EditText
+                        android:id="@+id/assistLevel6ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_7" />
+
+                    <EditText
+                        android:id="@+id/assistLevel7ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/walk_assist" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_feature" />
+
+                    <Spinner
+                        android:id="@+id/walkAssistFeatureSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/enable_disable"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_1" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel1ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_2" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel2ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_3" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel3ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_4" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel4ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_5" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel5ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_6" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel6ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/walk_assist_level_7" />
+
+                    <EditText
+                        android:id="@+id/walkAssistLevel7ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="50" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/startup_boost" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/startup_boost_feature" />
+
+                    <Spinner
+                        android:id="@+id/startupBoostFeatureSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/enable_disable"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/startup_boost_active_on" />
+
+                    <Spinner
+                        android:id="@+id/startupBoostActiveOnSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/active_on"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/startup_boost_limit_to_max_power" />
+
+                    <Spinner
+                        android:id="@+id/startupBoostLimitToMaxPowerSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/no_yes"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/startup_boost_duration" />
+
+                    <EditText
+                        android:id="@+id/startupBoostDurationET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        tools:text="2.0"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.f_battery_low_voltage_cut_off)}"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="3dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/startup_boost_fade" />
+
+                    <EditText
+                        android:id="@+id/startupBoostFadeET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        tools:text="2.0"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.f_battery_low_voltage_cut_off)}"
+                        android:inputType="numberDecimal" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_1" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel1ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_2" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel2ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_3" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel3ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_4" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel4ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_5" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel5ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_6" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel6ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/level_7" />
+
+                    <EditText
+                        android:id="@+id/startupBoostAssistLevel7ET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:inputType="numberDecimal"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        tools:text="0.005" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/motor_temperature" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/motor_temperature_feature" />
+
+                    <Spinner
+                        android:id="@+id/motorTemperatureFeatureSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/motor_temperature_feature"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/motor_temperature_min_limit" />
+
+                    <EditText
+                        android:id="@+id/motorTemperatureMinLimitET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:ems="2"
+                        android:gravity="end"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
+                        tools:text="75" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/motor_temperature_max_limit" />
+
+                    <EditText
+                        android:id="@+id/motorTemperatureMaxLimitET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginEnd="5dp"
+                        android:ems="2"
+                        android:gravity="end"
+                        android:inputType="number"
+                        android:textSize="16sp"
+                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
+                        tools:text="85" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/street_mode" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/street_mode_feature" />
+
+                    <Spinner
+                        android:id="@+id/streetModeFeatureSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/enable_disable"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/street_mode_enable_at_startup" />
+
+                    <Spinner
+                        android:id="@+id/streetModeEnableAtStartupSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/enable_disable"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/street_mode_speed_limit" />
+
+                    <EditText
+                        android:id="@+id/streetModeSpeedLimitET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        tools:text="25"
+                        android:textSize="16sp"
+                        android:ems="2"
+                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/street_mode_motor_power_limit" />
+
+                    <EditText
+                        android:id="@+id/streetModeMotorPowerLimitET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        tools:text="500"
+                        android:textSize="16sp"
+                        android:ems="2"
+                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                        android:inputType="number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_margin="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:textSize="16sp"
+                        android:text="@string/street_mode_throttle_enable" />
+
+                    <Spinner
+                        android:id="@+id/streetModeThrottleEnableSpinner"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawSelectorOnTop="true"
+                        android:entries="@array/enable_disable"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:gravity="end"
+                        android:layout_marginEnd="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="5dp"
+                        android:ems="2"
+                        android:textSize="16sp"
+                        android:spinnerMode="dropdown"/>
+                </LinearLayout>
+
+
+
+
+
 
             </LinearLayout>
         </ScrollView>

@@ -4,12 +4,12 @@ package spider65.ebike.tsdz2_esp32.data;
 import android.util.Log;
 
 import static spider65.ebike.tsdz2_esp32.TSDZConst.CONFIGURATIONS_ADV_SIZE;
+import static spider65.ebike.tsdz2_esp32.TSDZConst.CONFIGURATIONS_VERSION;
 import static spider65.ebike.tsdz2_esp32.utils.Utils.intX10toFloat;
 
 public class TSDZ_Configurations {
 
     private static final String TAG = "TSDZ_Configurations";
-    public int ui8_configurations_version = (byte) 0xA2;
     public int ASSIST_LEVEL_NUMBER = 7;
     public int ui8_assist_level;
     public int ui8_wheel_max_speed;
@@ -26,6 +26,7 @@ public class TSDZ_Configurations {
     public int ui8_motor_current_min_adc;
     public int ui8_field_weakening;
     public int ui8_ramp_up_amps_per_second_x10;
+    public float f_ramp_up_amps_per_second;
     public int ui16_battery_low_voltage_cut_off_x10;
     public float f_battery_low_voltage_cut_off;
     public int ui8_motor_type;
@@ -74,7 +75,7 @@ public class TSDZ_Configurations {
             return false;
         }
 
-        if (data[0] == ui8_configurations_version) {
+        if (data[0] == (byte) CONFIGURATIONS_VERSION) {
             ui8_assist_level = data[1];
             ui16_wheel_perimeter = ((data[3] & 255) << 8) + (data[2] & 255);
             ui8_wheel_max_speed = data[4];
@@ -90,6 +91,7 @@ public class TSDZ_Configurations {
             ui8_motor_current_min_adc = data[18];
             ui8_field_weakening = data[19];
             ui8_ramp_up_amps_per_second_x10 = data[20];
+            f_ramp_up_amps_per_second = intX10toFloat(ui8_ramp_up_amps_per_second_x10 & 0xFF);
             ui16_battery_low_voltage_cut_off_x10 = ((data[22] & 255) << 8) + (data[21] & 255);
             f_battery_low_voltage_cut_off = intX10toFloat(ui16_battery_low_voltage_cut_off_x10);
             ui8_motor_type = data[23];
@@ -190,7 +192,7 @@ public class TSDZ_Configurations {
 
     public byte[] toByteArray() {
         byte[] data = new byte[CONFIGURATIONS_ADV_SIZE];
-        data[0] = (byte) ui8_configurations_version; // configurations version
+        data[0] = (byte) CONFIGURATIONS_VERSION; // configurations version
         data[1] = (byte) ui8_assist_level;
         data[2] = (byte) (ui16_wheel_perimeter & 0xff);
         data[3] = (byte) (ui16_wheel_perimeter >>> 8);
