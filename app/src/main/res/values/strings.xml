@@ -185,7 +185,9 @@
     <string name="range_error_float">Value must be between %1$f and %2$f</string>
     <string name="write_cfg_error">Configuration cannot be updated</string>
     <string name="read_cfg_error">Configuration cannot be readed</string>
-    <string name="esp32_cfg_error">ESP32 data wrong\nAndorid app and ESP32 FW misaligned?</string>
+    <string name="various">Various</string>
+    <string name="cadence_fast_stop">Cadence fast stop</string>
+    <string name="odometer">Odometer</string>
 
     <string name="pairing_error">Pairing failed</string>
     <string name="pairing_done">Pairing done</string>
