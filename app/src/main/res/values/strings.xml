@@ -145,7 +145,9 @@
     <string name="torque_sensor_filter">Filter</string>
     <string name="torque_sensor_start_pedal_ground">Start pedal ground</string>
     <string name="torque_sensor_weights">Weights </string>
+    <string name="torque_sensor_left_pedal_weight">Left pedal weight</string>
     <string name="torque_sensor_left_pedal_adc">Left pedal ADC</string>
+    <string name="torque_sensor_right_pedal_weight">Right pedal weight</string>
     <string name="torque_sensor_right_pedal_adc">Right pedal ADC</string>
     <string name="torque_sensor_weight_1">Weight 1</string>
     <string name="torque_sensor_weight_2">Weight 2</string>

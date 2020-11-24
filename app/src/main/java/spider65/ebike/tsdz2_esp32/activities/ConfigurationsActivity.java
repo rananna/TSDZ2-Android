@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Resources;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AlertDialog;
@@ -177,6 +178,36 @@ public class ConfigurationsActivity extends AppCompatActivity {
             case TSDZBTService.TSDZ_CFG_READ_BROADCAST:
                 if (cfg.setData(intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA))) {
                     binding.setCfg(cfg);
+
+                    Resources res = getResources();
+                    int itens;
+
+                    itens = cfg.ui8_motor_type;
+                    if (itens <= (res.getStringArray(R.array.motor_voltage)).length)
+                        binding.motorVoltageSpinner.setSelection(itens);
+
+                    binding.motorVoltageSpinner.setSelection(cfg.ui8_motor_type);
+                    binding.motorCurrentControlSpinner.setSelection(cfg.ui8_motor_current_control_mode);
+
+
+                    itens = cfg.ui8_field_weakening;
+                    if (itens <= (res.getStringArray(R.array.enable_disable)).length)
+                        binding.motorVoltageSpinner.setSelection(itens);
+
+                    binding.torqueSensorAssistWithoutPedalRotationSpinner.setSelection(cfg.ui8_motor_assistance_startup_without_pedal_rotation);
+                    binding.torqueSensorCoastBrakeSpinner.setSelection(cfg.ui8_coast_brake_enable);
+                    binding.torqueSensorCalibrationSpinner.setSelection(cfg.ui8_torque_sensor_calibration_feature_enabled);
+                    binding.torqueSensorStartPedalGroundSpinner.setSelection(cfg.ui8_torque_sensor_calibration_pedal_ground);
+
+
+
+
+
+
+//                    binding..setSelection(cfg.ui8_field_weakening);
+
+
+
                 }
                 break;
             case TSDZBTService.TSDZ_CFG_WRITE_BROADCAST:
