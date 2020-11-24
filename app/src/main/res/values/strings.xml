@@ -124,8 +124,8 @@
     <string name="startup_boost_7">Level 7 factor</string>
     <string name="motor_temperature">Motor temperature</string>
     <string name="motor_temperature_feature">Feature and throttle</string>
-    <string name="motor_temperature_min_limit">Temp. min limit</string>
-    <string name="motor_temperature_max_limit">Temp. max limit</string>
+    <string name="motor_temperature_min_limit">Temperature min limit</string>
+    <string name="motor_temperature_max_limit">Temperature max limit</string>
     <string name="motor">Motor</string>
     <string name="motor_max_current">Max current</string>
     <string name="current_ramp">Current ramp (amps)</string>
@@ -136,7 +136,7 @@
     <string name="lvc_voltage">Low cut-off voltage</string>
     <string name="resistance">Resistance (milliohm)</string>
     <string name="battery_soc">Battery SOC</string>
-    <string name="torque_sensor">Torque sensor</string>
+    <string name="torque_sensor_and_pedals">Torque sensor and pedals</string>
     <string name="torque_sensor_adc_threshold">ADC threshold</string>
     <string name="torque_sensor_assist_without_pedal_rotation">Assist without pedal rotation</string>
     <string name="torque_sensor_coast_brake">Coast brake</string>
@@ -157,6 +157,14 @@
     <string name="torque_sensor_weight_6">Weight 6</string>
     <string name="torque_sensor_weight_7">Weight 7</string>
     <string name="torque_sensor_weight_8">Weight 8</string>
+    <string name="torque_sensor_ADC_1">ADC 1</string>
+    <string name="torque_sensor_ADC_2">ADC 2</string>
+    <string name="torque_sensor_ADC_3">ADC 3</string>
+    <string name="torque_sensor_ADC_4">ADC 4</string>
+    <string name="torque_sensor_ADC_5">ADC 5</string>
+    <string name="torque_sensor_ADC_6">ADC 6</string>
+    <string name="torque_sensor_ADC_7">ADC 7</string>
+    <string name="torque_sensor_ADC_8">ADC 8</string>
     <string name="reset_voltage">Reset voltage (volts)</string>
     <string name="total_wh">Total Wh</string>
     <string name="used_wh">Used Wh</string>
@@ -327,8 +335,13 @@
     </string-array>
 
     <string-array name="motor_current_control">
-        <item>torque</item>
         <item>power</item>
+        <item>torque</item>
+    </string-array>
+
+    <string-array name="disable_enable">
+        <item>disable</item>
+        <item>enable</item>
     </string-array>
 
     <string-array name="enable_disable">

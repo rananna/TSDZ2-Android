@@ -467,7 +467,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawSelectorOnTop="true"
-                            android:entries="@array/enable_disable"
+                            android:entries="@array/disable_enable"
                             android:background="@android:drawable/btn_dropdown"
                             android:gravity="end"
                             android:layout_marginEnd="5dp"
@@ -485,7 +485,130 @@
                         android:layout_marginTop="30dp"
                         android:textStyle="bold"
                         android:textSize="18sp"
-                        android:text="@string/torque_sensor" />
+                        android:text="@string/motor_temperature" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/motor_temperature_feature" />
+
+                        <Spinner
+                            android:id="@+id/motorTemperatureFeatureSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawSelectorOnTop="true"
+                            android:entries="@array/motor_temperature_feature"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:textSize="16sp"
+                            android:spinnerMode="dropdown"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/motor_temperature_min_limit" />
+
+                        <EditText
+                            android:id="@+id/motorTemperatureMinLimitET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:ems="2"
+                            android:gravity="end"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:text="@{String.valueOf(cfg.ui8_motor_temperature_min_value_to_limit)}"
+                            tools:text="75" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/motor_temperature_max_limit" />
+
+                        <EditText
+                            android:id="@+id/motorTemperatureMaxLimitET"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:layout_marginEnd="5dp"
+                            android:ems="2"
+                            android:gravity="end"
+                            android:inputType="number"
+                            android:textSize="16sp"
+                            android:text="@{String.valueOf(cfg.ui8_motor_temperature_max_value_to_limit)}"
+                            tools:text="85" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:layout_marginTop="30dp"
+                        android:textStyle="bold"
+                        android:textSize="18sp"
+                        android:text="@string/torque_sensor_and_pedals" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textSize="16sp"
+                            android:text="@string/cadence_fast_stop" />
+
+                        <Spinner
+                            android:id="@+id/cadenceFastStopSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawSelectorOnTop="true"
+                            android:entries="@array/no_yes"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:gravity="end"
+                            android:layout_marginEnd="5dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="5dp"
+                            android:ems="2"
+                            android:textSize="16sp"
+                            android:spinnerMode="dropdown"/>
+                    </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -533,7 +656,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawSelectorOnTop="true"
-                            android:entries="@array/enable_disable"
+                            android:entries="@array/disable_enable"
                             android:background="@android:drawable/btn_dropdown"
                             android:gravity="end"
                             android:layout_marginEnd="5dp"
@@ -562,7 +685,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawSelectorOnTop="true"
-                            android:entries="@array/enable_disable"
+                            android:entries="@array/disable_enable"
                             android:background="@android:drawable/btn_dropdown"
                             android:gravity="end"
                             android:layout_marginEnd="5dp"
@@ -619,7 +742,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:drawSelectorOnTop="true"
-                            android:entries="@array/enable_disable"
+                            android:entries="@array/disable_enable"
                             android:background="@android:drawable/btn_dropdown"
                             android:gravity="end"
                             android:layout_marginEnd="5dp"
@@ -1610,7 +1733,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[0])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1638,7 +1761,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[1])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1666,7 +1789,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[2])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1694,7 +1817,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[3])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1722,7 +1845,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[4])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1750,7 +1873,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[5])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1778,7 +1901,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_assist_level_factor_div100[6])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -1809,7 +1932,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
-                        android:entries="@array/enable_disable"
+                        android:entries="@array/disable_enable"
                         android:background="@android:drawable/btn_dropdown"
                         android:gravity="end"
                         android:layout_marginEnd="5dp"
@@ -1844,7 +1967,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[0])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -1872,7 +1995,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[1])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -1900,7 +2023,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[2])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -1928,7 +2051,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[3])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -1956,7 +2079,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[4])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -1984,7 +2107,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[5])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -2012,7 +2135,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.ui8_walk_assist_level_factor[6])}"
                         tools:text="50" />
                 </LinearLayout>
 
@@ -2043,7 +2166,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
-                        android:entries="@array/enable_disable"
+                        android:entries="@array/disable_enable"
                         android:background="@android:drawable/btn_dropdown"
                         android:gravity="end"
                         android:layout_marginEnd="5dp"
@@ -2136,7 +2259,7 @@
                         tools:text="2.0"
                         android:ems="2"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.f_battery_low_voltage_cut_off)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_time)}"
                         android:inputType="numberDecimal" />
                 </LinearLayout>
 
@@ -2164,7 +2287,7 @@
                         tools:text="2.0"
                         android:ems="2"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.f_battery_low_voltage_cut_off)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_fade_time)}"
                         android:inputType="numberDecimal" />
                 </LinearLayout>
 
@@ -2192,7 +2315,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[0])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2220,7 +2343,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[1])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2248,7 +2371,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[2])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2276,7 +2399,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[3])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2304,7 +2427,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[4])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2332,7 +2455,7 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[5])}"
                         tools:text="0.005" />
                 </LinearLayout>
 
@@ -2360,102 +2483,8 @@
                         android:ems="2"
                         android:inputType="numberDecimal"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_startup_motor_power_boost_factor_div100[06])}"
                         tools:text="0.005" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="30dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:text="@string/motor_temperature" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/motor_temperature_feature" />
-
-                    <Spinner
-                        android:id="@+id/motorTemperatureFeatureSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawSelectorOnTop="true"
-                        android:entries="@array/motor_temperature_feature"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:gravity="end"
-                        android:layout_marginEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:ems="2"
-                        android:textSize="16sp"
-                        android:spinnerMode="dropdown"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/motor_temperature_min_limit" />
-
-                    <EditText
-                        android:id="@+id/motorTemperatureMinLimitET"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:ems="2"
-                        android:gravity="end"
-                        android:inputType="number"
-                        android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
-                        tools:text="75" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="3dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
-                        android:text="@string/motor_temperature_max_limit" />
-
-                    <EditText
-                        android:id="@+id/motorTemperatureMaxLimitET"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:layout_marginEnd="5dp"
-                        android:ems="2"
-                        android:gravity="end"
-                        android:inputType="number"
-                        android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui16_wheel_perimeter)}"
-                        tools:text="85" />
                 </LinearLayout>
 
                 <TextView
@@ -2485,7 +2514,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
-                        android:entries="@array/enable_disable"
+                        android:entries="@array/disable_enable"
                         android:background="@android:drawable/btn_dropdown"
                         android:gravity="end"
                         android:layout_marginEnd="5dp"
@@ -2514,7 +2543,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
-                        android:entries="@array/enable_disable"
+                        android:entries="@array/no_yes"
                         android:background="@android:drawable/btn_dropdown"
                         android:gravity="end"
                         android:layout_marginEnd="5dp"
@@ -2549,7 +2578,7 @@
                         tools:text="25"
                         android:textSize="16sp"
                         android:ems="2"
-                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                        android:text="@{String.valueOf(cfg.ui8_street_mode_speed_limit)}"
                         android:inputType="number" />
                 </LinearLayout>
 
@@ -2577,7 +2606,7 @@
                         tools:text="500"
                         android:textSize="16sp"
                         android:ems="2"
-                        android:text="@{String.valueOf(cfg.ui8_wheel_max_speed)}"
+                        android:text="@{String.valueOf(cfg.street_mode_power_limit)}"
                         android:inputType="number" />
                 </LinearLayout>
 
@@ -2599,7 +2628,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:drawSelectorOnTop="true"
-                        android:entries="@array/enable_disable"
+                        android:entries="@array/no_yes"
                         android:background="@android:drawable/btn_dropdown"
                         android:gravity="end"
                         android:layout_marginEnd="5dp"
@@ -2630,35 +2659,6 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:textSize="16sp"
-                        android:text="@string/cadence_fast_stop" />
-
-                    <Spinner
-                        android:id="@+id/cadenceFastStopSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:drawSelectorOnTop="true"
-                        android:entries="@array/no_yes"
-                        android:background="@android:drawable/btn_dropdown"
-                        android:gravity="end"
-                        android:layout_marginEnd="5dp"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginStart="5dp"
-                        android:ems="2"
-                        android:textSize="16sp"
-                        android:spinnerMode="dropdown"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:layout_margin="5dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:textSize="16sp"
                         android:text="@string/odometer" />
 
                     <EditText
@@ -2672,7 +2672,7 @@
                         android:ems="2"
                         android:inputType="number"
                         android:textSize="16sp"
-                        android:text="@{String.valueOf(cfg.ui8_battery_max_current)}"
+                        android:text="@{String.valueOf(cfg.f_odometer)}"
                         tools:text="16" />
                 </LinearLayout>
             </LinearLayout>

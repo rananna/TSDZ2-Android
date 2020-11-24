@@ -34,7 +34,18 @@ public class Utils {
     public static float intX10toFloat (int input){
         double number = new Double(input);
         number = number/10;
-        Double d_number = new BigDecimal(number).setScale(1, BigDecimal.ROUND_HALF_UP).doubleValue();
-        return d_number.floatValue();
+        return (float) number;
+    }
+
+    public static long longX10toFloat (long input){
+        long number = new Long(input);
+        number = number/10;
+        return number;
+    }
+
+    public static float intDiv1000toFloat (int input){
+        double number = new Double(input);
+        number = number/1000;
+        return (float) number;
     }
 }
