@@ -335,7 +335,7 @@ public class ConfigurationsActivity extends AppCompatActivity {
 
                     itens = cfg.ui8_field_weakening;
                     if (itens <= (res.getStringArray(R.array.enable_disable)).length)
-                        binding.motorVoltageSpinner.setSelection(itens);
+                        binding.motorFieldWeakeningSpinner.setSelection(itens);
 
                     itens = cfg.ui8_motor_assistance_startup_without_pedal_rotation;
                     if (itens <= (res.getStringArray(R.array.enable_disable)).length)
