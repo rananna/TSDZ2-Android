@@ -71,32 +71,7 @@ public class ConfigurationsActivity extends AppCompatActivity {
                 break;
         }
     }
-
-//    public void onClickInductance(View view) {
-//        switch (view.getId()) {
-//            case R.id.inductance36BT:
-//                binding.inductanceET.setText("80");
-//                break;
-//            case R.id.inductance48BT:
-//                binding.inductanceET.setText("142");
-//                break;
-//        }
-//    }
-//    //  invalidate all to hide/show the checkbox dependant fields
-//    public void onCheckedChanged(View view, boolean checked) {
-//        switch (view.getId()) {
-//            case R.id.assistCB:
-//                binding.assistWPRET.setEnabled(checked);
-//                break;
-//            case R.id.streetPowerCB:
-//                binding.streetPowerET.setEnabled(checked);
-//                break;
-//            case R.id.torqueFixCB:
-//                binding.torqueADCOffsetET.setEnabled(checked);
-//                break;
-//        }
-//    }
-
+    
     private void saveCfg() {
         Integer val;
         Float valFloat;
@@ -187,8 +162,33 @@ public class ConfigurationsActivity extends AppCompatActivity {
         }
         cfg.ui8_motor_temperature_min_value_to_limit = val;
 
+        cfg.ui8_pedal_cadence_fast_stop = binding.cadenceFastStopSpinner.getSelectedItemPosition();
 
+        if ((val = checkRange(binding.torqueSensorADCThresholdET, 5, 100)) == null) {
+            showDialog(getString(R.string.torque_sensor_adc_threshold), getString(R.string.range_error, 5, 100));
+            return;
+        }
+        cfg.ui8_torque_sensor_adc_threshold = val;
 
+        cfg.ui8_motor_assistance_startup_without_pedal_rotation = binding.torqueSensorAssistWithoutPedalRotationSpinner.getSelectedItemPosition();
+
+        cfg.ui8_coast_brake_enable = binding.torqueSensorCoastBrakeSpinner.getSelectedItemPosition();
+
+        if ((val = checkRange(binding.torqueSensorCoastBrakeADCET, 5, 255)) == null) {
+            showDialog(getString(R.string.torque_sensor_coast_brake_adc), getString(R.string.range_error, 5, 255));
+            return;
+        }
+        cfg.ui8_coast_brake_adc = val;
+
+        cfg.ui8_torque_sensor_calibration_feature_enabled = binding.torqueSensorCalibrationSpinner.getSelectedItemPosition();
+
+        cfg.ui8_torque_sensor_calibration_pedal_ground = binding.torqueSensorStartPedalGroundSpinner.getSelectedItemPosition();
+
+        if ((val = checkRange(binding.torqueSensorFilterET, 0, 100)) == null) {
+            showDialog(getString(R.string.torque_sensor_filter), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_torque_sensor_filter = val;
 
         if ((val = checkRange(binding.torqueSensorWeight1LeftET, 0, 200)) == null) {
             showDialog(getString(R.string.torque_sensor_weight_1), getString(R.string.range_error, 0, 200));
@@ -274,7 +274,285 @@ public class ConfigurationsActivity extends AppCompatActivity {
             return;
         }
         cfg.ui16_torque_sensor_calibration_table_left[6][1] = val;
+        
+        if ((val = checkRange(binding.torqueSensorWeight8LeftET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_8), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_left[7][0] = val;
 
+        if ((val = checkRange(binding.torqueSensorADC8LeftET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_8), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_left[7][1] = val;
+        
+        if ((val = checkRange(binding.torqueSensorWeight1RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_1), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[0][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC1RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_1), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[0][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight2RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_2), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[1][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC2RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_2), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[1][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight3RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_3), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[2][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC3RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_3), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[2][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight4RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_4), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[3][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC4RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_4), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[3][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight5RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_5), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[4][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC5RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_5), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[4][1] = val;
+
+
+        if ((val = checkRange(binding.torqueSensorWeight6RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_6), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[5][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC6RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_6), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[5][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight7RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_7), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[6][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC7RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_7), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[6][1] = val;
+
+        if ((val = checkRange(binding.torqueSensorWeight8RightET, 0, 200)) == null) {
+            showDialog(getString(R.string.torque_sensor_weight_8), getString(R.string.range_error, 0, 200));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[7][0] = val;
+
+        if ((val = checkRange(binding.torqueSensorADC8RightET, 0, 1023)) == null) {
+            showDialog(getString(R.string.torque_sensor_ADC_8), getString(R.string.range_error, 0, 1023));
+            return;
+        }
+        cfg.ui16_torque_sensor_calibration_table_right[7][1] = val;
+
+        if ((valFloat = checkRange(binding.assistLevel1ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_1), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[0] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel2ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_2), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[1] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel3ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_3), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[2] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel4ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_4), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[3] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel5ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_5), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[4] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel6ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_6), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[5] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.assistLevel7ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_7), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_assist_level_factor[6] = (int) (valFloat * 1000);
+
+        cfg.ui8_walk_assist_feature_enabled = binding.walkAssistFeatureSpinner.getSelectedItemPosition();
+
+        if ((val = checkRange(binding.walkAssistLevel1ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_1), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[0] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel2ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_2), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[1] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel3ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_3), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[2] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel4ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_4), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[3] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel5ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_5), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[4] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel6ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_6), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[5] = val;
+
+        if ((val = checkRange(binding.walkAssistLevel7ET, 0, 100)) == null) {
+            showDialog(getString(R.string.walk_assist_level_7), getString(R.string.range_error, 0, 100));
+            return;
+        }
+        cfg.ui8_walk_assist_level_factor[6] = val;
+
+        cfg.ui8_startup_motor_power_boost_feature_enabled = binding.startupBoostFeatureSpinner.getSelectedItemPosition();
+
+        cfg.ui8_startup_motor_power_boost_always = binding.startupBoostActiveOnSpinner.getSelectedItemPosition();
+
+        cfg.ui8_startup_motor_power_boost_limit_power = binding.startupBoostLimitToMaxPowerSpinner.getSelectedItemPosition();
+
+        if ((valFloat = checkRange(binding.startupBoostDurationET, 0.1f, 25.5f)) == null) {
+            showDialog(getString(R.string.startup_boost_duration), getString(R.string.range_error_float, 0.1f, 25.5f));
+            return;
+        }
+        cfg.ui8_startup_motor_power_boost_time = (int) (valFloat * 10);
+
+        if ((valFloat = checkRange(binding.startupBoostFadeET, 0.1f, 25.5f)) == null) {
+            showDialog(getString(R.string.startup_boost_fade), getString(R.string.range_error_float, 0.1f, 25.5f));
+            return;
+        }
+        cfg.ui8_startup_motor_power_boost_fade_time = (int) (valFloat * 10);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel1ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_1), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[0] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel2ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_2), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[1] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel3ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_3), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[2] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel4ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_4), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[3] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel5ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_5), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[4] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel6ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_6), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[5] = (int) (valFloat * 1000);
+
+        if ((valFloat = checkRange(binding.startupBoostAssistLevel7ET, 0.001f, 65.530f)) == null) {
+            showDialog(getString(R.string.level_7), getString(R.string.range_error_float, 0.001f, 65.530f));
+            return;
+        }
+        cfg.ui16_startup_motor_power_boost_factor[6] = (int) (valFloat * 1000);
+
+        cfg.ui8_street_mode_enabled = binding.streetModeFeatureSpinner.getSelectedItemPosition();
+
+        cfg.ui8_street_mode_enabled_on_startup = binding.streetModeEnableAtStartupSpinner.getSelectedItemPosition();
+
+        if ((val = checkRange(binding.streetModeSpeedLimitET, 1, 99)) == null) {
+            showDialog(getString(R.string.street_mode_speed_limit), getString(R.string.range_error, 1, 99));
+            return;
+        }
+        cfg.ui8_street_mode_speed_limit = val;
+
+        if ((val = checkRange(binding.streetModeMotorPowerLimitET, 25, 2500)) == null) {
+            showDialog(getString(R.string.street_mode_motor_power_limit), getString(R.string.range_error, 25, 2500));
+            return;
+        }
+        cfg.ui8_street_mode_power_limit_div25 = (val / 25);
+
+        cfg.ui8_street_mode_throttle_enabled = binding.streetModeThrottleEnableSpinner.getSelectedItemPosition();
+
+        if ((valFloat = checkRange(binding.odometerET, 0.0f, 429496729.0f)) == null) {
+            showDialog(getString(R.string.odometer), getString(R.string.range_error_float, 0.0f, 429496729.0f));
+            return;
+        }
+        cfg.ui32_odometer_x10 = (int) (valFloat * 10);
 
         TSDZBTService service = TSDZBTService.getBluetoothService();
         if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED)
@@ -333,6 +611,14 @@ public class ConfigurationsActivity extends AppCompatActivity {
                     if (itens <= (res.getStringArray(R.array.motor_current_control)).length)
                         binding.motorCurrentControlSpinner.setSelection(itens);
 
+                    itens = cfg.ui8_temperature_limit_feature_enabled;
+                    if (itens <= (res.getStringArray(R.array.motor_temperature_feature)).length)
+                        binding.motorTemperatureFeatureSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_pedal_cadence_fast_stop;
+                    if (itens <= (res.getStringArray(R.array.no_yes)).length)
+                        binding.cadenceFastStopSpinner.setSelection(itens);
+
                     itens = cfg.ui8_field_weakening;
                     if (itens <= (res.getStringArray(R.array.enable_disable)).length)
                         binding.motorFieldWeakeningSpinner.setSelection(itens);
@@ -352,8 +638,37 @@ public class ConfigurationsActivity extends AppCompatActivity {
                     itens = cfg.ui8_torque_sensor_calibration_pedal_ground;
                     if (itens <= (res.getStringArray(R.array.left_right)).length)
                         binding.torqueSensorStartPedalGroundSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_walk_assist_feature_enabled;
+                    if (itens <= (res.getStringArray(R.array.disable_enable)).length)
+                        binding.walkAssistFeatureSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_startup_motor_power_boost_feature_enabled;
+                    if (itens <= (res.getStringArray(R.array.disable_enable)).length)
+                        binding.startupBoostFeatureSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_startup_motor_power_boost_always;
+                    if (itens <= (res.getStringArray(R.array.active_on)).length)
+                        binding.startupBoostActiveOnSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_startup_motor_power_boost_limit_power;
+                    if (itens <= (res.getStringArray(R.array.no_yes)).length)
+                        binding.startupBoostLimitToMaxPowerSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_street_mode_enabled;
+                    if (itens <= (res.getStringArray(R.array.disable_enable)).length)
+                        binding.streetModeFeatureSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_street_mode_enabled_on_startup;
+                    if (itens <= (res.getStringArray(R.array.no_yes)).length)
+                        binding.streetModeEnableAtStartupSpinner.setSelection(itens);
+
+                    itens = cfg.ui8_street_mode_throttle_enabled;
+                    if (itens <= (res.getStringArray(R.array.no_yes)).length)
+                        binding.streetModeThrottleEnableSpinner.setSelection(itens);
                 }
                 break;
+
             case TSDZBTService.TSDZ_CFG_WRITE_BROADCAST:
                 if (intent.getBooleanExtra(TSDZBTService.VALUE_EXTRA,false))
                     finish();

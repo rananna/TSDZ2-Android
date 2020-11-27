@@ -44,17 +44,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.4375" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horiz4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
+        app:layout_constraintGuide_percent="0.625" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horiz5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8125" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horiz6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -66,17 +73,7 @@
         android:layout_height="0dp"
         android:background="@drawable/border"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/fl12"
-        app:layout_constraintBottom_toTopOf="@+id/horiz2"
-        app:layout_constraintTop_toTopOf="@+id/horiz1">
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/fl12"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/fl11"
         app:layout_constraintBottom_toTopOf="@+id/horiz2"
         app:layout_constraintTop_toTopOf="@+id/horiz1">
     </FrameLayout>
@@ -139,6 +136,26 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fl21"
         app:layout_constraintTop_toTopOf="@+id/horiz4">
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fl51"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fl22"
+        app:layout_constraintBottom_toTopOf="@+id/horiz6"
+        app:layout_constraintTop_toTopOf="@+id/horiz5">
+    </FrameLayout>
+    <FrameLayout
+        android:id="@+id/fl52"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toTopOf="@+id/horiz6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/fl21"
+        app:layout_constraintTop_toTopOf="@+id/horiz5">
     </FrameLayout>
     <TextView
         android:id="@+id/speedTV"

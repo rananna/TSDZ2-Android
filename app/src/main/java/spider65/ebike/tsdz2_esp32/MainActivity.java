@@ -72,8 +72,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private final TSDZ_Status status = new TSDZ_Status();
     private final TSDZ_Debug debug = new TSDZ_Debug();
 
-    private TextView statusTV;
-
     private GestureDetector gestureDetector;
 
     @Override
@@ -140,49 +138,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             actionBar.setDisplayShowTitleEnabled(false);
         mTitle = toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText(R.string.status);
-
-        statusTV = findViewById(R.id.statusTV);
-        statusTV.setOnClickListener(v -> {
-            int val;
-            try {
-                val = Integer.parseInt(((TextView) v).getText().toString());
-            } catch (NumberFormatException e) {
-                return;
-            }
-            String title = null ,message = null;
-            switch (val) {
-                case TSDZConst.ERROR_MOTOR_BLOCKED:
-                    title = getString(R.string.error_motor_blocked);
-                    message = getString(R.string.check_motor_blocked);
-                    break;
-                case TSDZConst.ERROR_TORQUE_SENSOR:
-                    title = getString(R.string.error_torque_sensor);
-                    message = getString(R.string.check_torque_sensor);
-                    break;
-                case TSDZConst.ERROR_LOW_CONTROLLER_VOLTAGE:
-                    title = getString(R.string.error_low_voltage);
-                    message = getString(R.string.check_low_voltage);
-                    break;
-                case TSDZConst.ERROR_OVERVOLTAGE:
-                    title = getString(R.string.error_high_voltage);
-                    message = getString(R.string.check_high_voltage);
-                    break;
-                case TSDZConst.ERROR_TEMPERATURE_LIMIT:
-                    title = getString(R.string.error_limit_temperature);
-                    message = getString(R.string.check_limit_temperature);
-                    break;
-                case TSDZConst.ERROR_TEMPERATURE_MAX:
-                    title = getString(R.string.error_stop_temperature);
-                    message = getString(R.string.check_stop_temperature);
-                    break;
-            }
-            if (title != null) {
-                final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setTitle(title);
-                builder.setMessage(message);
-                builder.show();
-            }
-        });
 
         fabButton = findViewById(R.id.fab);
         fabButton.setOnClickListener((View) -> {
@@ -332,11 +287,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     }
 
     private void refreshView() {
-        if (status.status != 0) {
-            statusTV.setVisibility(View.VISIBLE);
-            statusTV.setText(String.valueOf(status.status));
-        } else
-            statusTV.setVisibility(View.INVISIBLE);
     }
 
     private void updateUIStatus() {
