@@ -48,16 +48,14 @@
     <string name="motor_power">Motor Power</string>
     <string name="pedal_power">Pedal Power</string>
     <string name="battery_current">Battery Current</string>
+    <string name="human_power">Human power</string>
+    <string name="trip_time">Trip time</string>
+    <string name="trip_distance">Trip distance</string>
     <string name="voltage">Battery Volt</string>
     <string name="motor_temp">Motor Temp.</string>
     <string name="energy_used">Energy Used</string>
-    <string name="speedField">%.1f Km/h</string>
-    <string name="cadenceField">%1$d rmp</string>
-    <string name="powerField">%1$d W</string>
-    <string name="currentField">%.1f A</string>
-    <string name="voltageField">%.1f V</string>
-    <string name="temperatureField">%.1f °C</string>
-    <string name="whField">%1$d Wh</string>
+    <string name="floatField">%.1f</string>
+    <string name="intField">%1$d</string>
 
     <string name="duty_cycle">Duty Cycle</string>
     <string name="motor_erps">Motor ERPS</string>
@@ -101,6 +99,7 @@
     <string name="select_file">Select File</string>
     <string name="system">System</string>
     <string name="battery">Battery</string>
+    <string name="assist_level">Assist</string>
     <string name="assist_levels">Assist levels</string>
     <string name="level_1">Level 1 factor</string>
     <string name="level_2">Level 2 factor</string>

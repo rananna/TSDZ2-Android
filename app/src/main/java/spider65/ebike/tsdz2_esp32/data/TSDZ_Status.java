@@ -19,6 +19,10 @@ public class TSDZ_Status {
     public boolean brake;
     public int wattHour;
     public boolean streetMode;
+    public int humanPower;
+    public int motorPower;
+    public float tripDistance;
+    public int tripTime;
 
     /*
     #pragma pack(1)

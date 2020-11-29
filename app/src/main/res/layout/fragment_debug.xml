@@ -363,7 +363,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="32sp"
-        android:text="@{@string/temperatureField(debug.pcbTemperature)}"
+        android:text="@{String.valueOf(debug.pcbTemperature)}"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
         app:layout_constraintBottom_toTopOf="@+id/horiz5"
         app:layout_constraintEnd_toStartOf="@+id/vert3"

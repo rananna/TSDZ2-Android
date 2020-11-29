@@ -52,7 +52,6 @@ import static spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity.KEY_D
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
 
     private static final String TAG = "MainActivity";
-
     private static final String KEY_SCREEN_ON = "SCREEN_ON";
 
     private TextView mTitle;
