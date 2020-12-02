@@ -29,7 +29,7 @@ import spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity;
 import spider65.ebike.tsdz2_esp32.activities.ChartActivity;
 import spider65.ebike.tsdz2_esp32.activities.ConfigurationsActivity;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Debug;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Status;
+import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
 import spider65.ebike.tsdz2_esp32.utils.OnSwipeListener;
 
 import android.util.Log;
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private final byte[] lastStatusData = new byte[PERIODIC_ADV_SIZE];
     private final byte[] lastDebugData = new byte[DEBUG_ADV_SIZE];
 
-    private final TSDZ_Status status = new TSDZ_Status();
+    private final TSDZ_Periodic status = new TSDZ_Periodic();
     private final TSDZ_Debug debug = new TSDZ_Debug();
 
     private GestureDetector gestureDetector;

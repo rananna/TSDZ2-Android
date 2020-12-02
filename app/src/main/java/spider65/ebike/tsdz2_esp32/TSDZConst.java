@@ -17,8 +17,7 @@ public interface TSDZConst {
 
     // size in bytes of the Status/Debug BT notifications
     int DEBUG_ADV_SIZE = 16;
-//    int STATUS_ADV_SIZE = 17;
-    int PERIODIC_ADV_SIZE = 10;
+    int PERIODIC_ADV_SIZE = 32;
     int CONFIGURATIONS_ADV_SIZE = 161;
     int CONFIGURATIONS_VERSION = (byte) 0xA6;
 }

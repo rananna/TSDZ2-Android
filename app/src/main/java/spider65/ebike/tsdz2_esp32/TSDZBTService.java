@@ -27,6 +27,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations;
+import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
 
 import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
@@ -56,7 +57,7 @@ public class TSDZBTService extends Service {
     public static final String CONNECTION_SUCCESS_BROADCAST = "CONNECTION_SUCCESS";
     public static final String CONNECTION_FAILURE_BROADCAST = "CONNECTION_FAILURE";
     public static final String CONNECTION_LOST_BROADCAST = "CONNECTION_LOST";
-    public static final String TSDZ_PERIODIC_BROADCAST = "TSDZ_PERIODIC";
+    public static final String TSDZ_PERIODIC_WRITE_BROADCAST = "TSDZ_PERIODIC_WRITE";
     public static final String TSDZ_CFG_READ_BROADCAST = "TSDZ_CFG_READ";
     public static final String TSDZ_CFG_WRITE_BROADCAST = "TSDZ_CFG_WRITE";
 
@@ -310,6 +311,10 @@ public class TSDZBTService extends Service {
                     Intent bi = new Intent(TSDZ_CFG_READ_BROADCAST);
                     bi.putExtra(VALUE_EXTRA, characteristic.getValue());
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
+                } else if (UUID_PERIODIC_CHARACTERISTIC.equals(characteristic.getUuid())) {
+                    Intent bi = new Intent(TSDZ_CFG_READ_BROADCAST);
+                    bi.putExtra(VALUE_EXTRA, characteristic.getValue());
+                    LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
                 }
             } else {
                 Log.e(TAG, "Characteristic read Error: " + status);
@@ -322,7 +327,7 @@ public class TSDZBTService extends Service {
             byte [] data = characteristic.getValue();
             if (UUID_PERIODIC_CHARACTERISTIC.equals(characteristic.getUuid())) {
                 if (data.length == PERIODIC_ADV_SIZE) {
-                    Intent bi = new Intent(TSDZ_PERIODIC_BROADCAST);
+                    Intent bi = new Intent(TSDZ_PERIODIC_WRITE_BROADCAST);
                     bi.putExtra(VALUE_EXTRA, data);
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
 
@@ -425,6 +430,15 @@ public class TSDZBTService extends Service {
         }
         tsdz_config_char.setValue(cfg.toByteArray());
         mBluetoothGatt.writeCharacteristic(tsdz_config_char);
+    }
+
+    public void writePeriodic(TSDZ_Periodic periodic) {
+        if (mBluetoothAdapter == null || mBluetoothGatt == null || tsdz_config_char == null) {
+            Log.w(TAG, "BluetoothAdapter not initialized");
+            return;
+        }
+        tsdz_periodic_char.setValue(periodic.toByteArray());
+        mBluetoothGatt.writeCharacteristic(tsdz_periodic_char);
     }
 
     /**

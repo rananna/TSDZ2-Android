@@ -85,7 +85,7 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
 
     private enum DataType {
         level, speed,cadence,pPower,mPower,current,
-        volt,energy,mTemp,cTemp,dCycle,erps,
+        volt,mTemp,cTemp,dCycle,erps,
         foc,pTorque,fwAngle;
 
         public String getName() {
@@ -104,8 +104,6 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
                     return MyApp.getInstance().getString(R.string.battery_current);
                 case volt:
                     return MyApp.getInstance().getString(R.string.voltage);
-                case energy:
-                    return MyApp.getInstance().getString(R.string.energy_used);
                 case mTemp:
                     return MyApp.getInstance().getString(R.string.motor_temp);
                 case cTemp:
@@ -126,7 +124,7 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
     }
     private static final Set<DataType> STATUS_DATA_TYPES = new HashSet<>(Arrays.asList(
             DataType.level, DataType.speed, DataType.cadence, DataType.pPower, DataType.mPower,
-            DataType.mTemp, DataType.volt, DataType.current, DataType.energy));
+            DataType.mTemp, DataType.volt, DataType.current));
     private static final Set<DataType> DEBUG_DATA_TYPES = new HashSet<>(Arrays.asList(
             DataType.dCycle, DataType.erps, DataType.foc, DataType.pTorque, DataType.cTemp, DataType.fwAngle));
     private static final Set<DataType> POWER_DATA_TYPES = new HashSet<>(Arrays.asList(
@@ -462,28 +460,25 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
                         y = statusData.get(i).status.assistLevel;
                         break;
                     case speed:
-                        y = statusData.get(i).status.speed;
+                        y = statusData.get(i).status.wheelSpeed;
                         break;
                     case cadence:
-                        y = statusData.get(i).status.cadence;
+                        y = statusData.get(i).status.pedalCadence;
                         break;
                     case mTemp:
                         y = statusData.get(i).status.motorTemperature;
                         break;
                     case pPower:
-                        y = statusData.get(i).status.pPower;
+                        y = statusData.get(i).status.humanPedalPower;
                         break;
                     case mPower:
-                        y = statusData.get(i).status.volts * statusData.get(i).status.amperes;
+                        y = statusData.get(i).status.batteryVoltage * statusData.get(i).status.motorCurrent;
                         break;
                     case volt:
-                        y = statusData.get(i).status.volts;
+                        y = statusData.get(i).status.batteryVoltage;
                         break;
                     case current:
-                        y = statusData.get(i).status.amperes;
-                        break;
-                    case energy:
-                        y = statusData.get(i).status.wattHour;
+                        y = statusData.get(i).status.motorCurrent;
                         break;
                 }
                 //float y = (float) (40 + 10 * Math.sin(x));
@@ -772,7 +767,6 @@ public class ChartActivity extends AppCompatActivity implements LogManager.LogRe
                     new DataItem(DataType.mPower, false),
                     new DataItem(DataType.current, false),
                     new DataItem(DataType.volt, false),
-                    new DataItem(DataType.energy, false),
                     new DataItem(DataType.mTemp, false),
                     new DataItem(DataType.cTemp, false),
                     new DataItem(DataType.dCycle, false),

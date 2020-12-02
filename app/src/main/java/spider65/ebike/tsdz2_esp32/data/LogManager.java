@@ -40,7 +40,7 @@ public class LogManager {
     }
 
     public static class LogStatusEntry {
-        public TSDZ_Status status = new TSDZ_Status();
+        public TSDZ_Periodic status = new TSDZ_Periodic();
         public long time;
     }
 

@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.FragmentStatus">
     <data>
-        <variable name="status" type="spider65.ebike.tsdz2_esp32.data.TSDZ_Status"/>
+        <variable name="status" type="spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic"/>
+        <variable name="handler" type="spider65.ebike.tsdz2_esp32.fragments.FragmentStatus"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -157,7 +158,9 @@
         app:layout_constraintBottom_toTopOf="@id/horiz3"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/vert1GL"
-        app:layout_constraintTop_toBottomOf="@+id/horiz2" />
+        app:layout_constraintTop_toBottomOf="@+id/horiz2"
+        android:onClick="@{handler::onPlusDownClick}"
+        />
 
     <ImageButton
         android:id="@+id/assistLevelPlusBT"
@@ -170,7 +173,9 @@
         app:layout_constraintTop_toBottomOf="@+id/horiz2"
         app:layout_constraintBottom_toTopOf="@id/horiz3"
         app:layout_constraintStart_toStartOf="@+id/vert2GL"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="@{handler::onPlusDownClick}"
+        />
 
     <TextView
         android:id="@+id/speedTV"
@@ -189,7 +194,7 @@
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/floatField(status.speed)}"
+        android:text="@{@string/floatField(status.wheelSpeed)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz2"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintStart_toStartOf="@+id/vertHalfGL"
@@ -264,7 +269,7 @@
         android:layout_height="wrap_content"
         android:textSize="32sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/intField(status.humanPower)}"
+        android:text="@{@string/intField(status.humanPedalPower)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz4"
         app:layout_constraintEnd_toStartOf="@+id/vert1GL"
         app:layout_constraintStart_toStartOf="@+id/vert1GL"
