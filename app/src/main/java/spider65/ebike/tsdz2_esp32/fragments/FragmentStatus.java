@@ -5,23 +5,22 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import org.jetbrains.annotations.NotNull;
+
 import spider65.ebike.tsdz2_esp32.R;
 import spider65.ebike.tsdz2_esp32.TSDZBTService;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
 import spider65.ebike.tsdz2_esp32.databinding.FragmentStatusBinding;
-
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-
-import org.jetbrains.annotations.NotNull;
 
 
 public class FragmentStatus extends Fragment implements View.OnLongClickListener, MyFragmentListener {
@@ -66,7 +65,18 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_status, container, false);
         binding.setStatus(periodic);
         binding.setHandler(this);
+
+        binding.fl31.setOnLongClickListener(this::longClickSelectVariable);
+        binding.fl32.setOnLongClickListener(this::longClickSelectVariable);
+        binding.fl41.setOnLongClickListener(this::longClickSelectVariable);
+        binding.fl42.setOnLongClickListener(this::longClickSelectVariable);
+
         return binding.getRoot();
+    }
+
+    boolean longClickSelectVariable(View v) {
+        Toast.makeText(getContext(), "I am click", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     @Override

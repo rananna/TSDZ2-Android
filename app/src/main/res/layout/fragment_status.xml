@@ -10,7 +10,8 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:longClickable="false">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vert1GL"
@@ -115,7 +116,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintBottom_toTopOf="@+id/horiz4"
-        app:layout_constraintTop_toTopOf="@+id/horiz3">
+        app:layout_constraintTop_toTopOf="@+id/horiz3"
+        android:longClickable="true">
     </FrameLayout>
     <FrameLayout
         android:id="@+id/fl32"
@@ -125,7 +127,8 @@
         app:layout_constraintBottom_toTopOf="@+id/horiz4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vertHalfGL"
-        app:layout_constraintTop_toTopOf="@+id/horiz3">
+        app:layout_constraintTop_toTopOf="@+id/horiz3"
+        android:longClickable="true">
     </FrameLayout>
     <FrameLayout
         android:id="@+id/fl41"
@@ -135,7 +138,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintBottom_toTopOf="@+id/horiz5"
-        app:layout_constraintTop_toTopOf="@+id/horiz4">
+        app:layout_constraintTop_toTopOf="@+id/horiz4"
+        android:longClickable="true">
     </FrameLayout>
     <FrameLayout
         android:id="@+id/fl42"
@@ -145,7 +149,8 @@
         app:layout_constraintBottom_toTopOf="@+id/horiz5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vertHalfGL"
-        app:layout_constraintTop_toTopOf="@+id/horiz4">
+        app:layout_constraintTop_toTopOf="@+id/horiz4"
+        android:longClickable="true">
     </FrameLayout>
 
     <ImageButton
