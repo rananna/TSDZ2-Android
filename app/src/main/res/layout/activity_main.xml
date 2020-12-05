@@ -34,7 +34,7 @@
                     android:drawableStart="@mipmap/bt_disconnected"
                     android:drawablePadding="10dp"
                     android:singleLine="true"
-                    android:text="@string/status"/>
+                    android:text="@string/tsdz2_wireless"/>
             </androidx.appcompat.widget.Toolbar>
 
 

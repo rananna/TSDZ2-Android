@@ -16,7 +16,7 @@
     <string name="dash">-</string>
     <string name="calibration">Cal</string>
     <string name="app_name">TSDZ2_ESP32</string>
-    <string name="status">STATUS DATA</string>
+    <string name="tsdz2_wireless">TSDZ2 wireless</string>
     <string name="debug">DEBUG DATA</string>
     <string name="btSetup">Setup Bluetooth</string>
     <string name="alwaysOn">Screen Always ON</string>

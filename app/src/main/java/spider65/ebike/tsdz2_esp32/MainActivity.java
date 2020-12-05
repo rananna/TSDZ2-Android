@@ -90,44 +90,45 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mainPagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager(), status, debug);
         viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(mainPagerAdapter);
-        viewPager.setOnTouchListener(this);
 
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-            @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
-
-            @Override
-            public void onPageSelected(int position) {
-                switch (position) {
-                    case 0:
-                        mTitle.setText(R.string.status);
-                        break;
-                    case 1:
-                        mTitle.setText(R.string.debug);
-                        break;
-                }
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int state) {}
-        });
-
-        gestureDetector = new GestureDetector(this,new OnSwipeListener(){
-            @Override
-            public boolean onSwipe(Direction direction) {
-                if (direction==Direction.up){
-                    // Log.d(TAG, "onSwipe: up");
-                    Intent myIntent = new Intent(MainActivity.this, ChartActivity.class);
-                    MainActivity.this.startActivity(myIntent);
-                    return false;
-                }
-                if (direction==Direction.down){
-                    Log.d(TAG, "onSwipe: down");
-                    return false;
-                }
-                return false;
-            }
-        });
+//        viewPager.setOnTouchListener(this);
+//
+//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+//            @Override
+//            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+//
+//            @Override
+//            public void onPageSelected(int position) {
+//                switch (position) {
+//                    case 0:
+//                        mTitle.setText(R.string.tsdz2_wireless);
+//                        break;
+//                    case 1:
+//                        mTitle.setText(R.string.debug);
+//                        break;
+//                }
+//            }
+//
+//            @Override
+//            public void onPageScrollStateChanged(int state) {}
+//        });
+//
+//        gestureDetector = new GestureDetector(this,new OnSwipeListener(){
+//            @Override
+//            public boolean onSwipe(Direction direction) {
+//                if (direction==Direction.up){
+//                    // Log.d(TAG, "onSwipe: up");
+//                    Intent myIntent = new Intent(MainActivity.this, ChartActivity.class);
+//                    MainActivity.this.startActivity(myIntent);
+//                    return false;
+//                }
+//                if (direction==Direction.down){
+//                    Log.d(TAG, "onSwipe: down");
+//                    return false;
+//                }
+//                return false;
+//            }
+//        });
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
@@ -137,7 +138,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (actionBar != null)
             actionBar.setDisplayShowTitleEnabled(false);
         mTitle = toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText(R.string.status);
+        mTitle.setText(R.string.tsdz2_wireless);
 
         fabButton = findViewById(R.id.fab);
         fabButton.setOnClickListener((View) -> {

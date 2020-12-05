@@ -19,13 +19,14 @@ import spider65.ebike.tsdz2_esp32.fragments.MyFragmentListener;
  * one of the sections/tabs/pages.
  */
 public class MainPagerAdapter extends FragmentPagerAdapter {
-    private static final Fragment[] TAB_FRAGMENTS = new Fragment[2];
+//    private static final Fragment[] TAB_FRAGMENTS = new Fragment[2];
+    private static final Fragment[] TAB_FRAGMENTS = new Fragment[1];
     private final Context mContext;
 
     MainPagerAdapter(Context context, FragmentManager fm, TSDZ_Periodic status, TSDZ_Debug debug) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         TAB_FRAGMENTS[0] = FragmentStatus.newInstance(status);
-        TAB_FRAGMENTS[1] = FragmentDebug.newInstance(debug);
+//        TAB_FRAGMENTS[1] = FragmentDebug.newInstance(debug);
         mContext = context;
     }
 
@@ -41,7 +42,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return mContext.getResources().getString(R.string.status);
+                return mContext.getResources().getString(R.string.tsdz2_wireless);
             case 1:
                 return mContext.getResources().getString(R.string.debug);
         }
