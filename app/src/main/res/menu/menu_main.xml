@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="example.javatpoint.com.optionmenu.MainActivity">
 
+    <item  android:id="@+id/connectBluetooth"
+        android:title="@string/connect_bluetooth"/>
     <item  android:id="@+id/config"
         android:title="@string/tsdz_configurations"/>
     <item  android:id="@+id/btSetup"

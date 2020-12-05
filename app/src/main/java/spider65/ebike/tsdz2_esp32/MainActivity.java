@@ -140,25 +140,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTitle = toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText(R.string.tsdz2_wireless);
 
-        fabButton = findViewById(R.id.fab);
-        fabButton.setOnClickListener((View) -> {
-            if (!checkDevice()) {
-                Toast.makeText(this, "Please select the bluetooth device to connect", Toast.LENGTH_LONG).show();
-                return;
-            }
-            Intent intent = new Intent(MainActivity.this, TSDZBTService.class);
-            if (serviceRunning) {
-                intent.setAction(TSDZBTService.ACTION_STOP_FOREGROUND_SERVICE);
-            } else{
-                intent.setAction(TSDZBTService.ACTION_START_FOREGROUND_SERVICE);
-                intent.putExtra(TSDZBTService.ADDRESS_EXTRA, MyApp.getPreferences().getString(KEY_DEVICE_MAC, null));
-            }
-            if (Build.VERSION.SDK_INT >= 26)
-                startForegroundService(intent);
-            else
-                startService(intent);
-        });
-
         checkPermissions();
 
         mIntentFilter.addAction(TSDZBTService.SERVICE_STARTED_BROADCAST);
@@ -197,11 +178,29 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public boolean onPrepareOptionsMenu (Menu menu) {
         TSDZBTService service = TSDZBTService.getBluetoothService();
+        boolean connected;
+
         if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED) {
             menu.findItem(R.id.config).setEnabled(true);
+            connected = true;
         } else {
             menu.findItem(R.id.config).setEnabled(false);
+            connected = false;
         }
+
+        if (checkDevice()) {
+            // Bluetooth device is configured
+            menu.findItem(R.id.connectBluetooth).setEnabled(true);
+            if (connected) {
+                menu.findItem(R.id.connectBluetooth).setTitle(R.string.disconnect_bluetooth);
+            } else {
+                menu.findItem(R.id.connectBluetooth).setTitle(R.string.connect_bluetooth);
+            }
+        } else {
+            menu.findItem(R.id.connectBluetooth).setEnabled(false);
+            menu.findItem(R.id.connectBluetooth).setTitle(R.string.connect_bluetooth);
+        }
+
         return true;
     }
 	
@@ -210,14 +209,38 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Intent intent;
         int id = item.getItemId();
         switch (id) {
+            case R.id.connectBluetooth:
+                if (!checkDevice()) {
+                    Toast.makeText(this, "Please select the bluetooth device to connect", Toast.LENGTH_LONG).show();
+                    return true;
+                }
+
+                intent = new Intent(MainActivity.this, TSDZBTService.class);
+                if (serviceRunning) {
+                    intent.setAction(TSDZBTService.ACTION_STOP_FOREGROUND_SERVICE);
+                } else{
+                    intent.setAction(TSDZBTService.ACTION_START_FOREGROUND_SERVICE);
+                    intent.putExtra(TSDZBTService.ADDRESS_EXTRA, MyApp.getPreferences().getString(KEY_DEVICE_MAC, null));
+                }
+
+                if (Build.VERSION.SDK_INT >= 26)
+                    startForegroundService(intent);
+                else
+                    startService(intent);
+
+                invalidateOptionsMenu();
+                return true;
+
             case R.id.config:
                 intent = new Intent(this, ConfigurationsActivity.class);
                 startActivity(intent);
                 return true;
+
             case R.id.btSetup:
                 intent = new Intent(this, BluetoothSetupActivity.class);
                 startActivity(intent);
                 return true;
+
             case R.id.screenONCB:
                 boolean isChecked = !item.isChecked();
                 item.setChecked(isChecked);
@@ -292,14 +315,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     private void updateUIStatus() {
         if (TSDZBTService.getBluetoothService() != null) {
-            fabButton.setImageResource(android.R.drawable.ic_media_pause);
             serviceRunning = true;
             if (TSDZBTService.getBluetoothService().getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED)
                 mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.bt_connected, 0, 0, 0);
             else
                 mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.bt_connecting, 0, 0, 0);
         } else {
-            fabButton.setImageResource(android.R.drawable.ic_media_play);
             mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.bt_disconnected, 0, 0, 0);
             serviceRunning = false;
         }
@@ -334,7 +355,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             switch (intent.getAction()) {
                 case TSDZBTService.SERVICE_STARTED_BROADCAST:
                     Log.d(TAG, "SERVICE_STARTED_BROADCAST");
-                    fabButton.setImageResource(android.R.drawable.ic_media_pause);
                     TSDZBTService service = TSDZBTService.getBluetoothService();
                     if (service != null && service.getConnectionStatus() != TSDZBTService.ConnectionState.CONNECTED)
                         mTitle.setCompoundDrawablesWithIntrinsicBounds(
@@ -344,7 +364,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     break;
                 case TSDZBTService.SERVICE_STOPPED_BROADCAST:
                     Log.d(TAG, "SERVICE_STOPPED_BROADCAST");
-                    fabButton.setImageResource(android.R.drawable.ic_media_play);
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
                     R.mipmap.bt_disconnected, 0, 0, 0);
                     serviceRunning = false;
