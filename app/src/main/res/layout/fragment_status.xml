@@ -100,7 +100,6 @@
                 android:gravity="start"
                 android:layout_marginStart="24dp"
                 android:layout_gravity="center_vertical"
-                android:text="@{String.valueOf((int) status.batterySOC) + '%'}"
                 android:textAppearance="@android:style/TextAppearance.Material.Large"
                 tools:text="1234" />
 
@@ -213,7 +212,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@id/vert1GL"
         app:layout_constraintTop_toBottomOf="@+id/horiz11"
-        android:onClick="@{handler::onPlusDownClick}"
         />
 
     <ImageButton
@@ -228,27 +226,24 @@
         app:layout_constraintBottom_toTopOf="@id/horiz2"
         app:layout_constraintStart_toStartOf="@+id/vert2GL"
         app:layout_constraintEnd_toEndOf="parent"
-        android:onClick="@{handler::onPlusDownClick}"
         />
 
     <TextView
-        android:id="@+id/speedTV"
+        android:id="@+id/fl1TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/speed"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        app:layout_constraintBottom_toTopOf="@+id/speedValueTV"
+        app:layout_constraintBottom_toTopOf="@+id/fl1ValueTV"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintStart_toStartOf="@+id/vertHalfGL"
         app:layout_constraintTop_toTopOf="@+id/horiz2" />
 
     <TextView
-        android:id="@+id/speedValueTV"
+        android:id="@+id/fl1ValueTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/floatField(status.wheelSpeed)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz3"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintStart_toStartOf="@+id/vertHalfGL"
@@ -257,23 +252,21 @@
         tools:text="25.2" />
 
     <TextView
-        android:id="@+id/tripTimeTV"
+        android:id="@+id/fl41TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/trip_time"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintTop_toTopOf="@+id/horiz4"
-        app:layout_constraintBottom_toTopOf="@+id/tripTimeValueTV"
+        app:layout_constraintBottom_toTopOf="@+id/fl41ValueTV"
         app:layout_constraintEnd_toStartOf="@+id/vert1GL"
         app:layout_constraintStart_toStartOf="@+id/vert1GL" />
 
     <TextView
-        android:id="@+id/tripTimeValueTV"
+        android:id="@+id/fl41ValueTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/intField(status.tripTime)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz5"
         app:layout_constraintEnd_toStartOf="@+id/vert1GL"
         app:layout_constraintStart_toStartOf="@+id/vert1GL"
@@ -282,23 +275,21 @@
         tools:text="20"/>
 
     <TextView
-        android:id="@+id/voltageTV"
+        android:id="@+id/fl32TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/motor_power"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintTop_toTopOf="@+id/horiz3"
-        app:layout_constraintBottom_toTopOf="@+id/voltageValueTV"
+        app:layout_constraintBottom_toTopOf="@+id/fl32ValueTV"
         app:layout_constraintEnd_toStartOf="@+id/vert2GL"
         app:layout_constraintStart_toStartOf="@+id/vert2GL" />
 
     <TextView
-        android:id="@+id/voltageValueTV"
+        android:id="@+id/fl32ValueTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/intField(status.motorPower)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz4"
         app:layout_constraintEnd_toStartOf="@+id/vert2GL"
         app:layout_constraintStart_toStartOf="@+id/vert2GL"
@@ -307,23 +298,21 @@
         tools:text="425"/>
 
     <TextView
-        android:id="@+id/humanPowerTV"
+        android:id="@+id/fl31TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/human_power"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintTop_toTopOf="@+id/horiz3"
-        app:layout_constraintBottom_toTopOf="@+id/humanPowerValueTV"
+        app:layout_constraintBottom_toTopOf="@+id/fl31ValueTV"
         app:layout_constraintEnd_toStartOf="@+id/vert1GL"
         app:layout_constraintStart_toStartOf="@+id/vert1GL" />
 
     <TextView
-        android:id="@+id/humanPowerValueTV"
+        android:id="@+id/fl31ValueTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/intField(status.humanPedalPower)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz4"
         app:layout_constraintEnd_toStartOf="@+id/vert1GL"
         app:layout_constraintStart_toStartOf="@+id/vert1GL"
@@ -332,23 +321,21 @@
         tools:text="200"/>
 
     <TextView
-        android:id="@+id/tripDistanceTV"
+        android:id="@+id/fl42TV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/trip_distance"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintTop_toTopOf="@+id/horiz4"
-        app:layout_constraintBottom_toTopOf="@+id/tripDistanceValueTV"
+        app:layout_constraintBottom_toTopOf="@+id/fl42ValueTV"
         app:layout_constraintEnd_toStartOf="@+id/vert2GL"
         app:layout_constraintStart_toStartOf="@+id/vert2GL" />
 
     <TextView
-        android:id="@+id/tripDistanceValueTV"
+        android:id="@+id/fl42ValueTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/floatField(status.tripDistance)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz5"
         app:layout_constraintEnd_toStartOf="@+id/vert2GL"
         app:layout_constraintStart_toStartOf="@+id/vert2GL"
@@ -360,7 +347,6 @@
         android:id="@+id/assistLevelTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/assist_level"
         android:textAppearance="@android:style/TextAppearance.Material.Medium"
         app:layout_constraintTop_toTopOf="@+id/horiz11"
         app:layout_constraintBottom_toTopOf="@+id/assistLevelValueTV"
@@ -373,7 +359,6 @@
         android:layout_height="wrap_content"
         android:textSize="46sp"
         android:textAppearance="@android:style/TextAppearance.Material.Large"
-        android:text="@{@string/intField(status.assistLevel)}"
         app:layout_constraintBottom_toTopOf="@+id/horiz2"
         app:layout_constraintEnd_toStartOf="@+id/vertHalfGL"
         app:layout_constraintStart_toStartOf="@+id/vertHalfGL"

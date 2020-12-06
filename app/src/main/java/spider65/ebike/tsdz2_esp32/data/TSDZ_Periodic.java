@@ -2,6 +2,8 @@ package spider65.ebike.tsdz2_esp32.data;
 
 import android.util.Log;
 
+import java.util.HashMap;
+
 import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
 
 public class TSDZ_Periodic {
@@ -36,6 +38,8 @@ public class TSDZ_Periodic {
     public int tripTime;
     public long odometer;
     public float wattsHour;
+
+    public HashMap<Integer, Variable> variablesConfig = new HashMap<>();
 
     public boolean setData(byte[] data) {
         if (data.length != PERIODIC_ADV_SIZE) {
