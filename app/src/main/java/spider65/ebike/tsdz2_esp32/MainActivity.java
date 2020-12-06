@@ -169,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mIntentFilter.addAction(TSDZBTService.CONNECTION_SUCCESS_BROADCAST);
         mIntentFilter.addAction(TSDZBTService.CONNECTION_FAILURE_BROADCAST);
         mIntentFilter.addAction(TSDZBTService.CONNECTION_LOST_BROADCAST);
-        
+
         checkBT();
     }
 
