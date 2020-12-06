@@ -140,6 +140,28 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mTitle = toolbar.findViewById(R.id.toolbar_title);
         mTitle.setText(R.string.tsdz2_wireless);
 
+        // find the Bluetooth connection logo
+        View view = toolbar.getChildAt(0);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkDevice()) {
+                    Intent intent = new Intent(MainActivity.this, TSDZBTService.class);
+                    if (serviceRunning) {
+                        intent.setAction(TSDZBTService.ACTION_STOP_FOREGROUND_SERVICE);
+                    } else {
+                        intent.setAction(TSDZBTService.ACTION_START_FOREGROUND_SERVICE);
+                        intent.putExtra(TSDZBTService.ADDRESS_EXTRA, MyApp.getPreferences().getString(KEY_DEVICE_MAC, null));
+                    }
+
+                    if (Build.VERSION.SDK_INT >= 26)
+                        startForegroundService(intent);
+                    else
+                        startService(intent);
+                }
+            }
+        });
+
         checkPermissions();
 
         mIntentFilter.addAction(TSDZBTService.SERVICE_STARTED_BROADCAST);
@@ -147,7 +169,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mIntentFilter.addAction(TSDZBTService.CONNECTION_SUCCESS_BROADCAST);
         mIntentFilter.addAction(TSDZBTService.CONNECTION_FAILURE_BROADCAST);
         mIntentFilter.addAction(TSDZBTService.CONNECTION_LOST_BROADCAST);
-
+        
         checkBT();
     }
 
