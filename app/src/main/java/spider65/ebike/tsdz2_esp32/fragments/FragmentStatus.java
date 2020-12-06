@@ -129,8 +129,6 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     }
 
     boolean longClickSelectVariable(View v) {
-        Toast.makeText(getContext(), "I am click", Toast.LENGTH_SHORT).show();
-
         onVariableLongClickView = v;
 
         // setup the alert builder
@@ -248,7 +246,10 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
                     break;
 
                 case pedalSide:
-                    tv.setText(String.valueOf(periodic.PASPedalRight));
+                    if (periodic.PASPedalRight == 1)
+                        tv.setText("right");
+                    else
+                        tv.setText("left");
                     break;
 
                 case throttle:

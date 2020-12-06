@@ -92,6 +92,44 @@ public class Variable {
                     return batteryVoltage;
                 case 1:
                     return batteryCurrent;
+                case 2:
+                    return batterySOC;
+                case 3:
+                    return batteryUsedEnergy;
+                case 4:
+                    return batteryADCCurrent;
+                case 5:
+                    return motorCurrent;
+                case 6:
+                    return motorTemperature;
+                case 7:
+                    return motorSpeed;
+                case 8:
+                    return speed;
+                case 9:
+                    return hallSensors;
+                case 10:
+                    return pedalSide;
+                case 11:
+                    return throttle;
+                case 12:
+                    return throttleADC;
+                case 13:
+                    return torqueSensorADC;
+                case 14:
+                    return pedalWeight;
+                case 15:
+                    return pedalWeightWithOffset;
+                case 16:
+                    return pedalCadence;
+                case 17:
+                    return dutyCyle;
+                case 18:
+                    return focAngle;
+                case 19:
+                    return humanPower;
+                case 20:
+                    return odometer;
             }
             return null;
         }
