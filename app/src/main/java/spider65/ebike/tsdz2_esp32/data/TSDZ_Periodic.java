@@ -39,7 +39,7 @@ public class TSDZ_Periodic {
     public long odometer;
     public float wattsHour;
 
-    public HashMap<Integer, Variable> variablesConfig = new HashMap<>();
+    static public HashMap<Integer, Variable> variablesConfig = new HashMap<>();
 
     public boolean setData(byte[] data) {
         if (data.length != PERIODIC_ADV_SIZE) {

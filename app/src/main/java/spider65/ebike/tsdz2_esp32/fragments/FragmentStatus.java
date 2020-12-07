@@ -6,26 +6,36 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import org.jetbrains.annotations.NotNull;
 
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
+import spider65.ebike.tsdz2_esp32.MyApp;
 import spider65.ebike.tsdz2_esp32.R;
 import spider65.ebike.tsdz2_esp32.TSDZBTService;
 import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
 import spider65.ebike.tsdz2_esp32.data.Variable;
 
-import static spider65.ebike.tsdz2_esp32.data.Variable.DataType.fromInteger;
+import static android.content.Context.MODE_PRIVATE;
 
 public class FragmentStatus extends Fragment implements View.OnLongClickListener, MyFragmentListener {
 
@@ -42,6 +52,8 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     View mRootView;
     TextView mBatterySOCTV,
             mAssistLevelValueTV;
+
+    SharedPreferences mPreferences  = MyApp.getPreferences();
 
     /**
      * Use this factory method to create a new instance of
@@ -94,36 +106,48 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         getView().findViewById(R.id.fl41).setOnLongClickListener(this::longClickSelectVariable);
         getView().findViewById(R.id.fl42).setOnLongClickListener(this::longClickSelectVariable);
 
-        // TODO update var number from preferences
-        periodic.variablesConfig.put(getView().findViewById(R.id.fl1).getId(),
-                new Variable(getView().findViewById(R.id.fl1TV).getId(),
-                        getView().findViewById(R.id.fl1ValueTV).getId(),
-                        Variable.DataType.speed)
-        );
+        boolean reset = false; // needed for debug session, set to true to delete periodic.variablesConfig contents
+        if (reset == false) {
+            //get from shared prefs
+            Gson gson = new Gson();
+            String storedHashMapString = mPreferences.getString("VARIABLES", "oopsDintWork");
+            java.lang.reflect.Type type = new TypeToken<HashMap<Integer, Variable>>(){}.getType();
+            periodic.variablesConfig = gson.fromJson(storedHashMapString, type);
+        }
 
-        periodic.variablesConfig.put(getView().findViewById(R.id.fl31).getId(),
-                new Variable(getView().findViewById(R.id.fl31TV).getId(),
-                        getView().findViewById(R.id.fl31ValueTV).getId(),
-                        Variable.DataType.humanPower)
-        );
+        if (reset || (periodic.variablesConfig == null)) {
 
-        periodic.variablesConfig.put(getView().findViewById(R.id.fl32).getId(),
-                new Variable(getView().findViewById(R.id.fl32TV).getId(),
-                        getView().findViewById(R.id.fl32ValueTV).getId(),
-                        Variable.DataType.motorCurrent)
-        );
+            periodic.variablesConfig.put(getView().findViewById(R.id.fl1).getId(),
+                    new Variable(getView().findViewById(R.id.fl1TV).getId(),
+                            getView().findViewById(R.id.fl1ValueTV).getId(),
+                            Variable.DataType.speed)
+            );
 
-        periodic.variablesConfig.put(getView().findViewById(R.id.fl41).getId(),
-                new Variable(getView().findViewById(R.id.fl41TV).getId(),
-                        getView().findViewById(R.id.fl41ValueTV).getId(),
-                        Variable.DataType.batteryCurrent)
-        );
+            periodic.variablesConfig.put(getView().findViewById(R.id.fl31).getId(),
+                    new Variable(getView().findViewById(R.id.fl31TV).getId(),
+                            getView().findViewById(R.id.fl31ValueTV).getId(),
+                            Variable.DataType.humanPower)
+            );
 
-        periodic.variablesConfig.put(getView().findViewById(R.id.fl42).getId(),
-                new Variable(getView().findViewById(R.id.fl42TV).getId(),
-                        getView().findViewById(R.id.fl42ValueTV).getId(),
-                        Variable.DataType.pedalCadence)
-        );
+            periodic.variablesConfig.put(getView().findViewById(R.id.fl32).getId(),
+                    new Variable(getView().findViewById(R.id.fl32TV).getId(),
+                            getView().findViewById(R.id.fl32ValueTV).getId(),
+                            Variable.DataType.motorCurrent)
+            );
+
+            periodic.variablesConfig.put(getView().findViewById(R.id.fl41).getId(),
+                    new Variable(getView().findViewById(R.id.fl41TV).getId(),
+                            getView().findViewById(R.id.fl41ValueTV).getId(),
+                            Variable.DataType.batteryCurrent)
+            );
+
+            periodic.variablesConfig.put(getView().findViewById(R.id.fl42).getId(),
+                    new Variable(getView().findViewById(R.id.fl42TV).getId(),
+                            getView().findViewById(R.id.fl42ValueTV).getId(),
+                            Variable.DataType.pedalCadence)
+            );
+
+        }
 
         updateVariableViews();
     }
@@ -146,6 +170,13 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
                 variable.dataType = Variable.DataType.fromInteger(variableID);
                 periodic.variablesConfig.put(frameLayoutID, variable);
 
+                //convert to string using gson
+                Gson gson = new Gson();
+                String hashMapString = gson.toJson(periodic.variablesConfig);
+
+                //save in shared prefs
+                mPreferences.edit().putString("VARIABLES", hashMapString).apply();
+
                 updateVariableViews();
             }
         });
@@ -161,7 +192,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     public void onResume() {
         super.onResume();
         // Data could be changed when fragment was not visible. Refresh the view
-//        binding.invalidateAll();
+        updateView();
 
         LocalBroadcastManager.getInstance(this.getContext()).registerReceiver(mMessageReceiver, mIntentFilter);
     }
@@ -182,16 +213,19 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
             switch (intent.getAction()) {
                 case TSDZBTService.TSDZ_PERIODIC_WRITE_BROADCAST:
                     if (periodic.setData(intent.getByteArrayExtra(TSDZBTService.VALUE_EXTRA))) {
-
-                        mBatterySOCTV.setText(String.valueOf((int) periodic.batterySOC));
-                        mAssistLevelValueTV.setText(String.valueOf(periodic.assistLevel));
-
-                        updateVariableViews();
+                        updateView();
                     }
                     break;
             }
         }
     };
+
+    void updateView() {
+        mBatterySOCTV.setText(String.valueOf((int) periodic.batterySOC));
+        mAssistLevelValueTV.setText(String.valueOf(periodic.assistLevel));
+
+        updateVariableViews();
+    }
 
     void updateVariableViews() {
 
@@ -321,7 +355,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
     @Override
     public void refreshView() {
-//        binding.invalidateAll();
+        updateView();
     }
 
     @Override
