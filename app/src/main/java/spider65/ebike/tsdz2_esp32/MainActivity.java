@@ -207,6 +207,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         MenuItem item = menu.findItem(R.id.screenONCB);
         item.setChecked(MyApp.getPreferences().getBoolean(KEY_SCREEN_ON, false));
 
+        item = menu.findItem(R.id.fullScreenONCB);
+        item.setChecked(MyApp.getPreferences().getBoolean(KEY_FULL_SCREEN_ON, false));
+
         return super.onCreateOptionsMenu(menu);
     }
 

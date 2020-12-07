@@ -8,22 +8,11 @@ import spider65.ebike.tsdz2_esp32.R;
 public class AboutActivity extends AppCompatActivity {
 
     WebView webView;
-    String content="<h1>Heading 1</h1>\n" +
-            "        <h2>Heading 2</h2>\n" +
-            "        <p>This is some html. Look, here\\'s an <u>underline</u>.</p>\n" +
-            "        <p>Look, this is <em>emphasized.</em> And here\\'s some <b>bold</b>.</p>\n" +
-            "        <p>Here are UL list items:\n" +
-            "        <ul>\n" +
-            "        <li>One</li>\n" +
-            "        <li>Two</li>\n" +
-            "        <li>Three</li>\n" +
-            "        </ul>\n" +
-            "        <p>Here are OL list items:\n" +
-            "        <ol>\n" +
-            "        <li>One</li>\n" +
-            "        <li>Two</li>\n" +
-            "        <li>Three</li>\n" +
-            "        </ol>";
+    String content="<h1>OpenSource EBike Wireless</h1>\n" +
+            "<p>See the documentacion here: <a href=\"https://opensourceebike.github.io\">https://opensourceebike.github.io</a></p>\n" +
+            "<p><br>\n" +
+            "<p><br>\n" +
+            "<p>This app as developed based on the OpenSource TSDZ2-ESP32 app: <a href=\"https://github.com/TSDZ2-ESP32\">https://github.com/TSDZ2-ESP32</a></p>\n";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
