@@ -106,47 +106,22 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         getView().findViewById(R.id.fl41).setOnLongClickListener(this::longClickSelectVariable);
         getView().findViewById(R.id.fl42).setOnLongClickListener(this::longClickSelectVariable);
 
-        boolean reset = false; // needed for debug session, set to true to delete periodic.variablesConfig contents
-        if (reset == false) {
+        boolean resetVariables = false; // needed for debug session, set to true to delete periodic.variablesConfig contents
+        if (resetVariables == false) {
             //get from shared prefs
             Gson gson = new Gson();
             String storedHashMapString = mPreferences.getString("VARIABLES", "oopsDintWork");
-            java.lang.reflect.Type type = new TypeToken<HashMap<Integer, Variable>>(){}.getType();
-            periodic.variablesConfig = gson.fromJson(storedHashMapString, type);
+
+            if (storedHashMapString.contains("oopsDintWork")) {
+                resetVariables = true;
+            } else {
+                java.lang.reflect.Type type = new TypeToken<HashMap<Integer, Variable>>(){}.getType();
+                periodic.variablesConfig = gson.fromJson(storedHashMapString, type);
+            }
         }
 
-        if (reset || (periodic.variablesConfig == null)) {
-
-            periodic.variablesConfig.put(getView().findViewById(R.id.fl1).getId(),
-                    new Variable(getView().findViewById(R.id.fl1TV).getId(),
-                            getView().findViewById(R.id.fl1ValueTV).getId(),
-                            Variable.DataType.speed)
-            );
-
-            periodic.variablesConfig.put(getView().findViewById(R.id.fl31).getId(),
-                    new Variable(getView().findViewById(R.id.fl31TV).getId(),
-                            getView().findViewById(R.id.fl31ValueTV).getId(),
-                            Variable.DataType.humanPower)
-            );
-
-            periodic.variablesConfig.put(getView().findViewById(R.id.fl32).getId(),
-                    new Variable(getView().findViewById(R.id.fl32TV).getId(),
-                            getView().findViewById(R.id.fl32ValueTV).getId(),
-                            Variable.DataType.motorCurrent)
-            );
-
-            periodic.variablesConfig.put(getView().findViewById(R.id.fl41).getId(),
-                    new Variable(getView().findViewById(R.id.fl41TV).getId(),
-                            getView().findViewById(R.id.fl41ValueTV).getId(),
-                            Variable.DataType.batteryCurrent)
-            );
-
-            periodic.variablesConfig.put(getView().findViewById(R.id.fl42).getId(),
-                    new Variable(getView().findViewById(R.id.fl42TV).getId(),
-                            getView().findViewById(R.id.fl42ValueTV).getId(),
-                            Variable.DataType.pedalCadence)
-            );
-
+        if (resetVariables || (periodic.variablesConfig == null)) {
+            setDefaultVariables();
         }
 
         updateVariableViews();
@@ -362,4 +337,37 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     public boolean onLongClick(View v) {
         return false;
     }
+
+    void setDefaultVariables() {
+        periodic.variablesConfig.put(getView().findViewById(R.id.fl1).getId(),
+                new Variable(getView().findViewById(R.id.fl1TV).getId(),
+                        getView().findViewById(R.id.fl1ValueTV).getId(),
+                        Variable.DataType.speed)
+        );
+
+        periodic.variablesConfig.put(getView().findViewById(R.id.fl31).getId(),
+                new Variable(getView().findViewById(R.id.fl31TV).getId(),
+                        getView().findViewById(R.id.fl31ValueTV).getId(),
+                        Variable.DataType.humanPower)
+        );
+
+        periodic.variablesConfig.put(getView().findViewById(R.id.fl32).getId(),
+                new Variable(getView().findViewById(R.id.fl32TV).getId(),
+                        getView().findViewById(R.id.fl32ValueTV).getId(),
+                        Variable.DataType.motorCurrent)
+        );
+
+        periodic.variablesConfig.put(getView().findViewById(R.id.fl41).getId(),
+                new Variable(getView().findViewById(R.id.fl41TV).getId(),
+                        getView().findViewById(R.id.fl41ValueTV).getId(),
+                        Variable.DataType.batteryCurrent)
+        );
+
+        periodic.variablesConfig.put(getView().findViewById(R.id.fl42).getId(),
+                new Variable(getView().findViewById(R.id.fl42TV).getId(),
+                        getView().findViewById(R.id.fl42ValueTV).getId(),
+                        Variable.DataType.pedalCadence)
+        );
+    }
 }
+

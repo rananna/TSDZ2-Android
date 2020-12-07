@@ -25,6 +25,8 @@ import androidx.core.content.ContextCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
+
+import spider65.ebike.tsdz2_esp32.activities.AboutActivity;
 import spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity;
 import spider65.ebike.tsdz2_esp32.activities.ChartActivity;
 import spider65.ebike.tsdz2_esp32.activities.ConfigurationsActivity;
@@ -39,6 +41,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.TextView;
@@ -54,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     private static final String TAG = "MainActivity";
     private static final String KEY_SCREEN_ON = "SCREEN_ON";
+    private static final String KEY_FULL_SCREEN_ON = "FULL_SCREEN_ON";
 
     private TextView mTitle;
     private boolean serviceRunning;
@@ -79,6 +83,9 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate");
 
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         boolean screenOn = MyApp.getPreferences().getBoolean(KEY_SCREEN_ON, false);
@@ -86,6 +93,12 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         else
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+        boolean fullScreenOn = MyApp.getPreferences().getBoolean(KEY_FULL_SCREEN_ON, false);
+        if (fullScreenOn)
+            setFullscreen(true);
+        else
+            setFullscreen(false);
 
         mainPagerAdapter = new MainPagerAdapter(this, getSupportFragmentManager(), status, debug);
         viewPager = findViewById(R.id.view_pager);
@@ -273,6 +286,27 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
                 else
                     getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+                return true;
+
+            case R.id.fullScreenONCB:
+                isChecked = !item.isChecked();
+                item.setChecked(isChecked);
+                editor = MyApp.getPreferences().edit();
+                editor.putBoolean(KEY_FULL_SCREEN_ON, isChecked);
+                editor.apply();
+                if (isChecked)
+                    setFullscreen(true);
+                else
+                    setFullscreen(false);
+
+                return true;
+
+            case R.id.about:
+                intent = new Intent(this, AboutActivity.class);
+                startActivity(intent);
+                return true;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -420,4 +454,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         gestureDetector.onTouchEvent(event);
         return false;
     }
+
+    private void setFullscreen(boolean fullscreen)
+    {
+        WindowManager.LayoutParams attrs = getWindow().getAttributes();
+        if (fullscreen)
+        {
+            attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        }
+        else
+        {
+            attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        }
+        getWindow().setAttributes(attrs);
+    }
+
 }
