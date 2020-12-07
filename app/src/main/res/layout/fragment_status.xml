@@ -86,35 +86,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/horiz11">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/battery"
+            android:layout_width="91dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_battery_2"
+            android:textSize="32sp" />
 
-            <TextView
-                android:id="@+id/batterySOCTV"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:textSize="32sp"
-                android:gravity="start"
-                android:layout_marginStart="24dp"
-                android:layout_gravity="center_vertical"
-                android:textAppearance="@android:style/TextAppearance.Material.Large"
-                tools:text="1234" />
+        <TextView
+            android:id="@+id/batterySOCTV"
+            android:layout_width="76dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:textAlignment="center"
+            android:textSize="32sp"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"
+            tools:text="0" />
 
-            <TextClock
-                android:id="@+id/textClock"
-                android:layout_height="wrap_content"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:format12Hour="hh:mm:ss a"
-                android:textSize="32sp"
-                android:gravity="end"
-                android:layout_marginEnd="30dp"
-                android:layout_gravity="center_vertical"
-                android:textAppearance="@android:style/TextAppearance.Material.Large"/>
-        </LinearLayout>
+        <TextClock
+            android:id="@+id/textClock"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textSize="32sp"
+            android:gravity="end"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="18dp"
+            android:layout_gravity="right"
+            android:textAppearance="@android:style/TextAppearance.Material.Large"/>
     </FrameLayout>
     <FrameLayout
         android:id="@+id/fl1"
