@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.activities;
+package casainho.ebike.opensource_ebike_wireless.activities;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -17,8 +17,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import spider65.ebike.tsdz2_esp32.MyApp;
-import spider65.ebike.tsdz2_esp32.R;
+import casainho.ebike.opensource_ebike_wireless.MyApp;
+import casainho.ebike.opensource_ebike_wireless.R;
 
 import android.os.Handler;
 import android.util.Log;

@@ -1,8 +1,8 @@
-package spider65.ebike.tsdz2_esp32.data;
+package casainho.ebike.opensource_ebike_wireless.data;
 
 import android.util.Log;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.DEBUG_ADV_SIZE;
 
 public class TSDZ_Debug {
 

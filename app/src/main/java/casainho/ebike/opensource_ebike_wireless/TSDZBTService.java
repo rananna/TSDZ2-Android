@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32;
+package casainho.ebike.opensource_ebike_wireless;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -26,10 +26,10 @@ import java.util.UUID;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Configurations;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.PERIODIC_ADV_SIZE;
 
 
 public class TSDZBTService extends Service {

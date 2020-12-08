@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.activities;
+package casainho.ebike.opensource_ebike_wireless.activities;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -18,10 +18,10 @@ import android.widget.EditText;
 import androidx.databinding.DataBindingUtil;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
-import spider65.ebike.tsdz2_esp32.R;
-import spider65.ebike.tsdz2_esp32.TSDZBTService;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Configurations;
-import spider65.ebike.tsdz2_esp32.databinding.ActivityConfigurationsBinding;
+import casainho.ebike.opensource_ebike_wireless.R;
+import casainho.ebike.opensource_ebike_wireless.TSDZBTService;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Configurations;
+import casainho.ebike.opensource_ebike_wireless.databinding.ActivityConfigurationsBinding;
 
 public class ConfigurationsActivity extends AppCompatActivity {
 

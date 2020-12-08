@@ -1,6 +1,5 @@
-package spider65.ebike.tsdz2_esp32.utils;
+package casainho.ebike.opensource_ebike_wireless.utils;
 
-import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 

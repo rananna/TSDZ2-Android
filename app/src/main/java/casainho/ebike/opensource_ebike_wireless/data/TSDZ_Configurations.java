@@ -1,13 +1,13 @@
-package spider65.ebike.tsdz2_esp32.data;
+package casainho.ebike.opensource_ebike_wireless.data;
 
 
 import android.util.Log;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.CONFIGURATIONS_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.CONFIGURATIONS_VERSION;
-import static spider65.ebike.tsdz2_esp32.utils.Utils.intDiv1000toFloat;
-import static spider65.ebike.tsdz2_esp32.utils.Utils.intX10toFloat;
-import static spider65.ebike.tsdz2_esp32.utils.Utils.longX10toFloat;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.CONFIGURATIONS_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.CONFIGURATIONS_VERSION;
+import static casainho.ebike.opensource_ebike_wireless.utils.Utils.intDiv1000toFloat;
+import static casainho.ebike.opensource_ebike_wireless.utils.Utils.intX10toFloat;
+import static casainho.ebike.opensource_ebike_wireless.utils.Utils.longX10toFloat;
 
 public class TSDZ_Configurations {
 

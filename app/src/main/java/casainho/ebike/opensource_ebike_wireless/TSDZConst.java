@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32;
+package casainho.ebike.opensource_ebike_wireless;
 
 public interface TSDZConst {
 

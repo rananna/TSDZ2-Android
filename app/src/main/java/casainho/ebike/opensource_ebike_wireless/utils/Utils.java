@@ -1,11 +1,9 @@
-package spider65.ebike.tsdz2_esp32.utils;
+package casainho.ebike.opensource_ebike_wireless.utils;
 
 import android.widget.EditText;
 
-import java.math.BigDecimal;
-
-import spider65.ebike.tsdz2_esp32.MyApp;
-import spider65.ebike.tsdz2_esp32.R;
+import casainho.ebike.opensource_ebike_wireless.MyApp;
+import casainho.ebike.opensource_ebike_wireless.R;
 
 public class Utils {
 

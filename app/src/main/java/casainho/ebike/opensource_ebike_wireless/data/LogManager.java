@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.data;
+package casainho.ebike.opensource_ebike_wireless.data;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -26,11 +26,11 @@ import java.util.List;
 import java.util.Locale;
 
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
-import spider65.ebike.tsdz2_esp32.MyApp;
-import spider65.ebike.tsdz2_esp32.TSDZBTService;
+import casainho.ebike.opensource_ebike_wireless.MyApp;
+import casainho.ebike.opensource_ebike_wireless.TSDZBTService;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.DEBUG_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.PERIODIC_ADV_SIZE;
 
 public class LogManager {
 

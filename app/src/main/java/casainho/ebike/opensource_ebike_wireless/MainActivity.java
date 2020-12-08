@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32;
+package casainho.ebike.opensource_ebike_wireless;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -26,13 +26,11 @@ import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.viewpager.widget.ViewPager;
 import androidx.appcompat.app.AppCompatActivity;
 
-import spider65.ebike.tsdz2_esp32.activities.AboutActivity;
-import spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity;
-import spider65.ebike.tsdz2_esp32.activities.ChartActivity;
-import spider65.ebike.tsdz2_esp32.activities.ConfigurationsActivity;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Debug;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
-import spider65.ebike.tsdz2_esp32.utils.OnSwipeListener;
+import casainho.ebike.opensource_ebike_wireless.activities.AboutActivity;
+import casainho.ebike.opensource_ebike_wireless.activities.BluetoothSetupActivity;
+import casainho.ebike.opensource_ebike_wireless.activities.ConfigurationsActivity;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Debug;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
 
 import android.util.Log;
 import android.view.ContextMenu;
@@ -41,16 +39,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import static java.util.Arrays.copyOfRange;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.DEBUG_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
-import static spider65.ebike.tsdz2_esp32.activities.BluetoothSetupActivity.KEY_DEVICE_MAC;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.DEBUG_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.PERIODIC_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.activities.BluetoothSetupActivity.KEY_DEVICE_MAC;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnTouchListener {
@@ -151,7 +147,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (actionBar != null)
             actionBar.setDisplayShowTitleEnabled(false);
         mTitle = toolbar.findViewById(R.id.toolbar_title);
-        mTitle.setText(R.string.tsdz2_wireless);
+        mTitle.setText(R.string.ebike_wireless);
 
         // find the Bluetooth connection logo
         View view = toolbar.getChildAt(0);
@@ -436,14 +432,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 					break;
                 case TSDZBTService.CONNECTION_FAILURE_BROADCAST:
                     Log.d(TAG, "CONNECTION_FAILURE_BROADCAST");
-                    Toast.makeText(getApplicationContext(), "TSDZ-ESP32 Connection Failure.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Connection failure to EBike wireless board", Toast.LENGTH_LONG).show();
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
 					R.mipmap.bt_connecting, 0, 0, 0);
 					invalidateOptionsMenu();
 					break;
                 case TSDZBTService.CONNECTION_LOST_BROADCAST:
                     Log.d(TAG, "CONNECTION_LOST_BROADCAST");
-                    Toast.makeText(getApplicationContext(), "TSDZ-ESP32 Connection Lost.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Connection lost to EBike wireless board", Toast.LENGTH_LONG).show();
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
 					R.mipmap.bt_connecting, 0, 0, 0);
 					invalidateOptionsMenu();

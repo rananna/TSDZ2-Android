@@ -1,15 +1,13 @@
-package spider65.ebike.tsdz2_esp32.fragments;
+package casainho.ebike.opensource_ebike_wireless.fragments;
 
-import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
-import spider65.ebike.tsdz2_esp32.R;
-import spider65.ebike.tsdz2_esp32.TSDZBTService;
-import spider65.ebike.tsdz2_esp32.databinding.FragmentDebugBinding;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Debug;
+import casainho.ebike.opensource_ebike_wireless.R;
+import casainho.ebike.opensource_ebike_wireless.databinding.FragmentDebugBinding;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Debug;
 
 import android.util.Log;
 import android.view.LayoutInflater;

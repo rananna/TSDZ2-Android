@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.FragmentStatus">
     <data>
-        <variable name="status" type="spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic"/>
-        <variable name="handler" type="spider65.ebike.tsdz2_esp32.fragments.FragmentStatus"/>
+        <variable name="status" type="casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic"/>
+        <variable name="handler" type="casainho.ebike.opensource_ebike_wireless.fragments.FragmentStatus"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

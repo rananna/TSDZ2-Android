@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.FragmentDebug">
     <data>
-        <variable name="debug" type="spider65.ebike.tsdz2_esp32.data.TSDZ_Debug"/>
+        <variable name="debug" type="casainho.ebike.opensource_ebike_wireless.data.TSDZ_Debug"/>
     </data>
 
 <androidx.constraintlayout.widget.ConstraintLayout

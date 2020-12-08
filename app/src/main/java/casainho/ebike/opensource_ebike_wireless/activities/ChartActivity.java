@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.activities;
+package casainho.ebike.opensource_ebike_wireless.activities;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -47,9 +47,9 @@ import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
-import spider65.ebike.tsdz2_esp32.MyApp;
-import spider65.ebike.tsdz2_esp32.R;
-import spider65.ebike.tsdz2_esp32.data.LogManager;
+import casainho.ebike.opensource_ebike_wireless.MyApp;
+import casainho.ebike.opensource_ebike_wireless.R;
+import casainho.ebike.opensource_ebike_wireless.data.LogManager;
 
 
 public class ChartActivity extends AppCompatActivity implements LogManager.LogResultListener {

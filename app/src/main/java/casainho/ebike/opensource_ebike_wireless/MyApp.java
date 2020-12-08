@@ -1,10 +1,10 @@
-package spider65.ebike.tsdz2_esp32;
+package casainho.ebike.opensource_ebike_wireless;
 
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import spider65.ebike.tsdz2_esp32.data.LogManager;
+import casainho.ebike.opensource_ebike_wireless.data.LogManager;
 
 public class MyApp extends Application {
     private static MyApp instance;

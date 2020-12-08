@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.fragments;
+package casainho.ebike.opensource_ebike_wireless.fragments;
 
 public interface MyFragmentListener {
     void refreshView();

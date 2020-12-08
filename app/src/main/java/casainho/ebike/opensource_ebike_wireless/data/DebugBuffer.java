@@ -1,28 +1,27 @@
-package spider65.ebike.tsdz2_esp32.data;
+package casainho.ebike.opensource_ebike_wireless.data;
 
 import androidx.annotation.NonNull;
 
-import static spider65.ebike.tsdz2_esp32.TSDZConst.PERIODIC_ADV_SIZE;
+import static casainho.ebike.opensource_ebike_wireless.TSDZConst.DEBUG_ADV_SIZE;
 
-public class StatusBuffer {
-
+public class DebugBuffer {
     private static final int NUM_RECORDS = 300;
 
     private final static Object mLock = new Object();
-    private static StatusBuffer mPool;
+    private static DebugBuffer mPool;
 
-    static StatusBuffer obtain() {
+    static DebugBuffer obtain() {
         synchronized (mLock) {
             if (mPool != null) {
-                StatusBuffer res = mPool;
+                DebugBuffer res = mPool;
                 mPool = res.next;
                 return res;
             }
-            return new StatusBuffer();
+            return new DebugBuffer();
         }
     }
 
-    static void recycle(@NonNull StatusBuffer buffer) {
+    static void recycle(@NonNull DebugBuffer buffer) {
         synchronized (mLock) {
             buffer.position = 0;
             buffer.startTime = 0;
@@ -32,10 +31,10 @@ public class StatusBuffer {
         }
     }
 
-    private StatusBuffer next;
+    private DebugBuffer next;
     long startTime,endTime;
     public int position = 0;
-    public byte[] data = new byte[(8+ PERIODIC_ADV_SIZE)*NUM_RECORDS];
+    public byte[] data = new byte[(8+DEBUG_ADV_SIZE)*NUM_RECORDS];
 
     boolean addRecord(byte[] rec, long time) {
         if (position >= data.length)
@@ -49,8 +48,8 @@ public class StatusBuffer {
         data[position++] = (byte) ((time >>> 16) & 0xFF);
         data[position++] = (byte) ((time >>> 8) & 0xFF);
         data[position++] = (byte) (time & 0xFF);
-        System.arraycopy(rec, 0, data, position, PERIODIC_ADV_SIZE);
-        position += PERIODIC_ADV_SIZE;
+        System.arraycopy(rec, 0, data, position, DEBUG_ADV_SIZE);
+        position += DEBUG_ADV_SIZE;
         if (startTime == 0)
             startTime = time;
         endTime = time;

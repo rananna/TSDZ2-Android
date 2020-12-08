@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32;
+package casainho.ebike.opensource_ebike_wireless;
 
 
 import androidx.annotation.Nullable;
@@ -8,11 +8,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Debug;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
-import spider65.ebike.tsdz2_esp32.fragments.FragmentDebug;
-import spider65.ebike.tsdz2_esp32.fragments.FragmentStatus;
-import spider65.ebike.tsdz2_esp32.fragments.MyFragmentListener;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Debug;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
+import casainho.ebike.opensource_ebike_wireless.fragments.FragmentStatus;
+import casainho.ebike.opensource_ebike_wireless.fragments.MyFragmentListener;
 
 /**
  * A [FragmentPagerAdapter] that returns a fragment corresponding to
@@ -42,7 +41,7 @@ public class MainPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return mContext.getResources().getString(R.string.tsdz2_wireless);
+                return mContext.getResources().getString(R.string.ebike_wireless);
             case 1:
                 return mContext.getResources().getString(R.string.debug);
         }

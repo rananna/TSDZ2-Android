@@ -1,6 +1,5 @@
 # BT Interface for TSDZ2 Open Source Firmware
 
-This reposiitory contains the source code of the Android control application for ESP32 add-on module of TSDZ2 eBike motor
+This repository contains the source code of the Android control application for TSDZ2 wireless EBike motor
 
-Wiki page at 
-[wiki](https://github.com/TSDZ-ESP32/TSDZ-ESP32-wiki/wiki)
+Project page: [https://opensourceebike.github.io](https://opensourceebike.github.io)

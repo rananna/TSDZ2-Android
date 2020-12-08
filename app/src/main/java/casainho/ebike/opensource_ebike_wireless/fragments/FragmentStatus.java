@@ -1,4 +1,4 @@
-package spider65.ebike.tsdz2_esp32.fragments;
+package casainho.ebike.opensource_ebike_wireless.fragments;
 
 import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
@@ -23,19 +23,13 @@ import com.google.gson.reflect.TypeToken;
 
 import org.jetbrains.annotations.NotNull;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
 
-import spider65.ebike.tsdz2_esp32.MyApp;
-import spider65.ebike.tsdz2_esp32.R;
-import spider65.ebike.tsdz2_esp32.TSDZBTService;
-import spider65.ebike.tsdz2_esp32.data.TSDZ_Periodic;
-import spider65.ebike.tsdz2_esp32.data.Variable;
-
-import static android.content.Context.MODE_PRIVATE;
+import casainho.ebike.opensource_ebike_wireless.MyApp;
+import casainho.ebike.opensource_ebike_wireless.R;
+import casainho.ebike.opensource_ebike_wireless.TSDZBTService;
+import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
+import casainho.ebike.opensource_ebike_wireless.data.Variable;
 
 public class FragmentStatus extends Fragment implements View.OnLongClickListener, MyFragmentListener {
 

@@ -14,8 +14,8 @@
     <string name="check_stop_temperature">Turn off the bike and wait for it to cool down</string>
 
     <string name="dash">-</string>
-    <string name="app_name">TSDZ2_ESP32</string>
-    <string name="tsdz2_wireless">EBike wireless</string>
+    <string name="app_name">EBike wireless</string>
+    <string name="ebike_wireless">EBike wireless</string>
     <string name="debug">DEBUG DATA</string>
     <string name="btSetup">Setup Bluetooth</string>
     <string name="about">About</string>
@@ -89,8 +89,6 @@
     <string name="writing">Writing: %1$d%%</string>
     <string name="upgrade_ok">Firmware upgraded</string>
     <string name="stm8_upgrade_message">Bike firmware successfully updated!</string>
-    <string name="waitingReboot">ESP32 restarting …</string>
-    <string name="rebootDone">ESP32 started!</string>
     <string name="updateError">Update cannot start</string>
     <string name="upload_error">Update error: %1$d</string>
     <string name="warning">Warning</string>
@@ -232,7 +230,6 @@
     <string name="throttle_control">Throttle Control</string>
     <string name="throttle_enabled">Throttle Enabled</string>
     <string name="title_activity_cadence_sensor_calibration">Cadence sensor calibration</string>
-    <string name="title_activity_esp32_config">ESP32 Configuration</string>
 
     <string name="cadenceStartError">Cannot start cadence calibration</string>
     <string name="cadenceStopError">Cannot stop cadence calibration</string>
@@ -263,21 +260,6 @@
 
     <string name="assist_mode">Assist Mode</string>
 
-
-    <string name="hal_1">HAL 1</string>
-    <string name="hal_2">HAL 2</string>
-    <string name="hal_3">HAL 3</string>
-    <string name="hal_4">HAL 4</string>
-    <string name="hal_5">HAL 5</string>
-    <string name="hal_6">HAL 6</string>
-
-
-    <string-array name="ota_types">
-        <item> Select the App to update </item>
-        <item> Main ESP32 App </item>
-        <item> STM8 Loader App</item>
-    </string-array>
-
     <string-array name="motor_types">
         <item> 36V </item>
         <item> 48V </item>
@@ -295,11 +277,6 @@
         <item> Solid - Flashing</item>
         <item> Flashing - On</item>
         <item> Flashing - Flashing</item>
-    </string-array>
-    <string-array name="temperature_types">
-        <item> None </item>
-        <item> Controller ADC </item>
-        <item> ESP32 </item>
     </string-array>
 
     <string-array name="delay_labels">
