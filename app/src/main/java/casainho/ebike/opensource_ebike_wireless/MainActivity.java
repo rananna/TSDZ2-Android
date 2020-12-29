@@ -249,16 +249,20 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     public boolean onPrepareOptionsMenu (Menu menu) {
 
-        if (checkDevice() &&
-                checkConnected() &&
-                (checkMotorConnected() ||
-                !checkMotorConnecting())){
+        if (checkMotorConnected()) {
             menu.findItem(R.id.turnONMotor).setEnabled(true);
+            menu.findItem(R.id.turnONMotor).setTitle(R.string.turn_off_motor);
+        } else if (checkMotorConnecting()) {
+            menu.findItem(R.id.turnONMotor).setEnabled(false);
+            menu.findItem(R.id.turnONMotor).setTitle(R.string.turn_on_motor);
+        }
+
             if (checkMotorConnected()) {
                 menu.findItem(R.id.turnONMotor).setTitle(R.string.turn_off_motor);
             } else {
                 menu.findItem(R.id.turnONMotor).setTitle(R.string.turn_on_motor);
             }
+
         } else {
             menu.findItem(R.id.turnONMotor).setEnabled(false);
             menu.findItem(R.id.turnONMotor).setTitle(R.string.turn_on_motor);
@@ -408,11 +412,10 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         if (checkConnected() == false)
             return false;
 
-        if ((mPeriodic.motorState == 0) ||
-                (mPeriodic.motorState == 2))
-            return false;
-        else
+        if (mPeriodic.motorState == 1)
             return true;
+        else
+            return false;
     }
 
     private boolean checkMotorConnecting() {
