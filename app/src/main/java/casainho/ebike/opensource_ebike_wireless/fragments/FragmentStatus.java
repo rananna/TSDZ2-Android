@@ -18,6 +18,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import com.google.android.material.snackbar.Snackbar;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -78,6 +79,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         Log.d(TAG, "onCreateView");
 
         mRootView = (ConstraintLayout) inflater.inflate(R.layout.fragment_status, container, false);
+
         return mRootView;
     }
 

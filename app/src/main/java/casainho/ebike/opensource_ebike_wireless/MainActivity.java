@@ -14,6 +14,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 
 import androidx.annotation.NonNull;
@@ -31,6 +32,7 @@ import casainho.ebike.opensource_ebike_wireless.activities.BluetoothSetupActivit
 import casainho.ebike.opensource_ebike_wireless.activities.ConfigurationsActivity;
 import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Debug;
 import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
+import casainho.ebike.opensource_ebike_wireless.fragments.FragmentStatus;
 
 import android.util.Log;
 import android.view.ContextMenu;
@@ -65,6 +67,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     IntentFilter mIntentFilter = new IntentFilter();
 
+    Snackbar mSnackbar;
+
     private ViewPager viewPager;
     private final byte[] lastStatusData = new byte[PERIODIC_ADV_SIZE];
     private final byte[] lastDebugData = new byte[DEBUG_ADV_SIZE];
@@ -80,6 +84,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         Log.d(TAG, "onCreate");
 
         setContentView(R.layout.activity_main);
+        TSDZBTService service = TSDZBTService.getBluetoothService();
+        if (service == null || service.getConnectionStatus() != TSDZBTService.ConnectionState.CONNECTED) {
+            View contextView = findViewById(android.R.id.content);
+            // Make and display Snackbar
+            mSnackbar = Snackbar.make(contextView, "Not connected", Snackbar.LENGTH_INDEFINITE);
+            // Set action with Retry Listener
+            mSnackbar.setAction("Connect now", new ConnectListener());
+            // show the Snackbar
+            mSnackbar.show();
+        }
 
         boolean screenOn = MyApp.getPreferences().getBoolean(KEY_SCREEN_ON, false);
         if (screenOn)
@@ -190,6 +204,31 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+    }
+
+    public class ConnectListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            View contextView = findViewById(android.R.id.content);
+            mSnackbar.make(contextView, "Connecting", Snackbar.LENGTH_INDEFINITE)
+                    .show();
+
+            if (!checkDevice()) {
+                Toast.makeText(getApplicationContext(), "Please select the bluetooth device to connect", Toast.LENGTH_LONG).show();
+                return;
+            }
+
+            Intent intent = new Intent(MainActivity.this, TSDZBTService.class);
+            intent.setAction(TSDZBTService.ACTION_START_FOREGROUND_SERVICE);
+            intent.putExtra(TSDZBTService.ADDRESS_EXTRA, MyApp.getPreferences().getString(KEY_DEVICE_MAC, null));
+
+            if (Build.VERSION.SDK_INT >= 26)
+                startForegroundService(intent);
+            else
+                startService(intent);
+
+            invalidateOptionsMenu();
+        }
     }
 
     @Override
@@ -420,12 +459,14 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     R.mipmap.bt_disconnected, 0, 0, 0);
                     serviceRunning = false;
 					invalidateOptionsMenu();
+                    startSnackBarNotConnected();
                     break;
                 case TSDZBTService.CONNECTION_SUCCESS_BROADCAST:
                     Log.d(TAG, "CONNECTION_SUCCESS_BROADCAST");
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
 					R.mipmap.bt_connected, 0, 0, 0);
 					invalidateOptionsMenu();
+                    stopSnackBarNotConnected();
 					break;
                 case TSDZBTService.CONNECTION_FAILURE_BROADCAST:
                     Log.d(TAG, "CONNECTION_FAILURE_BROADCAST");
@@ -433,6 +474,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
 					R.mipmap.bt_connecting, 0, 0, 0);
 					invalidateOptionsMenu();
+                    startSnackBarNotConnected();
 					break;
                 case TSDZBTService.CONNECTION_LOST_BROADCAST:
                     Log.d(TAG, "CONNECTION_LOST_BROADCAST");
@@ -440,7 +482,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
                     mTitle.setCompoundDrawablesWithIntrinsicBounds(
 					R.mipmap.bt_connecting, 0, 0, 0);
 					invalidateOptionsMenu();
-					break;
+                    startSnackBarNotConnected();
+                    break;
             }
         }
     };
@@ -465,4 +508,21 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         getWindow().setAttributes(attrs);
     }
 
+    private void startSnackBarNotConnected() {
+        View contextView = findViewById(android.R.id.content);
+        // Make and display Snackbar
+        mSnackbar = Snackbar.make(contextView, "Not connected", Snackbar.LENGTH_INDEFINITE);
+        // Set action with Retry Listener
+        mSnackbar.setAction("Connect now", new ConnectListener());
+        // show the Snackbar
+        mSnackbar.show();
+    }
+
+    private void stopSnackBarNotConnected() {
+        View contextView = findViewById(android.R.id.content);
+        // update snack bar
+        contextView = findViewById(android.R.id.content);
+        mSnackbar.make(contextView, "Connected", Snackbar.LENGTH_SHORT)
+                .show();
+    }
 }
