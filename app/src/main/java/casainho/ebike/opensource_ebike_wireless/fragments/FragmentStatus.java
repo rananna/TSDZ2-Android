@@ -29,6 +29,7 @@ import java.util.HashMap;
 import casainho.ebike.opensource_ebike_wireless.MyApp;
 import casainho.ebike.opensource_ebike_wireless.R;
 import casainho.ebike.opensource_ebike_wireless.TSDZBTService;
+import casainho.ebike.opensource_ebike_wireless.data.Global;
 import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
 import casainho.ebike.opensource_ebike_wireless.data.Variable;
 
@@ -62,7 +63,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     }
 
     private FragmentStatus(TSDZ_Periodic status) {
-        this.periodic = status;
+        this.periodic = Global.getInstance().TSZD2Periodic;
     }
 
     @Override
@@ -106,7 +107,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         getView().findViewById(R.id.fl41).setOnLongClickListener(this::longClickSelectVariable);
         getView().findViewById(R.id.fl42).setOnLongClickListener(this::longClickSelectVariable);
 
-        boolean resetVariables = false; // needed for debug session, set to true to delete periodic.variablesConfig contents
+        boolean resetVariables = true; // needed for debug session, set to true to delete periodic.variablesConfig contents
         if (resetVariables == false) {
             //get from shared prefs
             Gson gson = new Gson();
@@ -198,6 +199,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     void updateView() {
         mBatterySOCTV.setText(String.valueOf((int) periodic.batterySOC));
 
+        // update brakes and lights status
         if ((periodic.braking == 1) && (periodic.light == 1))
             mBrakeLightsTV.setText("B L");
         else if (periodic.braking == 1)
@@ -207,6 +209,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
         else
             mBrakeLightsTV.setText("");
 
+        // update assist level status
         mAssistLevelValueTV.setText(String.valueOf(periodic.assistLevel));
 
         updateVariableViews();
@@ -334,6 +337,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
             TSDZBTService service = TSDZBTService.getBluetoothService();
             if (service != null && service.getConnectionStatus() == TSDZBTService.ConnectionState.CONNECTED) {
                 service.writePeriodic(periodic);
+                periodic.assistLevelTarget = 255; // invalidate
             }
         }
     }
