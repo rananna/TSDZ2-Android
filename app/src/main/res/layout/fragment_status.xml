@@ -85,38 +85,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/horiz11">
-
-        <ImageView
-            android:id="@+id/battery"
-            android:layout_width="91dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:src="@drawable/ic_battery_2"
-            android:textSize="32sp" />
-
-        <TextView
-            android:id="@+id/batterySOCTV"
-            android:layout_width="76dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:textAlignment="center"
-            android:textSize="32sp"
-            android:textAppearance="@android:style/TextAppearance.Material.Large"
-            tools:text="0" />
-
-        <TextClock
-            android:id="@+id/textClock"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:textSize="32sp"
-            android:gravity="end"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="18dp"
-            android:layout_gravity="right"
-            android:textAppearance="@android:style/TextAppearance.Material.Large"/>
     </FrameLayout>
     <FrameLayout
         android:id="@+id/fl1"
@@ -202,6 +170,61 @@
         app:layout_constraintTop_toTopOf="@+id/horiz4"
         android:longClickable="true">
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/battery"
+        android:layout_width="91dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/horiz1"
+        app:layout_constraintBottom_toTopOf="@id/horiz11"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:src="@drawable/ic_battery_2"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/batterySOCTV"
+        android:layout_width="76dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@+id/horiz1"
+        app:layout_constraintBottom_toTopOf="@id/horiz11"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        tools:text="0" />
+
+    <TextView
+        android:id="@+id/brakeLightsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="0dp"
+        android:textAlignment="center"
+        android:textSize="32sp"
+        app:layout_constraintTop_toBottomOf="@+id/horiz1"
+        app:layout_constraintBottom_toTopOf="@id/horiz11"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"
+        tools:text="BL" />
+
+    <TextClock
+        android:id="@+id/textClock"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="32sp"
+        android:gravity="end"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="18dp"
+        app:layout_constraintTop_toBottomOf="@+id/horiz1"
+        app:layout_constraintBottom_toTopOf="@id/horiz11"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textAppearance="@android:style/TextAppearance.Material.Large"/>
 
     <ImageButton
         android:id="@+id/assistLevelMinusBT"

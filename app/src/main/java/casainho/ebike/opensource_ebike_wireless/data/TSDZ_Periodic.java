@@ -17,6 +17,7 @@ public class TSDZ_Periodic {
     public float batteryCurrent;
     public float wheelSpeed;
     public int braking;
+    public int light;
     public int motorHallSensors;
     public int PASPedalRight;
     public int ADCThrottle;
@@ -38,6 +39,7 @@ public class TSDZ_Periodic {
     public int tripTime;
     public long odometer;
     public float wattsHour;
+    public int motorInitState;
 
     static public HashMap<Integer, Variable> variablesConfig = new HashMap<>();
 
@@ -50,7 +52,8 @@ public class TSDZ_Periodic {
         this.batteryVoltage = ((data[1] & 255) << 8) + ((data[0] & 255)) / 10;
         this.batteryCurrent = (data[2] & 255) / 5;
         this.wheelSpeed = ((data[4] & 255) << 8) + ((data[3] & 255)) / 10;
-        this.braking = (data[5] & 255);
+        this.braking = ((data[5] & 255) & 1);
+        this.light = (((data[5] & 255) >> 1) & 1);
         this.motorHallSensors = (data[6] & 255);
         this.PASPedalRight = (data[7] & 255);
         this.ADCThrottle = (data[8] & 255);
@@ -71,6 +74,7 @@ public class TSDZ_Periodic {
         this.batterySOC = (data[27] & 255);
         this.odometer = (((data[31] & 255) << 8) + ((data[30] & 255) << 8) + ((data[29] & 255) << 8) + (data[28] & 255));
         this.wattsHour = (((data[31] & 255) << 8) + ((data[30] & 255) << 8) + ((data[29] & 255) << 8) + (data[28] & 255)) / 10;
+        this.motorInitState = (data[32] & 255);
 
         return true;
     }

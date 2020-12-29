@@ -34,7 +34,7 @@ public class AboutActivity extends AppCompatActivity {
                 "<p>See the documentacion here: <a href=\"https://opensourceebike.github.io\">https://opensourceebike.github.io</a></p>\n" +
                 "<p><br>\n" +
                 "<p><br>\n" +
-                "<p>This app as developed based on the OpenSource TSDZ2-ESP32 app: <a href=\"https://github.com/TSDZ2-ESP32\">https://github.com/TSDZ2-ESP32</a></p>\n";
+                "<p>This app was developed based on the OpenSource TSDZ2-ESP32 app: <a href=\"https://github.com/TSDZ2-ESP32\">https://github.com/TSDZ2-ESP32</a></p>\n";
 
         // init webView
         webView = (WebView) findViewById(R.id.simpleWebView);

@@ -45,6 +45,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
     View mRootView;
     TextView mBatterySOCTV,
+            mBrakeLightsTV,
             mAssistLevelValueTV;
 
     SharedPreferences mPreferences  = MyApp.getPreferences();
@@ -86,6 +87,9 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
         mBatterySOCTV = (TextView) getView().findViewById(R.id.batterySOCTV);
         mBatterySOCTV.setText(String.valueOf(periodic.batterySOC / 10));
+
+        mBrakeLightsTV = (TextView) getView().findViewById(R.id.brakeLightsTV);
+        mBrakeLightsTV.setText("");
 
         ((TextView) getView().findViewById(R.id.assistLevelTV)).setText(R.string.assist_level);
         mAssistLevelValueTV = (TextView) getView().findViewById(R.id.assistLevelValueTV);
@@ -191,6 +195,16 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
     void updateView() {
         mBatterySOCTV.setText(String.valueOf((int) periodic.batterySOC));
+
+        if ((periodic.braking == 1) && (periodic.light == 1))
+            mBrakeLightsTV.setText("B L");
+        else if (periodic.braking == 1)
+            mBrakeLightsTV.setText("B");
+        else if (periodic.light == 1)
+            mBrakeLightsTV.setText("L");
+        else
+            mBrakeLightsTV.setText("");
+
         mAssistLevelValueTV.setText(String.valueOf(periodic.assistLevel));
 
         updateVariableViews();
@@ -302,7 +316,7 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
 
         switch (view.getId()) {
             case R.id.assistLevelPlusBT:
-                if (periodic.assistLevel < 6)
+                if (periodic.assistLevel < 7)
                     periodic.assistLevelTarget = periodic.assistLevel + 1;
                 break;
             case R.id.assistLevelMinusBT:
