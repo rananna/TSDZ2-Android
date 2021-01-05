@@ -39,7 +39,8 @@ public class TSDZ_Periodic {
     public int tripTime;
     public long odometer;
     public float wattsHour;
-    public int motorInitState;
+    public int motorState;
+    public int motorStateTarget;
 
     static public HashMap<Integer, Variable> variablesConfig = new HashMap<>();
 
@@ -74,7 +75,7 @@ public class TSDZ_Periodic {
         this.batterySOC = (data[27] & 255);
         this.odometer = (((data[31] & 255) << 8) + ((data[30] & 255) << 8) + ((data[29] & 255) << 8) + (data[28] & 255));
         this.wattsHour = (((data[31] & 255) << 8) + ((data[30] & 255) << 8) + ((data[29] & 255) << 8) + (data[28] & 255)) / 10;
-        this.motorInitState = (data[32] & 255);
+        this.motorState = (data[32] & 255);
 
         return true;
     }
@@ -82,6 +83,7 @@ public class TSDZ_Periodic {
     public byte[] toByteArray() {
         byte[] data = new byte[PERIODIC_ADV_SIZE];
         data[0] = (byte) assistLevelTarget;
+        data[1] = (byte) motorStateTarget;
 
         return data;
     }

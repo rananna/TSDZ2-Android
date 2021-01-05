@@ -26,6 +26,7 @@ import java.util.UUID;
 import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
+import casainho.ebike.opensource_ebike_wireless.data.Global;
 import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Configurations;
 import casainho.ebike.opensource_ebike_wireless.data.TSDZ_Periodic;
 
@@ -60,6 +61,9 @@ public class TSDZBTService extends Service {
     public static final String TSDZ_PERIODIC_WRITE_BROADCAST = "TSDZ_PERIODIC_WRITE";
     public static final String TSDZ_CFG_READ_BROADCAST = "TSDZ_CFG_READ";
     public static final String TSDZ_CFG_WRITE_BROADCAST = "TSDZ_CFG_WRITE";
+    public static final String TSDZ_MOTOR_READY = "TSDZ_MOTOR_READY";
+    public static final String TSDZ_MOTOR_INITIALIZING = "TSDZ_MOTOR_INITIALIZING";
+    public static final String TSDZ_MOTOR_OFF = "TSDZ_MOTOR_OFF";
 
     private static final int MAX_CONNECTION_RETRY = 10;
     private static TSDZBTService mService = null;
@@ -75,6 +79,8 @@ public class TSDZBTService extends Service {
 
     private BluetoothGattCharacteristic tsdz_periodic_char = null;
     private BluetoothGattCharacteristic tsdz_config_char = null;
+
+    private int m_motorStatePrevious = -1;
 
     public static TSDZBTService getBluetoothService() {
         return mService;
@@ -327,8 +333,17 @@ public class TSDZBTService extends Service {
             byte [] data = characteristic.getValue();
             if (UUID_PERIODIC_CHARACTERISTIC.equals(characteristic.getUuid())) {
                 if (data.length == PERIODIC_ADV_SIZE) {
+                    TSDZ_Periodic periodic;
+                    periodic = Global.getInstance().TSZD2Periodic;
+                    periodic.setData(data);
+
+                    int motorState = periodic.motorState;
+
+                    // populate first time
+                    if (m_motorStatePrevious == -1)
+                        m_motorStatePrevious = motorState;
+
                     Intent bi = new Intent(TSDZ_PERIODIC_WRITE_BROADCAST);
-                    bi.putExtra(VALUE_EXTRA, data);
                     LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(bi);
 
                     // if we are in connecting state, now we are connected
@@ -338,7 +353,23 @@ public class TSDZBTService extends Service {
                         LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
                     }
 
-//                    Log.d(TAG, "TSDZ2 periodic data: " + data[0]);
+                    if (mConnectionState == ConnectionState.CONNECTED) {
+                        if (motorState != m_motorStatePrevious) {
+                            Intent intent;
+                            if (motorState == 1) {
+                                intent = new Intent(TSDZ_MOTOR_READY);
+                                LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
+                            } else if (motorState == 0) {
+                                intent = new Intent(TSDZ_MOTOR_OFF);
+                                LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
+                            } else {
+                                intent = new Intent(TSDZ_MOTOR_INITIALIZING);
+                                LocalBroadcastManager.getInstance(TSDZBTService.this).sendBroadcast(intent);
+                            }
+                        }
+                    }
+
+                    m_motorStatePrevious = motorState;
                 } else {
                     Log.e(TAG, "Wrong Status Advertising Size: " + data.length);
                 }
