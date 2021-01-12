@@ -197,17 +197,17 @@ public class FragmentStatus extends Fragment implements View.OnLongClickListener
     void updateView() {
         mBatterySOCTV.setText(String.valueOf((int) periodic.batterySOC));
 
-        // update brakes and lights status
-        if ((periodic.braking == 1) && (periodic.light == 1))
-            mBrakeLightsTV.setText("B L");
-        else if (periodic.braking == 1)
-            mBrakeLightsTV.setText("B");
-        else if (periodic.light == 1)
-            mBrakeLightsTV.setText("L");
-        else
-            mBrakeLightsTV.setText("");
+//        // update brakes and lights status
+//        if ((periodic.braking == 1) && (periodic.light == 1))
+//            mBrakeLightsTV.setText("B L");
+//        else if (periodic.braking == 1)
+//            mBrakeLightsTV.setText("B");
+//        else if (periodic.light == 1)
+//            mBrakeLightsTV.setText("L");
+//        else
+//            mBrakeLightsTV.setText("");
 
-//mBrakeLightsTV.setText(String.valueOf(periodic.motorState));
+mBrakeLightsTV.setText(String.valueOf(periodic.motorState));
 
         // update assist level status
         mAssistLevelValueTV.setText(String.valueOf(periodic.assistLevel));

@@ -69,6 +69,7 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
 
     Snackbar mSnackbar;
 
+
     private final TSDZ_Periodic mPeriodic = Global.getInstance().TSZD2Periodic;
 
     private ViewPager viewPager;
@@ -98,16 +99,6 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         mPeriodic.motorStateTarget = 255;
 
         setContentView(R.layout.activity_main);
-        TSDZBTService service = TSDZBTService.getBluetoothService();
-        if (service == null || service.getConnectionStatus() != TSDZBTService.ConnectionState.CONNECTED) {
-            View contextView = findViewById(android.R.id.content);
-            // Make and display Snackbar
-            mSnackbar = Snackbar.make(contextView, "Not connected", Snackbar.LENGTH_INDEFINITE);
-            // Set action with Retry Listener
-            mSnackbar.setAction("Connect now", new ConnectListener());
-            // show the Snackbar
-            mSnackbar.show();
-        }
 
         boolean screenOn = MyApp.getPreferences().getBoolean(KEY_SCREEN_ON, false);
         if (screenOn)
@@ -179,18 +170,19 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (checkConnected()) {
+                    if (m_motorState == MotorState.READY || m_motorState == MotorState.INITIALIZING) {
+                        mPeriodic.motorStateTarget = 2;
+                    } else if (m_motorState != MotorState.READY) {
+                        mPeriodic.motorStateTarget = 1;
+                    } else {
+                        return;
+                    }
 
-                if (m_motorState == MotorState.READY) {
-                    mPeriodic.motorStateTarget = 2;
-                } else if (m_motorState != MotorState.READY) {
-                    mPeriodic.motorStateTarget = 1;
-                } else {
-                    return;
+                    TSDZBTService service = TSDZBTService.getBluetoothService();
+                    service.writePeriodic(mPeriodic);
+                    mPeriodic.motorStateTarget = 255; // invalidate
                 }
-
-                TSDZBTService service = TSDZBTService.getBluetoothService();
-                service.writePeriodic(mPeriodic);
-                mPeriodic.motorStateTarget = 255; // invalidate
             }
         });
 
@@ -209,6 +201,28 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     @Override
     protected void onResume() {
         super.onResume();
+
+        if (checkDevice() == false) {
+            View contextView = findViewById(android.R.id.content);
+            // Make and display Snackbar
+            mSnackbar = Snackbar.make(contextView, "Setup Bluetooth", Snackbar.LENGTH_INDEFINITE);
+            // Set action with Retry Listener
+            mSnackbar.setAction("setup now", new SetupBluetoothListener());
+            // show the Snackbar
+            mSnackbar.show();
+        } else {
+            TSDZBTService service = TSDZBTService.getBluetoothService();
+            if (service == null || service.getConnectionStatus() != TSDZBTService.ConnectionState.CONNECTED) {
+                View contextView = findViewById(android.R.id.content);
+                // Make and display Snackbar
+                mSnackbar = Snackbar.make(contextView, "Not connected", Snackbar.LENGTH_INDEFINITE);
+                // Set action with Retry Listener
+                mSnackbar.setAction("Connect now", new ConnectListener());
+                // show the Snackbar
+                mSnackbar.show();
+            }
+        }
+
         updateUIStatus();
         LocalBroadcastManager.getInstance(this).registerReceiver(mMessageReceiver, mIntentFilter);
     }
@@ -217,6 +231,16 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     protected void onPause() {
         super.onPause();
         LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+    }
+
+    public class SetupBluetoothListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(MainActivity.this, BluetoothSetupActivity.class);
+            startActivity(intent);
+
+            invalidateOptionsMenu();
+        }
     }
 
     public class ConnectListener implements View.OnClickListener {
@@ -448,7 +472,8 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
             final BluetoothManager btManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
             final BluetoothAdapter btAdapter = btManager.getAdapter();
             BluetoothDevice selectedDevice = btAdapter.getRemoteDevice(mac);
-            return selectedDevice.getBondState() == BluetoothDevice.BOND_BONDED;
+            boolean bonded = (selectedDevice.getBondState() == BluetoothDevice.BOND_BONDED);
+            return bonded;
         }
         return false;
     }
@@ -472,13 +497,13 @@ public class MainActivity extends AppCompatActivity implements View.OnTouchListe
     private void updateUIStatus() {
 
         if (checkConnected() == false) {
-            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.power_disable_round, 0, 0, 0);
+            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_power_disable, 0, 0, 0);
         } else if (m_motorState == MotorState.READY) {
-            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.power_on_round, 0, 0, 0);
+            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_power_on, 0, 0, 0);
         } else if (m_motorState == MotorState.OFF) {
-            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.power_off_round, 0, 0, 0);
+            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_power_off, 0, 0, 0);
         } else {
-            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.power_on_waiting_round, 0, 0, 0);
+            mTitle.setCompoundDrawablesWithIntrinsicBounds(R.mipmap.ic_power_on_waiting, 0, 0, 0);
         }
     }
 
