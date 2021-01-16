@@ -6,6 +6,8 @@
 
     <item  android:id="@+id/connectBluetooth"
         android:title="@string/connect_bluetooth"/>
+    <item  android:id="@+id/turnONMotor"
+        android:title="@string/turn_on_motor"/>
     <item  android:id="@+id/config"
         android:title="@string/tsdz_configurations"/>
     <item  android:id="@+id/btSetup"
